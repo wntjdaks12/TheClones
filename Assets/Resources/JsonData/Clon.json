@@ -1,0 +1,18 @@
+[
+    {
+        "id":"90001",
+        "visibleDistance":5,
+        "visibleLayerName":
+        [
+            "Enemy"
+        ]
+    },
+    {
+        "id":"90002",
+        "visibleDistance":5,
+        "visibleLayerName":
+        [
+            "Enemy"
+        ]
+    }
+]
