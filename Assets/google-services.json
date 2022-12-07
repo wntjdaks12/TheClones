@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "649416206660",
+    "project_id": "theclones-81600313",
+    "storage_bucket": "theclones-81600313.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649416206660:android:9a88280393fc723a3f4f11",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.TheClones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649416206660-05ofucblpj63en4lv0g285jo8dlbp4rs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM0UgqzQut3OOBn9J-bzw-nLCoM3AvwOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649416206660-05ofucblpj63en4lv0g285jo8dlbp4rs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
