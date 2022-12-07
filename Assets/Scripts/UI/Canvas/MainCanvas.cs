@@ -8,23 +8,24 @@ namespace MainScene
 {
     public class MainCanvas : MonoBehaviour
     {
-        private Raycaster raycaster;
+        [SerializeField] private Button googleLoginBtn;
 
-        [SerializeField] private GraphicRaycaster graphicRaycaster;
+        [SerializeField] private FirebaseGoogleAuth firebaseGoogleAuth;
 
-        private void Awake()
+        private void Start()
         {
-            raycaster = new Raycaster();
+            Init();
         }
 
-        private void Update()
+        public void Init()
         {
-            if (Input.GetMouseButtonUp(0))
-            {
-                var hits = raycaster.ReturnUIRaycastResultList(graphicRaycaster);
+            googleLoginBtn.onClick.RemoveAllListeners();
+            googleLoginBtn.onClick.AddListener(() => firebaseGoogleAuth.TryGoogleLogin(SceneMove));
+        }
 
-                if (hits.Count > 0) SceneManager.LoadScene("LobbyScene");
-            }
+        private void SceneMove(bool isState)
+        {
+            if(isState) SceneManager.LoadScene("LobbyScene");
         }
     }
 }

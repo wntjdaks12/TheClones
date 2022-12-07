@@ -9,6 +9,10 @@ public class CFirebase : MonoBehaviour
 {
     private DatabaseReference reference;
 
+    private void Awake()
+    {
+    }
+
     private void Start()
     {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
