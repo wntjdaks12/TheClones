@@ -5,19 +5,13 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 
-public class CFirebase : MonoBehaviour
+public class CFirebase
 {
     private DatabaseReference reference;
 
-    private void Awake()
-    {
-    }
-
-    private void Start()
+    public CFirebase()
     {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
-        WriteUserData("0", "joasd1m");
-        //ReadUserData();
     }
 
     private void ReadUserData()
@@ -40,8 +34,8 @@ public class CFirebase : MonoBehaviour
             });
     }
 
-    private void WriteUserData(string userId, string username)
+    public void WriteUserData<T>(string id, T data)
     {
-        reference.Child("users").Child(userId).Child("username").SetValueAsync(username);
+        reference.Child("Player").Child(id).SetValueAsync(data);
     }
 }

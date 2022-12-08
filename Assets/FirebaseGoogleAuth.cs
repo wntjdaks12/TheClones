@@ -11,8 +11,12 @@ public class FirebaseGoogleAuth : MonoBehaviour
 {
     private FirebaseAuth auth;
 
+    private CFirebase firebase;
+
     private void Awake()
     {
+        firebase = new CFirebase();
+
         DontDestroyOnLoad(this);
     }
 
@@ -30,7 +34,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
     }
 
 
-    public void TryGoogleLogin(Action<bool> output)
+    public void TryGoogleLogin(Action<bool, string> output)
     {
         if (!Social.localUser.authenticated) // 로그인 되어 있지 않다면
         {
@@ -39,11 +43,13 @@ public class FirebaseGoogleAuth : MonoBehaviour
                 if (success)
                 {
                     Debug.Log("구글 로그인 성공");
+                    output?.Invoke(false, "구글 로그인 성공");
                     StartCoroutine(TryFirebaseLogin(output)); // Firebase Login 시도
                 }
                 else
                 {
                     Debug.Log("구글 로그인 실패");
+                    output?.Invoke(false, "구글 로그인 실패");
                 }
             });
         }
@@ -60,10 +66,15 @@ public class FirebaseGoogleAuth : MonoBehaviour
     }
 
 
-    IEnumerator TryFirebaseLogin(Action<bool> output)
+    IEnumerator TryFirebaseLogin(Action<bool, string> callback)
     {
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
+        {
+            Debug.LogError("Token Error");
+            callback?.Invoke(false, "Token Error");
+
             yield return null;
+        }
         string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
 
         Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
@@ -71,17 +82,27 @@ public class FirebaseGoogleAuth : MonoBehaviour
             if (task.IsCanceled)
             {
                 Debug.LogError("SignInWithCredentialAsync was canceled.");
+                callback?.Invoke(false, "SignInWithCredentialAsync was canceled.");
                 return;
             }
             if (task.IsFaulted)
             {
                 Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                callback?.Invoke(false, "SignInWithCredentialAsync encountered an error: " + task.Exception);
                 return;
             }
 
-            output?.Invoke(true);
+             FirebaseUser user = auth.CurrentUser;
+
+             if (user != null)
+             {
+                PlayerManager.Instance.Player = new Player { playerId = user.UserId };
+
+                firebase.WriteUserData<Player>(PlayerManager.Instance.Player.playerId, PlayerManager.Instance.Player);
+            }
 
             Debug.Log("파이어 베이스 로그인 성공");
+            callback?.Invoke(true, "파이어 베이스 로그인 성공");
         });
 
     }

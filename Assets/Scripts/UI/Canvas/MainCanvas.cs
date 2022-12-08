@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MainScene
 {
     public class MainCanvas : MonoBehaviour
     {
         [SerializeField] private Button googleLoginBtn;
+
+        [Header("Temp Auth Checking Text")]
+        [SerializeField] private TextMeshProUGUI authText;
 
         [SerializeField] private FirebaseGoogleAuth firebaseGoogleAuth;
 
@@ -23,9 +27,11 @@ namespace MainScene
             googleLoginBtn.onClick.AddListener(() => firebaseGoogleAuth.TryGoogleLogin(SceneMove));
         }
 
-        private void SceneMove(bool isState)
+        private void SceneMove(bool isState, string print)
         {
-            if(isState) SceneManager.LoadScene("LobbyScene");
+            authText.text = print;
+
+            if (isState) SceneManager.LoadScene("LobbyScene");
         }
     }
 }
