@@ -9,11 +9,8 @@ public class Player
 }
 
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : GameManager
 {
     [SerializeField] private Player player;
     public Player Player { get => player; set => player = value; }
-
-    private static PlayerManager instance;
-    public static PlayerManager Instance { get => instance ??=  GameObject.FindObjectOfType<PlayerManager>(); }
 }

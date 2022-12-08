@@ -16,11 +16,9 @@ public class FirebaseGoogleAuth : MonoBehaviour
     private void Awake()
     {
         firebase = new CFirebase();
-
-        DontDestroyOnLoad(this);
     }
 
-    void Start()
+    private void Start()
     {
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
             .RequestIdToken()
@@ -33,9 +31,10 @@ public class FirebaseGoogleAuth : MonoBehaviour
         auth = FirebaseAuth.DefaultInstance; // Firebase 액세스
     }
 
-
-    public void TryGoogleLogin(Action<bool, string> output)
+    public void TryGoogleLogin(Action<bool, string> callback)
     {
+        callback?.Invoke(false, "구글 로그인...");
+
         if (!Social.localUser.authenticated) // 로그인 되어 있지 않다면
         {
             Social.localUser.Authenticate(success => // 로그인 시도
@@ -43,13 +42,12 @@ public class FirebaseGoogleAuth : MonoBehaviour
                 if (success)
                 {
                     Debug.Log("구글 로그인 성공");
-                    output?.Invoke(false, "구글 로그인 성공");
-                    StartCoroutine(TryFirebaseLogin(output)); // Firebase Login 시도
+
+                    StartCoroutine(TryFirebaseLogin(callback)); // Firebase Login 시도
                 }
                 else
                 {
                     Debug.Log("구글 로그인 실패");
-                    output?.Invoke(false, "구글 로그인 실패");
                 }
             });
         }
@@ -66,8 +64,10 @@ public class FirebaseGoogleAuth : MonoBehaviour
     }
 
 
-    IEnumerator TryFirebaseLogin(Action<bool, string> callback)
+    private IEnumerator TryFirebaseLogin(Action<bool, string> callback)
     {
+        callback?.Invoke(false, "파이어 베이스 로그인...");
+
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
         {
             Debug.LogError("Token Error");
@@ -75,6 +75,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
 
             yield return null;
         }
+
         string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
 
         Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
@@ -92,18 +93,20 @@ public class FirebaseGoogleAuth : MonoBehaviour
                 return;
             }
 
-             FirebaseUser user = auth.CurrentUser;
+            FirebaseUser user = auth.CurrentUser;
 
-             if (user != null)
-             {
-                PlayerManager.Instance.Player = new Player { playerId = user.UserId };
+            if (user != null)
+            {
+                var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-                firebase.WriteUserData<Player>(PlayerManager.Instance.Player.playerId, PlayerManager.Instance.Player);
+                playerManager.Player = new Player { playerId = user.UserId };
+
+                firebase.WriteUserData<Player>(playerManager.Player.playerId, playerManager.Player);
+
+                Debug.Log("파이어 베이스 로그인 성공");
+
+                callback?.Invoke(true, "성공");
             }
-
-            Debug.Log("파이어 베이스 로그인 성공");
-            callback?.Invoke(true, "파이어 베이스 로그인 성공");
         });
-
     }
 }

@@ -36,6 +36,8 @@ public class CFirebase
 
     public void WriteUserData<T>(string id, T data)
     {
-        reference.Child("Player").Child(id).SetValueAsync(data);
+        var json = JsonUtility.ToJson(data);
+
+        reference.Child("Player").Child(id).SetRawJsonValueAsync(json);
     }
 }
