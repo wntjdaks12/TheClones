@@ -28,9 +28,6 @@ public class HeadBarController : GameController
         headBar.HeadBarTransform = actor.HeadBarTransform;
         headBar.Subject = actor.Subject;
 
-        Debug.Log(actor.HeadBarTransform);
-        Debug.Log(actor.Subject.Entity);
-
         headBar.Init(headBarObject.transform, transform.GetComponent<Collider>());
         headBarObject.Init(headBar);
 

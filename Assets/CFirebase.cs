@@ -4,6 +4,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
+using System;
 
 public class CFirebase
 {
@@ -39,5 +40,25 @@ public class CFirebase
         var json = JsonUtility.ToJson(data);
 
         reference.Child("Player").Child(id).SetRawJsonValueAsync(json);
+    }
+
+    public void ReadUserData(string id, Action<DataSnapshot> callback)
+    {
+        reference.Child("Player").Child(id).GetValueAsync()
+            .ContinueWithOnMainThread(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Debug.Log("데이터 베이스 로드 실패");
+                }
+                else if (task.IsCompleted)
+                {
+                    Debug.Log("데이터 베이스 로드 성공");
+
+                    var data = task.Result;
+
+                    callback?.Invoke(data);
+                }
+            });
     }
 }

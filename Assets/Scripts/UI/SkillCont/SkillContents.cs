@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class SkillContents : MonoBehaviour
 {
+    [Header("TOGGLE BUTTON")]
     [SerializeField] private Button button;
+
+    [Header("CLON SLOT")]
+    [SerializeField] private Transform parent;
+    [SerializeField] private ClonSlot clonSlot;
 
     private SkillContentsState state;
 
@@ -41,6 +46,21 @@ public class SkillContents : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
+        var player = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
+
+        var count = player.clonInfos.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            var clonInfo = player.clonInfos[i];
+            Instantiate(clonSlot, parent).Init(clonInfo.clonId, clonInfo.skillId);
+        }
+
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnPressedButton);
     }

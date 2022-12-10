@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2460222916335614920}
+  parent: {fileID: 2460222916749574140}
+  clonSlot: {fileID: 5733339654670519396, guid: c4689ebf33a92e84c89cbec525451324, type: 3}
 --- !u!1 &2460222916335614922
 GameObject:
   m_ObjectHideFlags: 0
