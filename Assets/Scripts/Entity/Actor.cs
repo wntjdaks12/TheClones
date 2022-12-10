@@ -45,8 +45,6 @@ public class Actor : Entity, IAbility
 
         Subject = new Subject(this);
 
-        Debug.Log(Subject.Entity);
-
         CurrentHp = MaxHp;
     }
     public void OnActorHit(float damage)

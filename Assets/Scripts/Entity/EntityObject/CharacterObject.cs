@@ -13,7 +13,7 @@ public class CharacterObject : ActorObject
 
         var ai = GetComponent<CharacterAI>();
         var actor = character as Actor;
-        Debug.Log(actor.Subject);
+
         if (ai != null) ai.Init(character);
 
         if (character.Lifetime != 0) StartCoroutine(character.StartLifeTime());
