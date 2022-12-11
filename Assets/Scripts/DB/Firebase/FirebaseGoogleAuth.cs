@@ -20,7 +20,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
 
     private void Start()
     {
-#if ANDROID
+#if UNITY_ANDROID
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
             .RequestIdToken()
             .RequestEmail()
@@ -40,7 +40,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
         Debug.Log("구글 로그인 패스");
 
         StartCoroutine(TryFirebaseLogin(callback)); // Firebase Login 시도
-#elif ANDROID
+#elif UNITY_ANDROID
         if (!Social.localUser.authenticated) // 로그인 되어 있지 않다면
         {
             Social.localUser.Authenticate(success => // 로그인 시도
@@ -74,10 +74,11 @@ public class FirebaseGoogleAuth : MonoBehaviour
     {
         callback?.Invoke(false, "파이어 베이스 로그인...");
 #if UNITY_EDITOR_WIN
-        //Temp(callback);
-        TempRead(callback);
+        //TempWrite(callback, "dWXMvdfmp5Oi3niMs0upJ2OtujL2");
+        TempRead(callback, "dWXMvdfmp5Oi3niMs0upJ2OtujL2");
+
         yield return null;
-#elif ANDROID
+#elif UNITY_ANDROID
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
         {
             Debug.LogError("Token Error");
@@ -107,17 +108,18 @@ public class FirebaseGoogleAuth : MonoBehaviour
 
             if (user != null)
             {
-                Temp(callback);
+                //TempWrite(callback, UserId);
+                TempRead(callback, user.UserId);
             }
         });
 #endif
     }
 
-    public void TempRead(Action<bool, string> callback)
+    public void TempRead(Action<bool, string> callback, string tempPlayerid)
     {
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-        firebase.ReadUserData<PlayerInfo>("dWXMvdfmp5Oi3niMs0upJ2OtujL2", datas =>
+        firebase.ReadData<PlayerInfo>(tempPlayerid, datas =>
         {
             GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = datas;
         });
@@ -125,7 +127,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
         callback?.Invoke(true, "성공");
     }
 
-    public void TempWrite(Action<bool, string> callback)
+    public void TempWrite(Action<bool, string> callback, string tempPlayerid)
     {
         Debug.Log("파이어 베이스 로그인 성공");
 
@@ -135,9 +137,9 @@ public class FirebaseGoogleAuth : MonoBehaviour
         clonInfos.Add(new ClonInfo { clonId = 90001, skillId = 30004 });
         clonInfos.Add(new ClonInfo { clonId = 90002, skillId = 30001 });
 
-        playerManager.PlayerInfo = new PlayerInfo { playerId = "dWXMvdfmp5Oi3niMs0upJ2OtujL2", clonInfos = clonInfos };
+        playerManager.PlayerInfo = new PlayerInfo { playerId = tempPlayerid, clonInfos = clonInfos };
 
-        firebase.WriteUserData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+        firebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 
         callback?.Invoke(true, "성공");
     }
