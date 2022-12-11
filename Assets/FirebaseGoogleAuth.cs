@@ -74,7 +74,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
     {
         callback?.Invoke(false, "파이어 베이스 로그인...");
 #if UNITY_EDITOR_WIN
-        Temp(callback);
+        //Temp(callback);
         TempRead(callback);
         yield return null;
 #elif ANDROID
@@ -117,37 +117,15 @@ public class FirebaseGoogleAuth : MonoBehaviour
     {
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-        firebase.ReadUserData("dWXMvdfmp5Oi3niMs0upJ2OtujL2", datas =>
+        firebase.ReadUserData<PlayerInfo>("dWXMvdfmp5Oi3niMs0upJ2OtujL2", datas =>
         {
-            var player = new PlayerInfo();
-
-            foreach (var data in datas.Children)
-            {
-                if (data.Key == "clonInfos")
-                {
-                    var values = data.Value as List<object>;
-
-                    foreach (var value in values)
-                    {
-                        var values2 = (IDictionary)value;
-
-                        player.clonInfos.Add(new ClonInfo { clonId = uint.Parse(values2["clonId"].ToString()), skillId = uint.Parse(values2["skillId"].ToString()) });
-                    }
-                }
-
-                if (data.Key == "playerId")
-                {
-                    player.playerId = data.Value.ToString();
-                }
-            }
-
-            GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = player;
+            GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = datas;
         });
 
         callback?.Invoke(true, "성공");
     }
 
-    public void Temp(Action<bool, string> callback)
+    public void TempWrite(Action<bool, string> callback)
     {
         Debug.Log("파이어 베이스 로그인 성공");
 

@@ -15,36 +15,16 @@ public class CFirebase
         reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    private void ReadUserData()
-    {
-        FirebaseDatabase.DefaultInstance.GetReference("users")
-            .GetValueAsync().ContinueWithOnMainThread(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    // Handle the error...
-                }
-                else if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-                    // Do something with snapshot...
-                    for (int i = 0; i < snapshot.ChildrenCount; i++)
-                        Debug.Log(snapshot.Child(i.ToString()).Child("username").Value);
-
-                }
-            });
-    }
-
-    public void WriteUserData<T>(string id, T data)
+    public void WriteUserData<T>(string playerId, T data)
     {
         var json = JsonUtility.ToJson(data);
 
-        reference.Child("Player").Child(id).SetRawJsonValueAsync(json);
+        reference.Child(typeof(T).ToString()).Child(playerId).SetRawJsonValueAsync(json);
     }
 
-    public void ReadUserData(string id, Action<DataSnapshot> callback)
+    public void ReadUserData<T>(string id, Action<T> callback)
     {
-        reference.Child("Player").Child(id).GetValueAsync()
+        reference.Child(typeof(T).ToString()).Child(id).GetValueAsync()
             .ContinueWithOnMainThread(task =>
             {
                 if (task.IsFaulted)
@@ -55,9 +35,9 @@ public class CFirebase
                 {
                     Debug.Log("데이터 베이스 로드 성공");
 
-                    var data = task.Result;
+                    var ClassObjectName = JsonUtility.FromJson<T>(task.Result.GetRawJsonValue());
 
-                    callback?.Invoke(data);
+                    callback?.Invoke(ClassObjectName);
                 }
             });
     }
