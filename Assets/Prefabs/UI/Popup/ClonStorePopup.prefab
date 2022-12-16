@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 1303785432096722729}
+  poolingScrollview: {fileID: 2888214854329364880}
   ExitBtn: {fileID: 1303785431065000497}
 --- !u!1 &1303785432054451480
 GameObject:
@@ -696,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6ca1570554784ebcf1ffd997096c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 529355162043834425, guid: b55f531062631694292c9a719654505d, type: 3}
+  item: {fileID: 529355162043834425, guid: b55f531062631694292c9a719654505d, type: 3}
   parent: {fileID: 3328094463622586301}
 --- !u!1 &4261813653583699887
 GameObject:

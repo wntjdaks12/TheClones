@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class ClonStorePopup : Popup
 {
+    [SerializeField] private PoolingScrollview poolingScrollview;
+
     [Header("BUTTON")]
     [SerializeField] private Button ExitBtn;
 
     public void Init()
     {
+        OnShow();
+
         ExitBtn.onClick.RemoveAllListeners();
         ExitBtn.onClick.AddListener(OnHide);
 
-        OnShow();
+        poolingScrollview.Init(1);
     }
 }
