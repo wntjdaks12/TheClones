@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Popup : MonoBehaviour
+public class Popup : GameView
 {
     public GameObject popup;
 

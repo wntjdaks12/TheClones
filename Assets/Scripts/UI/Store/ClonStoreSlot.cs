@@ -7,7 +7,7 @@ using TMPro;
 public class ClonStoreSlot : GameView, IPollingScrollview
 {
     [SerializeField] private IAPButton iapButton;
-    [SerializeField] private TextMeshProUGUI name;
+    [SerializeField] private new TextMeshProUGUI name;
 
     private int index;
 
@@ -17,10 +17,6 @@ public class ClonStoreSlot : GameView, IPollingScrollview
 
         var iaps = App.GameModel.PresetDataModel.ReturnDatas<IAP>();
 
-        foreach (var data in iaps)
-        {
-            Debug.Log(data);
-        }
         iapButton.productId = "clon_gacha_001";
     }
 

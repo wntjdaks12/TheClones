@@ -17,6 +17,7 @@ public class ClonStorePopup : Popup
         ExitBtn.onClick.RemoveAllListeners();
         ExitBtn.onClick.AddListener(OnHide);
 
-        poolingScrollview.Init(2);
+        var iaps = App.GameModel.PresetDataModel.ReturnDatas<IAP>();
+        poolingScrollview.Init(iaps.Length);
     }
 }
