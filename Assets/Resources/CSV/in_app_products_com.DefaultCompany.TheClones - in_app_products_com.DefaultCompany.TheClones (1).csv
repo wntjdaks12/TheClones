@@ -1,3 +1,0 @@
-Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price,Pricing Template ID,Type
-clon_gacha_001,published,managed_by_android,FALSE,ko-KR; 클론 뽑기; 클론 뽑기입니다.,FALSE,KR; 1000000000; KR; 1000000000,,clon_gacha
-clon_gacha_002,published,managed_by_android,FALSE,ko-KR; 클론 10개 뽑기 ; 클론 10개 뽑기,FALSE,KR; 10000000000; KR; 10000000000,,clon_gacha

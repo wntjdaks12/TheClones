@@ -174,6 +174,4 @@ public class GameDataContainerModel: IDataContainer
     {
         return jArray.Select(x => (Entity)JsonConvert.DeserializeObject(x.ToString(), type)).ToArray();
     }
-
-
 }

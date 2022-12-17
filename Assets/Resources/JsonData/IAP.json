@@ -1,0 +1,12 @@
+﻿[
+	{
+		"id":13001,
+		"productID": "clon_gacha_001",
+		"name": "클론 뽑기"
+	},
+	{
+		"id":13002,
+		"productID": "clon_gacha_002",
+		"name": "클론 10개 뽑기"
+	}
+]

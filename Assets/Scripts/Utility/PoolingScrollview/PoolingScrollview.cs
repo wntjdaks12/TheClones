@@ -79,7 +79,12 @@ public class PoolingScrollview : MonoBehaviour
 
         for (int i = 0; i <= itemCount; i++) // 최대 개수만큼 아이템 생성
         {
-            Instantiate(item, parent);
+            var itemObject = Instantiate(item, parent);
+
+            if (itemObject.GetComponent<IPollingScrollview>() != null)
+            {
+                itemObject.GetComponent<IPollingScrollview>().Init(i);
+            }
         }
     }
 }

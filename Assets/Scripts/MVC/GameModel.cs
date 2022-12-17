@@ -63,6 +63,8 @@ public class GameModel : Element
         PresetDataModel.LoadData<HeadBar>(nameof(HeadBar), "JsonData/HeadBar");
 
         UserDataModel.LoadData<SlotItem>("OwnedEquipItem", "JsonData/OwnedEquipItem");
-      //  UserDataModel.LoadData<SlotItem>("OwnedconsumableItem", "JsonData/Inventroy");
+        //  UserDataModel.LoadData<SlotItem>("OwnedconsumableItem", "JsonData/Inventroy");
+
+        PresetDataModel.LoadData<IAP>(nameof(IAP), "JsonData/IAP");
     }
 }
