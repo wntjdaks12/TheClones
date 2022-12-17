@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21895a7265dddfe45bdbc2cd28b1d9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iapButton: {fileID: 1195753513089788159}
 --- !u!114 &1749723756836688460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: clongacha
+  productId: 
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
