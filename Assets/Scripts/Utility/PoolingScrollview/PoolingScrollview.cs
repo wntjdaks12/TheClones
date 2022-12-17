@@ -77,13 +77,24 @@ public class PoolingScrollview : MonoBehaviour
 
         parentRectTs.sizeDelta = new Vector2(maxItemCount * (itemRectTs.rect.width + padding) + horizontalLayoutGroup.padding.right, 0); // 풀링을 사용하기 위한 최대 넓이
 
-        for (int i = 0; i <= itemCount; i++) // 최대 개수만큼 아이템 생성
+        if(itemCount != parent.childCount - 1)
         {
-            var itemObject = Instantiate(item, parent);
-
-            if (itemObject.GetComponent<IPollingScrollview>() != null)
+            for (int i = 0; i < parent.childCount; i++)
             {
-                itemObject.GetComponent<IPollingScrollview>().Init(i);
+                Destroy(parent.GetChild(i).gameObject);
+            }
+        }
+
+        if (parent.childCount == 0)
+        {
+            for (int i = 0; i <= itemCount; i++) // 최대 개수만큼 아이템 생성
+            {
+                var itemObject = Instantiate(item, parent);
+
+                if (itemObject.GetComponent<IPollingScrollview>() != null)
+                {
+                    itemObject.GetComponent<IPollingScrollview>().Init(i);
+                }
             }
         }
     }
