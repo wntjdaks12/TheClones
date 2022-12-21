@@ -37,7 +37,8 @@ public class ClonStoreSlot : GameView, IPollingScrollview
 
     public void OnPurchaseComplete()
     {
-        Debug.Log("인앱 구매 성공");
+        GameManager.Instance.HTTPController.GetController<HTTPCloneGacha>()
+            .GetRequestAsync(() => Debug.Log("인앱 구매 성공"));
     }
 
     public void OnPurchaseFail()

@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
         return gameObject.GetComponent<T>();
     }
 
+    private HTTPController httpController;
+    public HTTPController HTTPController
+    {
+        get => httpController ??= GameObject.FindObjectOfType<HTTPController>();
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
