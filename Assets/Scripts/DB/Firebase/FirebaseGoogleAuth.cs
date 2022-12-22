@@ -74,8 +74,18 @@ public class FirebaseGoogleAuth : MonoBehaviour
     {
         callback?.Invoke(false, "파이어 베이스 로그인...");
 #if UNITY_EDITOR_WIN
-        //TempWrite(callback, "dWXMvdfmp5Oi3niMs0upJ2OtujL2");
-        TempRead(callback, "dWXMvdfmp5Oi3niMs0upJ2OtujL2");
+        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+
+        playerManager.PlayerInfo.playerId = "dWXMvdfmp5Oi3niMs0upJ2OtujL2";
+
+        CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+
+        CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
+        {
+            GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = data;
+        });
+
+        callback?.Invoke(true, "성공");
 
         yield return null;
 #elif UNITY_ANDROID
@@ -108,39 +118,20 @@ public class FirebaseGoogleAuth : MonoBehaviour
 
             if (user != null)
             {
-                //TempWrite(callback, UserId);
-                TempRead(callback, user.UserId);
+                var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+
+                playerManager.PlayerInfo.playerId = user.UserId;
+
+                CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+
+                CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
+                {
+                    GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = data;
+                });
+
+                callback?.Invoke(true, "성공");
             }
         });
 #endif
-    }
-
-    public void TempRead(Action<bool, string> callback, string tempPlayerid)
-    {
-        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-
-        firebase.ReadData<PlayerInfo>(tempPlayerid, datas =>
-        {
-            GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = datas;
-        });
-
-        callback?.Invoke(true, "성공");
-    }
-
-    public void TempWrite(Action<bool, string> callback, string tempPlayerid)
-    {
-        Debug.Log("파이어 베이스 로그인 성공");
-
-        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-        
-        var clonInfos = new List<ClonInfo>();
-        clonInfos.Add(new ClonInfo { clonId = 90001, skillId = 30004 });
-        clonInfos.Add(new ClonInfo { clonId = 90002, skillId = 30001 });
-
-        playerManager.PlayerInfo = new PlayerInfo { playerId = tempPlayerid, clonInfos = clonInfos };
-
-        firebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
-
-        callback?.Invoke(true, "성공");
     }
 }

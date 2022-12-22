@@ -25,7 +25,17 @@ public class HTTPCloneGacha : MonoBehaviour
                 case UnityWebRequest.Result.DataProcessingError: break;
                 case UnityWebRequest.Result.ProtocolError: break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(www.downloadHandler.text);
+
+                    var dataStr = www.downloadHandler.text;
+
+                    var clonInfo = JsonUtility.FromJson<ClonInfo>(dataStr);
+
+                    var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+
+                    playerManager.PlayerInfo.clonInfos.Add(clonInfo);
+
+                    CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+
                     callback?.Invoke();
                     break;
             }

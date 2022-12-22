@@ -8,12 +8,7 @@ using System;
 
 public class CFirebase
 {
-    private DatabaseReference reference;
-
-    public CFirebase()
-    {
-        reference = FirebaseDatabase.DefaultInstance.RootReference;
-    }
+    private static DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
 
     /// <summary>
     /// 데이터를 저장합니다
@@ -21,7 +16,7 @@ public class CFirebase
     /// <typeparam name="T">제네릭</typeparam>
     /// <param name="playerId">플레이어 Id</param>
     /// <param name="data">제네릭 데이터</param>
-    public void WriteData<T>(string playerId, T data)
+    public static void WriteData<T>(string playerId, T data)
     {
         var json = JsonUtility.ToJson(data);
 
@@ -36,7 +31,7 @@ public class CFirebase
     /// <typeparam name="T">제네릭</typeparam>
     /// <param name="playerId">플레이어 Id</param>
     /// <param name="callback">제네릭 콜백</param>
-    public void ReadData<T>(string playerId, Action<T> callback)
+    public static void ReadData<T>(string playerId, Action<T> callback)
     {
         reference.Child(typeof(T).ToString()).Child(playerId).GetValueAsync()
             .ContinueWithOnMainThread(task =>
