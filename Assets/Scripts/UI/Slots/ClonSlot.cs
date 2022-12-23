@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    public uint ClonId { get; set; }
-    public uint SkillId { get; set; }
-   
+    public ClonInfo CloneInfo { get; set; }
+
     [SerializeField] private Image iconImg;
 
     private Transform canvasParent, originalParent;
@@ -25,14 +24,13 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
         raycaster = new Raycaster();
     }
 
-    public void Init(uint clonId, uint skillId)
+    public void Init(ClonInfo cloneInfo)
     {
-        ClonId = clonId;
-        SkillId = skillId;
+        CloneInfo = cloneInfo;
 
-        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>("ImageInfo", ClonId);
+        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>("ImageInfo", cloneInfo.clonId);
 
-        iconImg.sprite = Resources.Load<Sprite>(imageInfo.Path + ClonId);
+        iconImg.sprite = Resources.Load<Sprite>(imageInfo.Path + cloneInfo.clonId);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -76,7 +74,7 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
             var tempEntityCont = App.GameController.GetComponent<ParticleController>();
             var entityCont = App.GameController.GetComponent<CharacterController>();
             tempEntityCont.Spawn("Particle", 60002, hits[0].point);
-            entityCont.Spawn("Clon", ClonId, hits[0].point, SkillId);
+            entityCont.Spawn("Clon", CloneInfo.clonId, hits[0].point, CloneInfo.skillId);
         }
     }
 }

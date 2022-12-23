@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using UniRx;
 
 public class HTTPCloneGacha : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class HTTPCloneGacha : MonoBehaviour
 
                     var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-                    playerManager.PlayerInfo.clonInfos.Add(clonInfo);
+                    playerManager.PlayerInfo.CloneInfos.Value.Add(clonInfo);
 
                     CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 

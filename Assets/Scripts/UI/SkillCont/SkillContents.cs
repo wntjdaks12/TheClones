@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 public class SkillContents : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class SkillContents : MonoBehaviour
 
     private void Start()
     {
+        var playerInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
+        playerInfo.CloneInfos.Subscribe(_ => Debug.Log("º¯È­"));
+
         Init();
     }
 
@@ -53,12 +57,14 @@ public class SkillContents : MonoBehaviour
     {
         var player = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
 
-        var count = player.clonInfos.Count;
+        var cloneInfos = player.CloneInfos.Value;
 
-        for (int i = 0; i < count; i++)
+        if (cloneInfos != null)
         {
-            var clonInfo = player.clonInfos[i];
-            Instantiate(clonSlot, parent).Init(clonInfo.clonId, clonInfo.skillId);
+            for (int i = 0; i < cloneInfos.Count; i++)
+            {
+                Instantiate(clonSlot, parent).Init(cloneInfos[i]);
+            }
         }
 
         button.onClick.RemoveAllListeners();
