@@ -1,24 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UniRx;
+using UnityEngine;
 
 [Serializable]
 public class PlayerInfo
 {
     public string playerId;
 
-    //public List<ClonInfo> cloneInfos;
-
-    private ReactiveProperty<List<ClonInfo>> cloneInfosRP;
-    public ReactiveProperty<List<ClonInfo>> CloneInfosRP {
-        get
-        {
-            cloneInfosRP ??= new ReactiveProperty<List<ClonInfo>>();
-            cloneInfosRP.Value ??= new List<ClonInfo>();
-
-            return cloneInfosRP;
-        }
-    }
+    public List<ClonInfo> cloneInofs = new List<ClonInfo>();
+    [HideInInspector]
+    public ReactiveCollection<ClonInfo> cloneInfosRP = new ReactiveCollection<ClonInfo>();
 }
 
 [Serializable]

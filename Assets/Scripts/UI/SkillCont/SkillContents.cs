@@ -48,7 +48,7 @@ public class SkillContents : MonoBehaviour
     private void Start()
     {
         var playerInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
-        playerInfo.CloneInfosRP.Subscribe(_ => Debug.Log("º¯È­"));
+        playerInfo.cloneInfosRP.ObserveAdd().Subscribe(_ => Init());
 
         Init();
     }
@@ -57,7 +57,7 @@ public class SkillContents : MonoBehaviour
     {
         var playerInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
 
-        var cloneInfos = playerInfo.CloneInfosRP.Value;
+        var cloneInfos = playerInfo.cloneInofs;
 
         if (cloneInfos != null)
         {
