@@ -7,14 +7,16 @@ public class PlayerInfo
 {
     public string playerId;
 
-    private ReactiveProperty<List<ClonInfo>> cloneInfos;
-    public ReactiveProperty<List<ClonInfo>> CloneInfos {
+    //public List<ClonInfo> cloneInfos;
+
+    private ReactiveProperty<List<ClonInfo>> cloneInfosRP;
+    public ReactiveProperty<List<ClonInfo>> CloneInfosRP {
         get
         {
-            cloneInfos ??= new ReactiveProperty<List<ClonInfo>>();
-            cloneInfos.Value ??= new List<ClonInfo>();
+            cloneInfosRP ??= new ReactiveProperty<List<ClonInfo>>();
+            cloneInfosRP.Value ??= new List<ClonInfo>();
 
-            return cloneInfos;
+            return cloneInfosRP;
         }
     }
 }

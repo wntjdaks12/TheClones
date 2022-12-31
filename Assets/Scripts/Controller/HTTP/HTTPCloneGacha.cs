@@ -33,7 +33,7 @@ public class HTTPCloneGacha : MonoBehaviour
 
                     var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-                    playerManager.PlayerInfo.CloneInfos.Value.Add(clonInfo);
+                    playerManager.PlayerInfo.CloneInfosRP.Value.Add(clonInfo);
 
                     CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 
