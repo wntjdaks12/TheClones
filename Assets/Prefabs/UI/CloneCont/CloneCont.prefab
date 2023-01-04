@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2460222915885735253}
   - component: {fileID: 2460222915885735251}
   m_Layer: 5
-  m_Name: SkillCont
+  m_Name: CloneCont
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
