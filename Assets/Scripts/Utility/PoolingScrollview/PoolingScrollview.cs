@@ -28,6 +28,8 @@ public class PoolingScrollview : MonoBehaviour
 
     private int index;
 
+    private bool isBool;
+
     private void Awake()
     {
         horizontalLayoutGroup = parent.GetComponent<HorizontalLayoutGroup>();
@@ -41,13 +43,23 @@ public class PoolingScrollview : MonoBehaviour
 
     private void Update()
     {
+        CheckScrolling();
+    }
+
+    // 스크롤링에 관해서 체크합니다.
+    private void CheckScrolling()
+    {
+        // 렉트랜스폼 x값
         var x = (int)parentRectTs.anchoredPosition.x;
         x = x > 0 ? 0 : Mathf.Abs(x);
 
-        var index = (int)((x + itemRectTs.rect.width + padding) / (itemRectTs.rect.width + padding));
+        var index = (int)((x + itemRectTs.rect.width + padding) / (itemRectTs.rect.width + padding)); // 풀링에 관한 인덱스
+
+        var curIndex = this.index; // 현재 풀링 인덱스
 
         if (this.index != index)
         {
+            isBool = true;
             this.index = index;
 
             var count = (int)(rectTs.rect.width / (itemRectTs.rect.width + padding)); // 풀링을 사용하기 위한 아이템 최대 개수
@@ -58,44 +70,82 @@ public class PoolingScrollview : MonoBehaviour
 
                 horizontalLayoutGroup.padding = new RectOffset((int)(itemRectTs.rect.width * (index - 1)) + padding * index, pad.right, pad.top, pad.bottom);
             }
+            else
+            {
+                if (maxCount >= count) // 아이템 최대 개수가 최대 개수를 넘어갈 시 현재 인덱스 유지
+                {
+                    this.index = curIndex;
+                }
+            }
+
+            InitData();
 
             updatingPoolingEvent?.Invoke();
         }
     }
 
-    /// <summary>
-    /// 초기화
-    /// </summary>
-    /// <param name="maxItemCount">아이템 최대 개수</param>
     public void Init(int maxItemCount)
     {
         this.maxCount = maxItemCount;
 
-        // 풀링을 사용하기 위한 아이템 최대 개수
-        var itemCount = (int)(rectTs.rect.width / (itemRectTs.rect.width + padding)); 
-        itemCount = maxItemCount <= itemCount ? maxItemCount - 1 : itemCount;
+        var currentItemCount = parent.childCount; // 현재 아이템 개수
+        var updatedItemCount = GetItemCount(maxCount); // 업데이트된 아이템 개수
 
-        parentRectTs.sizeDelta = new Vector2(maxItemCount * (itemRectTs.rect.width + padding) + horizontalLayoutGroup.padding.right, 0); // 풀링을 사용하기 위한 최대 넓이
+        if (maxItemCount > 0)
+        {
+            if (updatedItemCount != 0)
+            {
+                if (currentItemCount > updatedItemCount)
+                {
+                    updatedItemCount = currentItemCount - updatedItemCount;
 
-        if(itemCount != parent.childCount - 1)
+                    for (int i = 0; i < updatedItemCount; i++)
+                    {
+                        Destroy(parent.GetChild(i).gameObject);
+                    }
+                }
+                else if (currentItemCount < updatedItemCount)
+                {
+                    updatedItemCount = updatedItemCount - currentItemCount;
+
+                    for (int i = 0; i < updatedItemCount; i++)
+                    {
+                        Instantiate(item, parent);
+                    }
+                }
+
+                if (isBool) InitData();
+            }
+        }
+    }
+
+    // 아이템 데이터들을 초기화합니다.
+    private void InitData()
+    {
+        if (maxCount - GetItemCount(maxCount) >= index - 1)
         {
             for (int i = 0; i < parent.childCount; i++)
             {
-                Destroy(parent.GetChild(i).gameObject);
-            }
-        }
+                var item = parent.GetChild(i).GetComponent<IPollingScrollview>();
 
-        if (parent.childCount == 0)
-        {
-            for (int i = 0; i <= itemCount; i++) // 최대 개수만큼 아이템 생성
-            {
-                var itemObject = Instantiate(item, parent);
-
-                if (itemObject.GetComponent<IPollingScrollview>() != null)
+                if (item != null)
                 {
-                    itemObject.GetComponent<IPollingScrollview>().Init(i);
+                    item.Init(i + index - 1);
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 풀링을 사용하기 위한 아이템 최대 개수를 가져옵니다.
+    /// </summary>
+    /// <param name="maxItemCount">아이템 최대 개수</param>
+    private int GetItemCount(int maxItemCount)
+    {
+        // 풀링을 사용하기 위한 아이템 최대 개수
+        var itemCount = (int)(rectTs.rect.width / (itemRectTs.rect.width + padding));
+        itemCount = maxItemCount <= itemCount ? maxItemCount : itemCount + 1;
+
+        return itemCount;
     }
 }

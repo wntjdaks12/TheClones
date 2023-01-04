@@ -9,9 +9,8 @@ public class SkillContents : MonoBehaviour
     [Header("TOGGLE BUTTON")]
     [SerializeField] private Button button;
 
-    [Header("CLON SLOT")]
-    [SerializeField] private Transform parent;
-    [SerializeField] private ClonSlot clonSlot;
+    [Header("CONTENTS")]
+    [SerializeField] private PoolingScrollview poolingScrollview;
 
     private SkillContentsState state;
 
@@ -61,10 +60,7 @@ public class SkillContents : MonoBehaviour
 
         if (cloneInfos != null)
         {
-            for (int i = 0; i < cloneInfos.Count; i++)
-            {
-                Instantiate(clonSlot, parent).Init(cloneInfos[i]);
-            }
+            poolingScrollview.Init(cloneInfos.Count);
         }
 
         button.onClick.RemoveAllListeners();

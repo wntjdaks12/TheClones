@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPollingScrollview
 {
     public ClonInfo CloneInfo { get; set; }
 
@@ -24,13 +24,17 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
         raycaster = new Raycaster();
     }
 
-    public void Init(ClonInfo cloneInfo)
+    public void Init(int index)
     {
-        CloneInfo = cloneInfo;
+        var playerInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo;
 
-        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>("ImageInfo", cloneInfo.clonId);
+        if (playerInfo.cloneInofs.Count <= index) return;
 
-        iconImg.sprite = Resources.Load<Sprite>(imageInfo.Path + cloneInfo.clonId);
+        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>("ImageInfo", playerInfo.cloneInofs[index].clonId);
+
+        CloneInfo = playerInfo.cloneInofs[index];
+
+        iconImg.sprite = Resources.Load<Sprite>(imageInfo.Path + CloneInfo.clonId);
     }
 
     public void OnPointerDown(PointerEventData eventData)
