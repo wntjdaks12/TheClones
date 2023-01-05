@@ -78,7 +78,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
 
         playerManager.PlayerInfo.playerId = "dWXMvdfmp5Oi3niMs0upJ2OtujL2";
 
-        CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+        //CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 
         CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
         {
