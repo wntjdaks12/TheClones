@@ -1,38 +1,29 @@
 ﻿[
     {
-        "id":30001,
-        "path":"Images/Icons/Skills/"
+        "id":30001
     },
         {
-        "id":30002,
-        "path":"Images/Icons/Skills/"
+        "id":30002
     },
     {
-        "id":70001,
-        "path":"Images/Maps"
+        "id":70001
     },
     {
-        "id":70002,
-        "path":"Images/Maps"
+        "id":70002
     },
     {
-        "id":70003,
-        "path":"Images/Maps"
+        "id":70003
     },
     {
-        "id":70004,
-        "path":"Images/Maps"
+        "id":70004
     },
     {
-        "id":70011,
-        "path":"Images/Maps"
+        "id":70011
     },
     {
-        "id":90001,
-        "path":"Images/Icons/Clons/"
+        "id":90001
     },
     {
-        "id":90002,
-        "path":"Images/Icons/Clons/"
+        "id":90002
     }
 ]

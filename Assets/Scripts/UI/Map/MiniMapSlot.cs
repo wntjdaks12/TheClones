@@ -28,7 +28,7 @@ public class MiniMapSlot : MapView
             .ToArray()[MapModel.CurrentIndex + 1];
 
         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
-        Debug.Log(imageInfo.Id.ToString());
+
         img.sprite = assetBundleManager.AssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
         name.text = map.Name.ToString();
     }
