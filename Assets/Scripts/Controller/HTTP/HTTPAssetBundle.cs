@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using System;
 
-public class HTTPCloneGacha : MonoBehaviour
+public class HTTPAssetBundle : MonoBehaviour
 {
     public void GetRequestAsync(Action callback = null)
     {
@@ -13,9 +13,9 @@ public class HTTPCloneGacha : MonoBehaviour
 
     private IEnumerator GetRequest(Action callback)
     {
-        var url = "http://qqqq8692.dothome.co.kr/CloneGacha.php";
+        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/textureassetbundle";
 
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
             yield return www.SendWebRequest();
 
@@ -26,16 +26,9 @@ public class HTTPCloneGacha : MonoBehaviour
                 case UnityWebRequest.Result.ProtocolError: break;
                 case UnityWebRequest.Result.Success:
 
-                    var dataStr = www.downloadHandler.text;
+                    var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
-                    var clonInfo = JsonUtility.FromJson<ClonInfo>(dataStr);
-
-                    var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-
-                    playerManager.PlayerInfo.cloneInofs.Add(clonInfo);
-                    playerManager.PlayerInfo.cloneInfosRP.Add(clonInfo);
-
-                    CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+                    assetBundleManager.AssetBundle = DownloadHandlerAssetBundle.GetContent(www);
 
                     callback?.Invoke();
                     break;

@@ -909,6 +909,7 @@ GameObject:
   - component: {fileID: 638807973}
   - component: {fileID: 638807975}
   - component: {fileID: 638807974}
+  - component: {fileID: 638807976}
   m_Layer: 0
   m_Name: HTTP
   m_TagString: Untagged
@@ -953,6 +954,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d460bc348bf39d4489b52718b29d1990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &638807976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638807972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663924922d5370c4ea3f882a7bce86d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &901197198
@@ -1282,51 +1295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077a83107174c4a42905fd7ba8899ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1484229672
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1484229674}
-  - component: {fileID: 1484229673}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1484229673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484229672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bee0f0bd8c5c5a48b9564332ee7dea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bundleName: textureassetbundle
---- !u!4 &1484229674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484229672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723568761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1485,7 @@ GameObject:
   - component: {fileID: 1936442795}
   - component: {fileID: 1936442794}
   - component: {fileID: 1936442793}
+  - component: {fileID: 1936442796}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1567,47 +1536,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2025573546
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2025573548}
-  - component: {fileID: 2025573547}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2025573547
+--- !u!114 &1936442796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025573546}
+  m_GameObject: {fileID: 1936442792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a1759681b9c9543bb6632a5f688cf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd684b6fa140bf418a1aa178410a081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2025573548
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025573546}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  assetBundle: {fileID: 0}

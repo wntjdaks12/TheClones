@@ -27,10 +27,9 @@ public class MiniMapSlot : MapView
 
         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
 
-        //        img.sprite = Resources.Load<Sprite>(imageInfo.Path + "/" + imageInfo.Id);
-        Debug.Log(zxcgg.localAssetBundle);
-        Debug.Log(zxcgg.localAssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString()));
-        img.sprite = zxcgg.localAssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+
+        img.sprite = assetBundleManager.AssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
         name.text = map.Name.ToString();
     }
 }
