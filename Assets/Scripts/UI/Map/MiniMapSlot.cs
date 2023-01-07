@@ -25,9 +25,12 @@ public class MiniMapSlot : MapView
             .Where(x => SceneManager.GetActiveScene().name == x.SceneId.ToString())
             .ToArray()[MapModel.CurrentIndex + 1];
 
-         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
+        var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
 
-         img.sprite = Resources.Load<Sprite>(imageInfo.Path + "/" + imageInfo.Id);
-         name.text = map.Name.ToString();
+        //        img.sprite = Resources.Load<Sprite>(imageInfo.Path + "/" + imageInfo.Id);
+        Debug.Log(zxcgg.localAssetBundle);
+        Debug.Log(zxcgg.localAssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString()));
+        img.sprite = zxcgg.localAssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
+        name.text = map.Name.ToString();
     }
 }
