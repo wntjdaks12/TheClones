@@ -19,6 +19,8 @@ public class MiniMapSlot : MapView
 
     private void ShowData()
     {
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+
         var presetDataModel = App.GameModel.PresetDataModel;
 
         var map = presetDataModel.ReturnDatas<Map>()
@@ -26,9 +28,7 @@ public class MiniMapSlot : MapView
             .ToArray()[MapModel.CurrentIndex + 1];
 
         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
-
-        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
-
+        Debug.Log(imageInfo.Id.ToString());
         img.sprite = assetBundleManager.AssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
         name.text = map.Name.ToString();
     }
