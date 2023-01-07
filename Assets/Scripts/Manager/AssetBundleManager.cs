@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class AssetBundleManager : GameManager
 {
-    [SerializeField] private AssetBundle assetBundle;
+    private AssetBundle assetBundle;
     public AssetBundle AssetBundle { get => assetBundle; set => assetBundle = value; }
 }
