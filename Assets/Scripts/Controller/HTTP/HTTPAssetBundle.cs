@@ -17,6 +17,7 @@ public class HTTPAssetBundle : MonoBehaviour
         yield return StartCoroutine(GetRequestTextures(callback));
         yield return StartCoroutine(GetRequestMaterials(callback));
         yield return StartCoroutine(GetRequestPrefabs(callback));
+        yield return StartCoroutine(GetRequestGarbages(callback));
 
         Debug.Log("에셋 번들 로드 성공");
     }
@@ -27,7 +28,7 @@ public class HTTPAssetBundle : MonoBehaviour
 
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return www.SendWebRequest();
+            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
 
             switch (www.result)
             {
@@ -52,7 +53,7 @@ public class HTTPAssetBundle : MonoBehaviour
 
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return www.SendWebRequest();
+            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
 
             switch (www.result)
             {
@@ -77,7 +78,7 @@ public class HTTPAssetBundle : MonoBehaviour
 
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return www.SendWebRequest();
+            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
 
             switch (www.result)
             {
@@ -94,5 +95,40 @@ public class HTTPAssetBundle : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private IEnumerator GetRequestGarbages(Action callback)
+    {
+        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/testassetbundle";
+
+        using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
+        {
+            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
+
+            switch (www.result)
+            {
+                case UnityWebRequest.Result.ConnectionError: break;
+                case UnityWebRequest.Result.DataProcessingError: break;
+                case UnityWebRequest.Result.ProtocolError: break;
+                case UnityWebRequest.Result.Success:
+
+                    callback?.Invoke();
+                    break;
+            }
+        }
+    }
+
+    IEnumerator DownloadProgress(UnityWebRequestAsyncOperation operation)
+    {
+        while (!operation.isDone)
+        {
+            //progressBar.color = Color.red;
+            //downloadDataProgress = operation.progress * 100;
+            //progressBar.fillAmount = downloadDataProgress / 100;
+            //print("Download: " + downloadDataProgress);
+            Debug.Log(operation.progress * 100);
+            yield return null;
+        }
+        Debug.Log("Done");
     }
 }
