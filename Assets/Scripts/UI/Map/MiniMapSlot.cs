@@ -29,7 +29,7 @@ public class MiniMapSlot : MapView
 
         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
 
-        img.sprite = assetBundleManager.AssetBundle.LoadAsset<Sprite>(imageInfo.Id.ToString());
+        img.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Id.ToString());
         name.text = map.Name.ToString();
     }
 }

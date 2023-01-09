@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class AssetBundleManager : GameManager
 {
-    private AssetBundle assetBundle;
-    public AssetBundle AssetBundle { get => assetBundle; set => assetBundle = value; }
+    private AssetBundleInfo assetBundleInfo;
+    public AssetBundleInfo AssetBundleInfo { get { return assetBundleInfo ??= new AssetBundleInfo(); } set => assetBundleInfo = value; }
 }

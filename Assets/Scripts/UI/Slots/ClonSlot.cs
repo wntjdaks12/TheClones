@@ -46,7 +46,7 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
 
         CloneInfo = playerInfo.cloneInofs[index];
 
-        iconImg.sprite = assetBundleManager.AssetBundle.LoadAsset<Sprite>(CloneInfo.clonId.ToString());
+        iconImg.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(CloneInfo.clonId.ToString());
     }
 
     public void OnPointerDown(PointerEventData eventData)

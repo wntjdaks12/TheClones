@@ -20,7 +20,8 @@ public class HeadBarController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var headBarObject = PoolObjectContainer.CreatePoolableObject<HeadBarObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        //var headBarObject = PoolObjectContainer.CreatePoolableObject<HeadBarObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        var headBarObject = PoolObjectContainer.CreatePoolableObject<HeadBarObject>(prefabInfo.PrefabId.ToString());
 
         headBar.OnDataRemove += RemoveEntity;
         headBarObject.gameObject.SetActive(true);
