@@ -8,9 +8,4 @@ public class HTTPController : MonoBehaviour
     {
         return gameObject.GetComponent<T>();
     }
-
-    private void Start()
-    {
-        GetController<HTTPAssetBundle>().GetRequestAsync();
-    }
 }

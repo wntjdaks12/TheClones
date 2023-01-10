@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Events;
+using UniRx;
 
 public class HTTPAssetBundle : MonoBehaviour
 {
+    public ReactiveProperty<float> progressRP = new ReactiveProperty<float>();
+    public ReactiveProperty<string> nameRP = new ReactiveProperty<string>();
+
     public void GetRequestAsync(Action callback = null)
     {
         StartCoroutine(GetRequestAssetBundles(callback));
@@ -14,21 +19,24 @@ public class HTTPAssetBundle : MonoBehaviour
 
     private IEnumerator GetRequestAssetBundles(Action callback)
     {
-        yield return StartCoroutine(GetRequestTextures(callback));
-        yield return StartCoroutine(GetRequestMaterials(callback));
-        yield return StartCoroutine(GetRequestPrefabs(callback));
-        yield return StartCoroutine(GetRequestGarbages(callback));
+        yield return StartCoroutine(GetRequestTextures());
+        yield return StartCoroutine(GetRequestMaterials());
+        yield return StartCoroutine(GetRequestPrefabs());
+        yield return StartCoroutine(GetRequestGarbages());
 
+        callback?.Invoke();
         Debug.Log("에셋 번들 로드 성공");
     }
 
-    private IEnumerator GetRequestTextures(Action callback)
+    private IEnumerator GetRequestTextures()
     {
         var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/textureassetbundle";
 
+        nameRP.Value = "텍스처 에셋 번들 로드";
+
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
+            yield return DownloadProgress(www);
 
             switch (www.result)
             {
@@ -38,22 +46,22 @@ public class HTTPAssetBundle : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
-
                     assetBundleManager.AssetBundleInfo.texture = DownloadHandlerAssetBundle.GetContent(www);
 
-                    callback?.Invoke();
                     break;
             }
         }
     }
 
-    private IEnumerator GetRequestPrefabs(Action callback)
+    private IEnumerator GetRequestPrefabs()
     {
         var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/prefabassetbundle";
 
+        nameRP.Value = "프리팹 에셋 번들 로드";
+
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
+            yield return DownloadProgress(www);
 
             switch (www.result)
             {
@@ -63,22 +71,22 @@ public class HTTPAssetBundle : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
-
                     assetBundleManager.AssetBundleInfo.prefab = DownloadHandlerAssetBundle.GetContent(www);
 
-                    callback?.Invoke();
                     break;
             }
         }
     }
 
-    private IEnumerator GetRequestMaterials(Action callback)
+    private IEnumerator GetRequestMaterials()
     {
         var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/materialassetbundle";
 
+        nameRP.Value = "머티리얼 에셋 번들 로드";
+
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
+            yield return DownloadProgress(www);
 
             switch (www.result)
             {
@@ -88,45 +96,41 @@ public class HTTPAssetBundle : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
-
                     assetBundleManager.AssetBundleInfo.material = DownloadHandlerAssetBundle.GetContent(www);
 
-                    callback?.Invoke();
                     break;
             }
         }
     }
 
-    private IEnumerator GetRequestGarbages(Action callback)
+    private IEnumerator GetRequestGarbages()
     {
         var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/testassetbundle";
 
+        nameRP.Value = "테스트용(가비지) 에셋 번들 로드";
+
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
-            yield return StartCoroutine(DownloadProgress(www.SendWebRequest()));
+            yield return DownloadProgress(www);
 
             switch (www.result)
             {
                 case UnityWebRequest.Result.ConnectionError: break;
                 case UnityWebRequest.Result.DataProcessingError: break;
                 case UnityWebRequest.Result.ProtocolError: break;
-                case UnityWebRequest.Result.Success:
-
-                    callback?.Invoke();
-                    break;
+                case UnityWebRequest.Result.Success: break;
             }
         }
     }
 
-    IEnumerator DownloadProgress(UnityWebRequestAsyncOperation operation)
+    private IEnumerator DownloadProgress(UnityWebRequest www)
     {
+        var operation = www.SendWebRequest();
+
         while (!operation.isDone)
         {
-            //progressBar.color = Color.red;
-            //downloadDataProgress = operation.progress * 100;
-            //progressBar.fillAmount = downloadDataProgress / 100;
-            //print("Download: " + downloadDataProgress);
-            Debug.Log(operation.progress * 100);
+            progressRP.Value = www.downloadProgress;
+         
             yield return null;
         }
         Debug.Log("Done");
