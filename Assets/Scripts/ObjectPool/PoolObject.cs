@@ -21,7 +21,11 @@ public class PoolObject
 
     private void CreatePoolableObject<T>(string path) where T : PoolableObject
     {
-        var poolableObject = Resources.Load<T>(path);
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+
+        //var poolableObject = Resources.Load<T>(path);
+        var poolableObject = assetBundleManager.AssetBundleInfo.prefab.LoadAsset<GameObject>(path).GetComponent<T>();
+
         if (poolableObject == null)
             Debug.LogError($"{path}가 잘못됨.");
 

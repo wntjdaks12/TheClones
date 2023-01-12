@@ -19,3 +19,12 @@ public class ClonInfo
     public uint clonId;
     public uint skillId;
 }
+
+
+[Serializable]
+public class AssetBundleInfo
+{
+    public AssetBundle texture;
+    public AssetBundle prefab;
+    public AssetBundle material;
+}

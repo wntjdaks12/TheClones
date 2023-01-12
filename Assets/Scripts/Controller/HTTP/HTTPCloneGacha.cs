@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
-using UniRx;
 
 public class HTTPCloneGacha : MonoBehaviour
 {
-    public void GetRequestAsync(Action callback)
+    public void GetRequestAsync(Action callback = null)
     {
         StartCoroutine(GetRequest(callback));
     }

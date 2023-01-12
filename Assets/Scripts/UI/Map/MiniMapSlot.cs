@@ -19,15 +19,17 @@ public class MiniMapSlot : MapView
 
     private void ShowData()
     {
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+
         var presetDataModel = App.GameModel.PresetDataModel;
 
         var map = presetDataModel.ReturnDatas<Map>()
             .Where(x => SceneManager.GetActiveScene().name == x.SceneId.ToString())
             .ToArray()[MapModel.CurrentIndex + 1];
 
-         var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
+        var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), map.Id);
 
-         img.sprite = Resources.Load<Sprite>(imageInfo.Path + "/" + imageInfo.Id);
-         name.text = map.Name.ToString();
+        img.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Id.ToString());
+        name.text = map.Name.ToString();
     }
 }

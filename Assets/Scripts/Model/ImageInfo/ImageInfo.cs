@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class ImageInfo : Data
 {
-    public string Path { get; set; }
 }
