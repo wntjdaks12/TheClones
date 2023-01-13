@@ -18,7 +18,8 @@ public class DamageTMPController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var damageTMPObject = PoolObjectContainer.CreatePoolableObject<DamageTMPObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        //var damageTMPObject = PoolObjectContainer.CreatePoolableObject<DamageTMPObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        var damageTMPObject = PoolObjectContainer.CreatePoolableObject<DamageTMPObject>(prefabInfo.PrefabId.ToString());
 
         damageTMP.OnDataRemove += RemoveEntity;
         damageTMPObject.gameObject.SetActive(true);

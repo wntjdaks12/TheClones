@@ -24,6 +24,7 @@ public class PoolObject
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
         //var poolableObject = Resources.Load<T>(path);
+        Debug.Log(path);
         var poolableObject = assetBundleManager.AssetBundleInfo.prefab.LoadAsset<GameObject>(path).GetComponent<T>();
 
         if (poolableObject == null)
