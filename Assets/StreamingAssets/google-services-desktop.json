@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "649416206660",
-    "firebase_url": "https://theclones-81600313-default-rtdb.firebaseio.com/",
-    "project_id": "theclones-81600313",
-    "storage_bucket": "theclones-81600313.appspot.com"
+    "project_number": "374400083742",
+    "project_id": "theclones-27046822",
+    "storage_bucket": "theclones-27046822.appspot.com",
+    "firebase_url": "https://theclones-27046822-default-rtdb.firebaseio.com/"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:649416206660:android:9a88280393fc723a3f4f11",
+        "mobilesdk_app_id": "1:374400083742:android:11dff2c600c7c3a5414b0f",
         "android_client_info": {
-          "package_name": "com.DefaultCompany.TheClones"
+          "package_name": "com.JSMErahigyal.TheClones"
         }
       },
       "oauth_client": [
         {
-          "client_id": "649416206660-05ofucblpj63en4lv0g285jo8dlbp4rs.apps.googleusercontent.com",
+          "client_id": "374400083742-d3fmmskgjvsuln3qom49337hamfbg33g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.JSMErahigyal.TheClones",
+            "certificate_hash": "42c6bbf321f5404e02cc77ac4dc512192e1fb783"
+          }
+        },
+        {
+          "client_id": "374400083742-u02ku0otquok5pc3qqcq7v892q5devnt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAM0UgqzQut3OOBn9J-bzw-nLCoM3AvwOM"
+          "current_key": "AIzaSyC3H-0O7AVlYQxn5YEdHJ3ToLGyU9qYthk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "649416206660-05ofucblpj63en4lv0g285jo8dlbp4rs.apps.googleusercontent.com",
+              "client_id": "374400083742-u02ku0otquok5pc3qqcq7v892q5devnt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

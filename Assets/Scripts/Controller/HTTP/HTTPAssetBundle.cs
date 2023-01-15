@@ -22,7 +22,6 @@ public class HTTPAssetBundle : MonoBehaviour
         yield return StartCoroutine(GetRequestTextures());
         yield return StartCoroutine(GetRequestMaterials());
         yield return StartCoroutine(GetRequestPrefabs());
-        yield return StartCoroutine(GetRequestGarbages());
 
         callback?.Invoke();
         Debug.Log("에셋 번들 로드 성공");
@@ -99,26 +98,6 @@ public class HTTPAssetBundle : MonoBehaviour
                     assetBundleManager.AssetBundleInfo.material = DownloadHandlerAssetBundle.GetContent(www);
 
                     break;
-            }
-        }
-    }
-
-    private IEnumerator GetRequestGarbages()
-    {
-        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/testassetbundle";
-
-        nameRP.Value = "테스트용(가비지) 에셋 번들 로드";
-
-        using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
-        {
-            yield return DownloadProgress(www);
-
-            switch (www.result)
-            {
-                case UnityWebRequest.Result.ConnectionError: break;
-                case UnityWebRequest.Result.DataProcessingError: break;
-                case UnityWebRequest.Result.ProtocolError: break;
-                case UnityWebRequest.Result.Success: break;
             }
         }
     }

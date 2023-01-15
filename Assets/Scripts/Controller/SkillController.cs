@@ -18,7 +18,8 @@ public class SkillController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var skillObject = PoolObjectContainer.CreatePoolableObject<SkillObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        //var skillObject = PoolObjectContainer.CreatePoolableObject<SkillObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        var skillObject = PoolObjectContainer.CreatePoolableObject<SkillObject>(prefabInfo.PrefabId.ToString());
 
         skill.OnDataRemove += RemoveEntity;
         skillObject.gameObject.SetActive(true);

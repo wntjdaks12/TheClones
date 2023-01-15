@@ -22,7 +22,8 @@ public class ParticleController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var particleObject = PoolObjectContainer.CreatePoolableObject<ParticleObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        //var particleObject = PoolObjectContainer.CreatePoolableObject<ParticleObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        var particleObject = PoolObjectContainer.CreatePoolableObject<ParticleObject>(prefabInfo.PrefabId.ToString());
 
         particle.OnDataRemove += RemoveEntity;
         particleObject.gameObject.SetActive(true);

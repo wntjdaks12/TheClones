@@ -22,7 +22,8 @@ public class RangeController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var rangeObject = PoolObjectContainer.CreatePoolableObject<RangeObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        //var rangeObject = PoolObjectContainer.CreatePoolableObject<RangeObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
+        var rangeObject = PoolObjectContainer.CreatePoolableObject<RangeObject>(prefabInfo.PrefabId.ToString());
 
         range.OnDataRemove += RemoveEntity;
         rangeObject.gameObject.SetActive(true);
