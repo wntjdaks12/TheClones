@@ -76,9 +76,9 @@ public class FirebaseGoogleAuth : MonoBehaviour
 #if UNITY_EDITOR_WIN
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-        playerManager.PlayerInfo.playerId = "dWXMvdfmp5Oi3niMs0upJ2OtujL2";
+        playerManager.PlayerInfo.playerId = "FGFgbRnUgYXxCu5P1PvPDADkCZ82";
 
-        //CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
+        CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 
         CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
         {
@@ -123,11 +123,11 @@ public class FirebaseGoogleAuth : MonoBehaviour
                 playerManager.PlayerInfo.playerId = user.UserId;
 
                 CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
-
+                Debug.Log(user.UserId);
                 CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
                 {
                     GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = data;
-                });
+                });            Debug.Log("ZXZCZX");
 
                 callback?.Invoke(true, "¼º°ø");
             }
