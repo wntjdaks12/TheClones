@@ -17,14 +17,9 @@ public class CFirebase
     /// <param name="playerId">플레이어 Id</param>
     /// <param name="data">제네릭 데이터</param>
     public static void WriteData<T>(string playerId, T data)
-    {/*
-        reference
-.Child("Effect")
-.SetValueAsync("?");*/
-
+    {
         var json = JsonUtility.ToJson(data);
-        Debug.Log(json);
-        Debug.Log(reference.Child(typeof(T).ToString()).Child(playerId).SetRawJsonValueAsync(json));
+
         reference.Child(typeof(T).ToString()).Child(playerId).SetRawJsonValueAsync(json);
 
         Debug.Log("데이터 베이스 저장 성공");
