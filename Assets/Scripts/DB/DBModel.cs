@@ -27,4 +27,5 @@ public class AssetBundleInfo
     public AssetBundle texture;
     public AssetBundle prefab;
     public AssetBundle material;
+    public AssetBundle font;
 }
