@@ -13,15 +13,39 @@ public class Entity:Data
 
     public Transform Transform { get; private set; }
     public Collider Collider { get; private set; }
-    public virtual void Init(Transform transform, Collider collider)
+    public MeshRenderer MeshRenderer { get; private set; }
+
+    public virtual void Init(Transform transform, Collider collider, MeshRenderer meshRenderer = null)
     {
         Transform = transform;
         Collider = collider;
+        MeshRenderer = meshRenderer;
     }
     public IEnumerator StartLifeTime()
     {
         yield return new WaitForSeconds(Lifetime);
 
         OnRemoveData();
+    }
+
+    public IEnumerator BlendMaterialAsync(MeshRenderer meshRenderer, float blendingDelay, float blendingTime, Material[] materials)
+    {
+        yield return new WaitForSeconds(blendingDelay);
+
+        BlendAddMaterial(meshRenderer, materials);
+
+        yield return new WaitForSeconds(blendingTime);
+
+        BlendRemoveMaterial(meshRenderer, materials);
+    }
+
+    public void BlendAddMaterial(MeshRenderer meshRenderer, Material[] materials)
+    {
+        meshRenderer.AddMaterial(materials);
+    }
+
+    public void BlendRemoveMaterial(MeshRenderer meshRenderer, Material[] materials)
+    {
+        meshRenderer.RemoveMaterial(materials);
     }
 }

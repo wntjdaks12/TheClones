@@ -13,11 +13,11 @@ public class Ground : EntityObject, IHuntingPoint
 
     public void OnPoint()
     {
-        materialSystem.ChangeMaterial();
+        Entity.BlendAddMaterial(Entity.MeshRenderer, materialSystem.ChangedMaterials);
     }
 
     public void OffPoint()
     {
-        materialSystem.RevertMaterial();
+        Entity.BlendRemoveMaterial(Entity.MeshRenderer, materialSystem.ChangedMaterials);
     }
 }

@@ -11,9 +11,9 @@ public class Character : Actor, ISight, ISpell
 
     public uint skillId { get; set; }
 
-    public override void Init(Transform transform, Collider collider)
+    public override void Init(Transform transform, Collider collider, MeshRenderer meshRenderer)
     {
-        base.Init(transform, collider);
+        base.Init(transform, collider, meshRenderer);
 
         Caster = new Caster(this);
         //Subject = new Subject(this);

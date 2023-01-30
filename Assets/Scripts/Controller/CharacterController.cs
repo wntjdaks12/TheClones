@@ -48,7 +48,7 @@ public class CharacterController : GameController
 
         character.skillId = skillId;
 
-        character.Init(characterObject.transform, characterObject.GetComponent<Collider>());
+        character.Init(characterObject.transform, characterObject.GetComponent<Collider>(), characterObject.GetComponent<MeshRenderer>());
         characterObject.Init(character); 
 
         runtimeDataModel.AddData($"{tableId}Object", character.InstanceId, characterObject);

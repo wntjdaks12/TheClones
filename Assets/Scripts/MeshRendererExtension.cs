@@ -5,22 +5,26 @@ using System.Linq;
 
 public static class MeshRendererExtension
 {
-    public static void AddMaterial(this MeshRenderer meshRenderer, Material material)
+    public static void AddMaterial(this MeshRenderer meshRenderer, Material[] materials)
     {
-        var mat = new Material[meshRenderer.materials.Length + 1];
+        var mat = new Material[meshRenderer.materials.Length + materials.Length];
 
         for (int i = 0; i < meshRenderer.materials.Length; i++)
         {
-            mat[i] = meshRenderer.materials[i];
+            Debug.Log(meshRenderer.sharedMaterials[i]);
+            mat[i] = meshRenderer.sharedMaterials[i];
         }
 
-        mat[mat.Length - 1] = material;
+        for (int i = materials.Length; i > 0; i--)
+        {
+            mat[mat.Length - i] = materials[materials.Length - i];
+        }
 
-        meshRenderer.materials = mat;
+        meshRenderer.sharedMaterials = mat;
     }
 
-     public static void RemoveMaterial(this MeshRenderer meshRenderer, Material material)
+     public static void RemoveMaterial(this MeshRenderer meshRenderer, Material[] materials)
     {
-        meshRenderer.materials = meshRenderer.materials.Where(x => x != material).ToArray();
+        meshRenderer.sharedMaterials = meshRenderer.sharedMaterials.Except(materials).ToArray();
     }
 }
