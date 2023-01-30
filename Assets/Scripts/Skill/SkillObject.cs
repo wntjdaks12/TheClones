@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SkillObject : EntityObject
 {
-    [SerializeField] private MaterialSystem materialSystem;
-
     public void Init(object obj, Skill skill)
     {
         base.Init(skill);
