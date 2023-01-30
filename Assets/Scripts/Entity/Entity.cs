@@ -14,12 +14,14 @@ public class Entity:Data
     public Transform Transform { get; private set; }
     public Collider Collider { get; private set; }
     public MeshRenderer MeshRenderer { get; private set; }
+    public Material[] originalMaterials { get; private set; }
 
     public virtual void Init(Transform transform, Collider collider, MeshRenderer meshRenderer = null)
     {
         Transform = transform;
         Collider = collider;
         MeshRenderer = meshRenderer;
+        originalMaterials = originalMaterials ?? meshRenderer?.sharedMaterials;
     }
     public IEnumerator StartLifeTime()
     {
