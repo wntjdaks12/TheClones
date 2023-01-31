@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill30001 : SkillObject
+public class Skill30001Object : SkillObject
 {
     public override void Init(object obj, Skill skill)
     {
