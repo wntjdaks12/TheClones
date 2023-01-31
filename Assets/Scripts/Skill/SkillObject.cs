@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillObject : EntityObject
 {
-    public void Init(object obj, Skill skill)
+    public virtual void Init(object obj, Skill skill)
     {
         base.Init(skill);
 
@@ -20,7 +20,5 @@ public class SkillObject : EntityObject
         if (ai != null) ai.Entity = skill;
 
         if (skill.Lifetime != 0) StartCoroutine(skill.StartLifeTime());
-
-        StartCoroutine(skill.BlendMaterialAsync(skill.Subject.Entity.MeshRenderer, 0f, 0.15f, materialSystem.ChangedMaterials));
     }
 }

@@ -1,0 +1,175 @@
+ManifestFileVersion: 0
+CRC: 1553345472
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f2d636c499392239fbfa1c12c07e2d93
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1bc372bbe8dd92669aefa6ec74d071e2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bd828c42a58136b4db41b4053c826c52, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f6a3ad2cd65f0eb49b4d81eb43a7938c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 34a34ac0403c6d94690867e76e0457b9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b821f3afe5d9c624aa07475c700374ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2d4b8ae5c881a034085b7ba15e5a630d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 21895a7265dddfe45bdbc2cd28b1d9ed, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b2d7ea03a389c9244b19b98e7ead1fba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91f2a92923065ed4d85a28552a778f5c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3947f8764fa562841bc19fd6256c9544, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 49534d33196dcc345b20e8b50738456d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: eb524d2a3dd43124bbd9e3cfa211bd01, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ea3a2149d72f8774ea6122a44da08ccf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d4b44ca4d9aff7e4daf0ce27f2d5cc11, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9db91a637192f7549a15f443ce0f7d8d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4fe1b7681e260574392eece20b0e60fe, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e1de8c9f31773c489b3b25730c3eccc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 26c6ca1570554784ebcf1ffd997096c0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d002125ecda0f644284d42c49d49465b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2534bfec2bf77fa4bb995127b2016f9c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 195
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.Purchasing.Codeless
+  ClassName: UnityEngine.Purchasing.IAPButton/OnPurchaseCompletedEvent
+- AssemblyName: UnityEngine.Purchasing.Codeless
+  ClassName: UnityEngine.Purchasing.IAPButton/OnPurchaseFailedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Toggle/ToggleEvent
+Assets:
+- Assets/AssetBundles/Prefabs/Ranges/100001.prefab
+- Assets/AssetBundles/Prefabs/UI/SkillSlot.prefab
+- Assets/AssetBundles/Prefabs/Clons/90002.prefab
+- Assets/AssetBundles/Prefabs/UI/Popup/ClonStorePopup.prefab
+- Assets/AssetBundles/Prefabs/DamageTMPs/40001.prefab
+- Assets/AssetBundles/Prefabs/UI/Map/MiniMap.prefab
+- Assets/AssetBundles/Prefabs/HeadBars/110001.prefab
+- Assets/AssetBundles/Prefabs/Skills/30002.prefab
+- Assets/AssetBundles/Prefabs/Heroes/111101.prefab
+- Assets/AssetBundles/Prefabs/UI/Currency/050001.prefab
+- Assets/AssetBundles/Prefabs/Skills/30004.prefab
+- Assets/AssetBundles/Prefabs/UI/ClonSlot.prefab
+- Assets/AssetBundles/Prefabs/Ranges/100001remove.prefab
+- Assets/AssetBundles/Prefabs/Particles/60002.prefab
+- Assets/AssetBundles/Prefabs/Skills/30001.prefab
+- Assets/AssetBundles/Prefabs/UI/Store/Slot.prefab
+- Assets/AssetBundles/Prefabs/StaticObjects/80001.prefab
+- Assets/AssetBundles/Prefabs/Monsters/111002.prefab
+- Assets/AssetBundles/Prefabs/Monsters/111001.prefab
+- Assets/AssetBundles/Prefabs/UI/CloneCont/CloneCont.prefab
+- Assets/AssetBundles/Prefabs/Clons/90001.prefab
+- Assets/AssetBundles/Prefabs/Particles/060001.prefab
+Dependencies:
+- C:/Users/workstation/TheClones/AssetBundles/Android/fontassetbundle
+- C:/Users/workstation/TheClones/AssetBundles/Android/materialassetbundle
+- C:/Users/workstation/TheClones/AssetBundles/Android/textureassetbundle
