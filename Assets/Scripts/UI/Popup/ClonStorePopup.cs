@@ -7,10 +7,10 @@ public class ClonStorePopup : Popup
 {
     [SerializeField] private PoolingScrollview poolingScrollview;
 
-    [Header("BUTTON")]
+    [Header("¹öÆ°")]
     [SerializeField] private Button ExitBtn;
 
-    public void Init()
+    public override void Init()
     {
         OnShow();
 
