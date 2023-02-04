@@ -18,6 +18,8 @@ public class ClonInfo
 {
     public uint clonId;
     public uint skillId;
+    public string cloneName;
+    public int attribute;
 }
 
 

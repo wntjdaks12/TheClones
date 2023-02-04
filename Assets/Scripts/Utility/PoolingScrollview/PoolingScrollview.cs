@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 // 풀링 적용한 스크롤뷰
 public class PoolingScrollview : MonoBehaviour
@@ -169,7 +170,7 @@ public class PoolingScrollview : MonoBehaviour
         }
     }
 
-    public void Init(int maxItemCount)
+    public void Init(int maxItemCount, Action<int> itemClickCallBack = null)
     {
         this.maxCount = maxItemCount;
         
@@ -199,13 +200,13 @@ public class PoolingScrollview : MonoBehaviour
                     }
                 }
 
-                if (isBool) InitData();
+                if (isBool) InitData(itemClickCallBack);
             }
         }
     }
 
     // 아이템 데이터들을 초기화합니다.
-    private void InitData()
+    private void InitData(Action<int> itemClickCallBack = null)
     {
         if (maxCount - GetItemCount(maxCount) >= index - 1)
         {
@@ -216,6 +217,8 @@ public class PoolingScrollview : MonoBehaviour
                 if (item != null)
                 {
                     item.Init(i + index - 1);
+
+                    item.ClickEvent += itemClickCallBack;
                 }
             }
         }

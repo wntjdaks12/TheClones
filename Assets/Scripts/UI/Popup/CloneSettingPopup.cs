@@ -17,9 +17,14 @@ public class CloneSettingPopup : Popup
         ExitBtn.onClick.RemoveAllListeners();
         ExitBtn.onClick.AddListener(OnHide);
 
-        detailContents.Init();
-
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-        poolingScrollview.Init(playerManager.PlayerInfo.cloneInofs.Count);
+        poolingScrollview.Init(playerManager.PlayerInfo.cloneInofs.Count, (index) => 
+        {
+            var presetDataModel = App.GameModel.PresetDataModel;
+
+            var clone = presetDataModel.ReturnData<Clon>(nameof(Clon), playerManager.PlayerInfo.cloneInofs[index].clonId);
+
+            detailContents.Init(clone);
+        }) ;
     }
 }

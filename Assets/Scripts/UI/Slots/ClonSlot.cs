@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UniRx;
 using UniRx.Triggers;
+using System;
 
 public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPollingScrollview
 {
@@ -15,6 +16,9 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
     private Transform canvasParent, originalParent;
 
     private Raycaster raycaster;
+
+    public Action<int> ClickEvent { get; set; }
+
 
     private new void Awake()
     {
