@@ -18,6 +18,8 @@ public class CloneSettingPopup : Popup
         ExitBtn.onClick.AddListener(OnHide);
 
         detailContents.Init();
-        poolingScrollview.Init(40);
+
+        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+        poolingScrollview.Init(playerManager.PlayerInfo.cloneInofs.Count);
     }
 }
