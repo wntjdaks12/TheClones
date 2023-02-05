@@ -30,8 +30,6 @@ public class PoolingScrollview : MonoBehaviour
 
     private int index;
 
-    private bool isBool;
-
     public enum Type {Horizontal, Grid};
     private Type type;
 
@@ -89,7 +87,6 @@ public class PoolingScrollview : MonoBehaviour
 
         if (this.index != index)
         {
-            isBool = true;
             this.index = index;
 
             var count = (int)(rectTs.rect.width / (itemRectTs.rect.width + padding)); // 풀링을 사용하기 위한 아이템 최대 개수
@@ -136,7 +133,6 @@ public class PoolingScrollview : MonoBehaviour
 
         if (this.index != index)
         {
-            isBool = true;
             this.index = index;
 
             var count = (int)(rectTs.rect.height / (itemRectTs.rect.height + padding)); // 풀링을 사용하기 위한 아이템 최대 개수
@@ -164,14 +160,13 @@ public class PoolingScrollview : MonoBehaviour
                 }
             }
 
-            InitData();
-
             updatingPoolingEvent?.Invoke();
         }
     }
 
     public void Init(int maxItemCount, Action<int> itemClickCallBack = null)
     {
+        this.index = 1;
         this.maxCount = maxItemCount;
         
         var currentItemCount = parent.childCount; // 현재 아이템 개수
@@ -200,7 +195,7 @@ public class PoolingScrollview : MonoBehaviour
                     }
                 }
 
-                if (isBool) InitData(itemClickCallBack);
+                InitData(itemClickCallBack);
             }
         }
     }
@@ -216,9 +211,15 @@ public class PoolingScrollview : MonoBehaviour
 
                 if (item != null)
                 {
-                    item.Init(i + index - 1);
+                    var val = i + index - 1;
 
-                    item.ClickEvent += itemClickCallBack;
+                    if (val >= 0)
+                    {
+                        item.Init(val);
+
+                        item.ClickEvent = null;
+                        item.ClickEvent += itemClickCallBack;
+                    }
                 }
             }
         }

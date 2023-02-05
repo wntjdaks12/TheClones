@@ -163,9 +163,9 @@ GameObject:
   m_Component:
   - component: {fileID: 864749091702541933}
   - component: {fileID: 375350791915483296}
-  - component: {fileID: -7768296057631773773}
   - component: {fileID: 6572768131079666294}
   - component: {fileID: 9151464549881922882}
+  - component: {fileID: 7657355876341087386}
   m_Layer: 5
   m_Name: InventorySlot_Simple
   m_TagString: Untagged
@@ -202,21 +202,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8623490547965351564}
   m_CullTransparentMesh: 1
---- !u!114 &-7768296057631773773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623490547965351564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7be90e655771c449a72201a32a1ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemImage: {fileID: 1714178033173150995}
-  slotButton: {fileID: 6572768131079666294}
-  canvasGroup: {fileID: 9151464549881922882}
 --- !u!114 &6572768131079666294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +258,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7657355876341087386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623490547965351564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab24e848c4b9814a80269faef0348ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 1714178033173150995}
+  slotButton: {fileID: 6572768131079666294}
+  canvasGroup: {fileID: 9151464549881922882}

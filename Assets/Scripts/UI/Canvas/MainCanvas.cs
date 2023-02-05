@@ -29,7 +29,6 @@ namespace MainScene
 
         private void SceneMove(bool isState, string print)
         {
-            Debug.Log("ASD");
             authText.text = print;
 
             if (isState) SceneManager.LoadScene("LobbyScene");

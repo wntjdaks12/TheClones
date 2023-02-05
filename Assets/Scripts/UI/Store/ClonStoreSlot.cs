@@ -32,6 +32,7 @@ public class ClonStoreSlot : GameView, IPollingScrollview
 
     private void ShowData()
     {
+        Debug.Log(index);
         var iap = App.GameModel.PresetDataModel.ReturnDatas<IAP>()[index];
 
         iapButton.productId = iap.ProductID;
