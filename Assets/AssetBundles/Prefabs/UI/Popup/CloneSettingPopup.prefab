@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cloneNameTMP: {fileID: 4041145095429929620}
   cloneSkillTitle: {fileID: 1668191701672624943}
+  attributeIconImg: {fileID: 8130776168585707944}
 --- !u!1 &1586801111716716843
 GameObject:
   m_ObjectHideFlags: 0

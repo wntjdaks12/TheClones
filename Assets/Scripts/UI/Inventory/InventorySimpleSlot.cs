@@ -19,7 +19,7 @@ public class InventorySimpleSlot : GameView, IPollingScrollview
         slotButton.onClick.AddListener(() => 
         {
             canvasGroup.alpha = 0.5f;
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
             ClickEvent?.Invoke(index);
         });
 

@@ -1,5 +1,15 @@
 ﻿[
     {
+        "id":1,
+        "icon":1,
+        "path":"Textures/Attribute"
+    },
+    {
+        "id":2,
+        "icon":2,
+        "path":"Textures/Attribute"
+    },
+    {
         "id":30001,
         "icon":30001
     },
