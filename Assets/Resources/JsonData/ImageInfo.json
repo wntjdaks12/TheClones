@@ -1,13 +1,11 @@
 ﻿[
     {
         "id":1,
-        "icon":1,
-        "path":"Textures/Attribute"
+        "icon":1
     },
     {
         "id":2,
-        "icon":2,
-        "path":"Textures/Attribute"
+        "icon":2
     },
     {
         "id":30001,

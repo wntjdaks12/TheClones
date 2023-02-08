@@ -116,7 +116,7 @@ public class CharacterAI : ActorAI
                         spell.Subject = new Subject(entity);
 
                         var character = Entity as Character;
-                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId, spell.Subject.Entity.Transform.position, spell);
+                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId[0], spell.Subject.Entity.Transform.position, spell);
                     }
                 }
             }

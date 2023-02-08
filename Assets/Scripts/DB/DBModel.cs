@@ -17,9 +17,7 @@ public class PlayerInfo
 public class ClonInfo
 {
     public uint clonId;
-    public uint skillId;
-    public string cloneName;
-    public int attribute;
+    public uint[] skillId;
 }
 
 

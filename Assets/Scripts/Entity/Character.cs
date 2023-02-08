@@ -9,7 +9,7 @@ public class Character : Actor, ISight, ISpell
     public float VisibleDistance { get;  set; }
     public string[] VisibleLayerName { get;  set; }
 
-    public uint skillId { get; set; }
+    public uint[] skillId { get; set; }
 
     public override void Init(Transform transform, Collider collider, MeshRenderer meshRenderer)
     {

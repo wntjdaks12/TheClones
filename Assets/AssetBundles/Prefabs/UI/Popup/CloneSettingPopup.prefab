@@ -678,6 +678,16 @@ MonoBehaviour:
   cloneNameTMP: {fileID: 4041145095429929620}
   cloneSkillTitle: {fileID: 1668191701672624943}
   attributeIconImg: {fileID: 8130776168585707944}
+  skillSlotImgs:
+  - {fileID: 8387006036343668855}
+  - {fileID: 885392299667528695}
+  - {fileID: 7344927159972483098}
+  - {fileID: 1727087246705481030}
+  skillImgs:
+  - {fileID: 7751635342969296522}
+  - {fileID: 118811552722940725}
+  - {fileID: 4519758901365268415}
+  - {fileID: 936407122544145477}
 --- !u!1 &1586801111716716843
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,5 +5,4 @@ using UnityEngine;
 public class ImageInfo : Data
 {
     public string Icon { get; set; }
-    public string path;
 }

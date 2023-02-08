@@ -32,7 +32,7 @@ public class CharacterController : GameController
 
     // 생성 시 위치 값 추가
     // 스킬 id임시로 추가
-    public void Spawn(string tableId, uint id, Vector3 position, uint skillId = 0)
+    public void Spawn(string tableId, uint id, Vector3 position, uint[] skillId = null)
     {
         var character = dataController.AddData(tableId,id) as Character;
 

@@ -27,9 +27,10 @@ public class HTTPCloneGacha : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     var dataStr = www.downloadHandler.text;
-
+                    Debug.Log(dataStr);
                     var clonInfo = JsonUtility.FromJson<ClonInfo>(dataStr);
-
+                    Debug.Log(clonInfo.clonId);
+                    Debug.Log(clonInfo.skillId.Length);
                     var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
                     playerManager.PlayerInfo.cloneInofs.Add(clonInfo);

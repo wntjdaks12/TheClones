@@ -35,6 +35,7 @@ public class CloneSettingPopup : Popup
         var presetDataModel = App.GameModel.PresetDataModel;
 
         var clone = presetDataModel.ReturnData<Clon>(nameof(Clon), cloneInfos[index].clonId);
+        clone.skillId = cloneInfos[index].skillId;
 
         detailContents.Init(clone);
     }
