@@ -11,10 +11,16 @@ public class CloneSettingDetailContents : GameView
 
     [Header("ÀÌ¹ÌÁö"), SerializeField] private Image attributeIconImg;
 
-    [Header("ÄÁÅÙÃ÷"), SerializeField] private List<Image> skillSlotImgs = new List<Image>();
-    [SerializeField] private List<Image> skillImgs = new List<Image>();
+    [Header("ÄÁÅÙÃ÷"), SerializeField] private SkillSimpleContents skillSimpleContents;
 
     public void Init(Clon clone)
+    {
+        ShowData(clone);
+
+        skillSimpleContents.Init(clone);
+    }
+
+    private void ShowData(Clon clone)
     {
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
@@ -22,24 +28,5 @@ public class CloneSettingDetailContents : GameView
         cloneSkillTitle.text = "°íÀ¯ ½ºÅ³";
 
         attributeIconImg.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(clone.attributeId.ToString());
-
-        asd(clone);
-    }
-
-    public void asd(Clon clone)
-    {
-        var assetManager = GameManager.Instance.GetManager<AssetBundleManager>();
-
-        for (int i = 0; i < skillSlotImgs.Count; i++)
-        {
-            skillSlotImgs[i].gameObject.SetActive(false);
-        }
-
-        for (int i = 0; i < clone.skillId.Length; i++)
-        {
-            skillSlotImgs[i].gameObject.SetActive(true);
-
-            skillImgs[i].sprite = assetManager.AssetBundleInfo.texture.LoadAsset<Sprite>(clone.skillId[i].ToString());
-        }
     }
 }
