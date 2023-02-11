@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillSimpleSlot : MonoBehaviour
+public class SkillSimpleSlot : GameView
 {
     [SerializeField] private Image skillIconImage;
 
@@ -11,8 +11,10 @@ public class SkillSimpleSlot : MonoBehaviour
 
     public void Init(uint skillId)
     {
+        var desc = App.GameModel.PresetDataModel.ReturnData<Tooltip>(nameof(Tooltip), skillId).description;
+
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => UISystem.TooltipBox("asd", transform.root));
+        button.onClick.AddListener(() => UISystem.TooltipBox(desc, transform.root));
 
         ShowData(skillId);
 

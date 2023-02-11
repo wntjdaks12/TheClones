@@ -66,5 +66,7 @@ public class GameModel : Element
         //  UserDataModel.LoadData<SlotItem>("OwnedconsumableItem", "JsonData/Inventroy");
 
         PresetDataModel.LoadData<IAP>(nameof(IAP), "JsonData/IAP");
+
+        PresetDataModel.LoadData<Tooltip>(nameof(Tooltip), "JsonData/Tooltip");
     }
 }
