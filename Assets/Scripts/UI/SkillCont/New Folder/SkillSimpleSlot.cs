@@ -12,7 +12,7 @@ public class SkillSimpleSlot : MonoBehaviour
     public void Init(uint skillId)
     {
         button.onClick.RemoveAllListeners();
-       // button.onClick.AddListener(() => UISystem.Tooltip("asd", transform.GetComponent<r>));
+        button.onClick.AddListener(() => UISystem.Tooltip("asd", transform.root));
 
         ShowData(skillId);
 

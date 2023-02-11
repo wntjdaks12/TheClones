@@ -12,7 +12,7 @@ public class Tooltip : MonoBehaviour
     public void Init(string message)
     {
         exitButton.onClick.RemoveAllListeners();
-        exitButton.onClick.AddListener(() => Destroy(this));
+        exitButton.onClick.AddListener(() => Destroy(gameObject));
 
         messageText.text = message;
     }

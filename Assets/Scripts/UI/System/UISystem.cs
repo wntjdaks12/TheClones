@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class UISystem : MonoBehaviour
 {
-    public static void Tooltip(string message, RectTransform rectTransform)
+    private static Tooltip tooltip;
+
+    public static void Tooltip(string message, Transform parent)
     {
-        var tooltip = Instantiate(Resources.Load<Tooltip>("Tooltip"), rectTransform.root);
+        if(tooltip == null) tooltip = Instantiate(Resources.Load<Tooltip>("Tooltip"), parent);
+
+        tooltip.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
 
         tooltip.Init(message);
     }
