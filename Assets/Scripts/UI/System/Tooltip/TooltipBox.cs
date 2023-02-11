@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class TooltipBox : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
-    [SerializeField] private Button exitButton;
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void Init(string message)
     {
-        exitButton.onClick.RemoveAllListeners();
-        exitButton.onClick.AddListener(() => Destroy(gameObject));
-
         messageText.text = message;
     }
 }
