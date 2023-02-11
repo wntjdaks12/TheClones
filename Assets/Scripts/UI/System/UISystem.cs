@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class UISystem : MonoBehaviour
 {
-    private static Tooltip tooltip;
+    private static TooltipBox tooltipBox;
 
-    public static void Tooltip(string message, Transform parent)
+    public static void TooltipBox(string message, Transform parent)
     {
-        if(tooltip == null) tooltip = Instantiate(Resources.Load<Tooltip>("Tooltip"), parent);
+        if(tooltipBox == null) tooltipBox = Instantiate(Resources.Load<TooltipBox>("TooltipBox"), parent);
 
-        tooltip.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
+        tooltipBox.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
 
-        tooltip.Init(message);
+        tooltipBox.Init(message);
     }
 }
