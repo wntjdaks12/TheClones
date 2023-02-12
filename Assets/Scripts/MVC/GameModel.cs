@@ -68,5 +68,7 @@ public class GameModel : Element
         PresetDataModel.LoadData<IAP>(nameof(IAP), "JsonData/IAP");
 
         PresetDataModel.LoadData<Tooltip>(nameof(Tooltip), "JsonData/Tooltip");
+
+        PresetDataModel.LoadData<DropItemInfo>(nameof(DropItemInfo), "JsonData/DropItemInfo");
     }
 }
