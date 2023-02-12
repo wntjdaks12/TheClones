@@ -1,0 +1,29 @@
+[
+    {
+        "id":11001,
+        "gold":5,
+        "dropItems":
+        [
+            {
+                "itemId":100000,
+                "dropItemInfos":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
+            },
+            {
+                "itemId":100001,
+                "dropItemInfos":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
+            }
+        ]
+    }
+]
