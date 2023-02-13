@@ -88,5 +88,10 @@
         "id":"110001",
         "prefabId":"110001",
         "path":"Prefabs/HeadBars"
+    },
+    {
+        "id":"120101",
+        "prefabId":"120101",
+        "path":"Prefabs/Items"
     }
 ]
