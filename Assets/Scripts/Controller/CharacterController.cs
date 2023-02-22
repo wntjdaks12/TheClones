@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
+
 
 public class CharacterController : GameController
 {
@@ -49,7 +51,24 @@ public class CharacterController : GameController
         character.skillId = skillId;
 
         character.Init(characterObject.transform, characterObject.GetComponent<Collider>(), characterObject.GetComponent<MeshRenderer>());
-        characterObject.Init(character); 
+        characterObject.Init(character);
+
+        if (character is Monster)
+        {
+            var a = App.GameModel.PresetDataModel.ReturnData<DropItemData>(nameof(DropItemData), id);
+
+            for (int i = 0; i < a.DropItemInfos.Count; i++)
+            {
+                var probability = a.DropItemInfos[i].dropItemTypes.Where(x => x.dropItemInfoType == DropItemType.DropItemInfoType.Probability).Select(x => x.Value).Sum();
+
+                var randVal = UnityEngine.Random.Range(0, 101);
+
+                if (randVal <= probability)
+                {
+                    character.actorDeath += (actor) => { Debug.Log(i - 1); App.GameController.GetController<DropItemController>().Spawn(nameof(DropItem), a.DropItemInfos[i - 1].ItemId, actor.Transform.position, actor); };
+                }
+            }
+        }
 
         runtimeDataModel.AddData($"{tableId}Object", character.InstanceId, characterObject);
 

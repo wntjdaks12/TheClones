@@ -21,7 +21,7 @@ public class RangeObject : EntityObject
 
         transform.localScale = Vector3.Lerp(transform.localScale, tempScale, Time.deltaTime * 15f);
 
-        transform.position = range.Caster.Entity.Transform.position;
+        transform.position = range.Caster.Transform.position;
     }
 
     private IEnumerator TestAsync()

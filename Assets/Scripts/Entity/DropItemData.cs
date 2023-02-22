@@ -4,8 +4,5 @@ using System.Collections.Generic;
 public class DropItemData : Data
 {
     public int Gold { get; set; }
-    public List<DropItem> DropItems { get; set; }
+    public List<DropItemInfo> DropItemInfos { get; set; }
 }
-
-
-

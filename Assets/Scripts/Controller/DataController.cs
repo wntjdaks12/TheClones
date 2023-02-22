@@ -12,7 +12,7 @@ public class DataController : GameController
     {
         var gamePresetData = App.GameModel.PresetDataModel;
         var gameRuntimeDataModel = App.GameModel.RuntimeDataModel;
-
+        Debug.Log(tableId + ", : " + id);
         var data = (IData)gamePresetData.ReturnData<IData>(tableId, id).Clone();
 
         OnDataSpawn?.Invoke(data);

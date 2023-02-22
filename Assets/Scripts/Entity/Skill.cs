@@ -7,9 +7,6 @@ public class Skill : Entity, IAbility, ISpell
 {
     public event Action<Skill> destroy;
 
-    public Caster Caster { get; set; }
-    public Subject Subject { get; set; }
-
     public Ability Ability { get; set; }
 
     public uint AbilityOwnerInstanceId { get => InstanceId; }
@@ -50,7 +47,7 @@ public class Skill : Entity, IAbility, ISpell
 
             while (damageOverTimeCount <= DamageOverTimeCount)
             {
-                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, Subject.Entity.Transform.position, GameObject.Find("DamagePopupCanvas").transform, this);
+                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, Subject.Transform.position, GameObject.Find("DamagePopupCanvas").transform, this);
 
                 if (actor.CurrentHp > 0)
                 {

@@ -33,8 +33,11 @@ public class CharacterAI : ActorAI
 
     public virtual void Update()
     {
-        var character = Entity as Character;
-        if (!isTestBool) Move(character.MoveSpeed);
+        if (Entity is Character)
+        {
+            var character = Entity as Character;
+            if (!isTestBool) Move(character.MoveSpeed);
+        }
     }
 
     /// <summary>
@@ -87,9 +90,7 @@ public class CharacterAI : ActorAI
 
         if (Entity is ICaster)
         {
-            var caster = Entity as ICaster;
-
-            App.GameController.GetComponent<RangeController>().Spawn("Range", 100001, transform.position, caster);
+            App.GameController.GetComponent<RangeController>().Spawn("Range", 100001, transform.position, Entity);
         }
 
         yield return new WaitForSeconds(1.5f);
@@ -113,10 +114,10 @@ public class CharacterAI : ActorAI
                     {
                         var spell = entity as ISpell;
 
-                        spell.Subject = new Subject(entity);
+                        spell.Subject = entity;
 
                         var character = Entity as Character;
-                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId[0], spell.Subject.Entity.Transform.position, spell);
+                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId[0], spell.Subject.Transform.position, spell);
                     }
                 }
             }

@@ -8,6 +8,6 @@ public class SkillAI : EntityAI
     {
         var skill = Entity as Skill;
 
-        transform.position = skill.Subject.Entity.Transform.position;
+        transform.position = skill.Subject.Transform.position;
     }
 }

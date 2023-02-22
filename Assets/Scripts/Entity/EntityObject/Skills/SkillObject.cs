@@ -8,9 +8,9 @@ public class SkillObject : EntityObject
     {
         base.Init(skill);
 
-        if (skill.Subject.Entity is Actor)
+        if (skill.Subject is Actor)
         {
-            var actor = skill.Subject.Entity as Actor;
+            var actor = skill.Subject as Actor;
 
             StartCoroutine(skill.StartDamage(actor, obj));
         }

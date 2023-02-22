@@ -1,15 +1,14 @@
 [
     {
-        "id":"111001",
+        "id":"20001",
         "visibleDistance":5
     },
     {
-        "id":"111002",
+        "id":"20002",
         "visibleDistance":5
-    }
-    ,
+    } ,
     {
-        "id":"111003",
+        "id":"20003",
         "visibleDistance":5
     }
 ]

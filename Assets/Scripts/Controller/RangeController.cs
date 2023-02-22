@@ -28,20 +28,24 @@ public class RangeController : GameController
         range.OnDataRemove += RemoveEntity;
         rangeObject.gameObject.SetActive(true);
 
-        var character = caster.Caster.Entity as Character;
+        if(caster is Entity)
+        {
+            var entity = caster as Entity;
+            var character = entity as Character;
 
-        range.Radius = character.VisibleDistance;
-        range.Caster = caster.Caster;
+            range.Radius = character.VisibleDistance;
+            range.Caster = caster as Entity;
 
-        range.Init(rangeObject.transform, rangeObject.GetComponent<Collider>());
-        rangeObject.Init(range);
-        
-        runtimeDataModel.AddData($"{tableId}Object", range.InstanceId, rangeObject);
+            range.Init(rangeObject.transform, rangeObject.GetComponent<Collider>());
+            rangeObject.Init(range);
 
-        rangeObject.transform.position = position;
+            runtimeDataModel.AddData($"{tableId}Object", range.InstanceId, rangeObject);
 
-        if (range.Lifetime != 0)
-            StartCoroutine(range.StartLifeTime());
+            rangeObject.transform.position = position;
+
+            if (range.Lifetime != 0)
+                StartCoroutine(range.StartLifeTime());
+        }
     }
     public void RemoveEntity(IData data)
     {

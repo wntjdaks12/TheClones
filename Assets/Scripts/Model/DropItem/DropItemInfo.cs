@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class DropItem
+public class DropItemInfo
 {
     public uint ItemId { get; set; }
-    public List<DropItemInfo> dropItemInfos { get; set; }
+    public List<DropItemType> dropItemTypes { get; set; }
 }
 
-public class DropItemInfo
+[System.Serializable]
+public class DropItemType
 {
     public enum DropItemInfoType
     {

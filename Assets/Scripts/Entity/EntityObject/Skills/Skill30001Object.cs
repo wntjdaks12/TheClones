@@ -8,6 +8,6 @@ public class Skill30001Object : SkillObject
     {
         base.Init(obj, skill);
 
-        StartCoroutine(skill.BlendMaterialAsync(skill.Subject.Entity.MeshRenderer, 0f, 0.15f, materialSystem.ChangedMaterials));
+        StartCoroutine(skill.BlendMaterialAsync(skill.Subject.MeshRenderer, 0f, 0.15f, materialSystem.ChangedMaterials));
     }
 }

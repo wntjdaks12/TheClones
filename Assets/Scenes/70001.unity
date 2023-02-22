@@ -674,7 +674,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1752280592}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -766,8 +766,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653260035}
   m_LocalRotation: {x: 0.13174385, y: 0.000000012159132, z: -0.00000001138908, w: 0.99128383}
-  m_LocalPosition: {x: 1.6020008, y: 14.694945, z: -12.966822}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.6019897, y: 14.694946, z: -12.966822}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1909,8 +1909,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1240649509}
-  - {fileID: 1112695802}
   - {fileID: 508226615}
+  - {fileID: 1112695802}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2053,11 +2053,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
-  - id: 111001
+  - id: 20001
     spawnPosition: {x: -30.7, y: -6, z: -25.3}
-  - id: 111002
+  - id: 20001
     spawnPosition: {x: 0, y: 0, z: 0}
-  - id: 111002
+  - id: 20002
     spawnPosition: {x: -16, y: -6.669647, z: 22}
 --- !u!4 &1955834710
 Transform:

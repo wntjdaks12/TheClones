@@ -15,7 +15,6 @@ public class Actor : Entity, IAbility
     public Ability Ability { get; set; } = new Ability();
 
     public Transform HeadBarTransform { get; set; }
-    public Subject Subject { get; set; }
 
     public float CurrentHp { get; protected set; }
 
@@ -43,10 +42,11 @@ public class Actor : Entity, IAbility
     {
         base.Init(transform, collider, meshRenderer);
 
-        Subject = new Subject(this);
+        Subject = this;
 
         CurrentHp = MaxHp;
     }
+
     public void OnActorHit(float damage)
     {
         if (CurrentHp <= damage)

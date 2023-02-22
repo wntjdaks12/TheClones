@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadBarController : GameController
+public class DropItemController : GameController
 {
     GameDataContainerModel presetDataModel;
     GameDataContainerModel runtimeDataModel;
     DataController dataController;
+
     protected override void Awake()
     {
         dataController = GetController<DataController>();
@@ -14,36 +15,27 @@ public class HeadBarController : GameController
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
 
-    public void Spawn(string tableId, uint id, Vector3 position, Transform parent, ICaster caster)
+    public void Spawn(string tableId, uint id, Vector3 position, ICaster caster)
     {
-        var headBar = dataController.AddData(tableId, id) as HeadBar;
+        Debug.Log(" 아이템 스폰 :" + tableId + id);
+        var dropItem = dataController.AddData(tableId, id) as DropItem;
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        //var headBarObject = PoolObjectContainer.CreatePoolableObject<HeadBarObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
-        var headBarObject = PoolObjectContainer.CreatePoolableObject<HeadBarObject>(prefabInfo.PrefabId.ToString());
+        var entityObject = PoolObjectContainer.CreatePoolableObject<EntityObject>(prefabInfo.PrefabId.ToString());
 
-        headBar.OnDataRemove += RemoveEntity;
-        headBarObject.gameObject.SetActive(true);
+        entityObject.OnDataRemove += RemoveEntity;
+        entityObject.gameObject.SetActive(true);
 
-        var actor = caster as Actor;
+        dropItem.Caster = caster as Entity;
 
-        headBar.HeadBarTransform = actor.HeadBarTransform;
+        dropItem.Init(entityObject.transform, entityObject.GetComponent<Collider>());
+        entityObject.Init(dropItem);
 
-        headBar.Caster = actor;
-        headBar.Subject = actor;
+        runtimeDataModel.AddData($"{tableId}Object", dropItem.InstanceId, entityObject);
 
-        headBar.Init(headBarObject.transform, transform.GetComponent<Collider>());
-        headBarObject.Init(headBar);
-
-        actor.actorDeath += headBar.OnRemove;
-
-        runtimeDataModel.AddData($"{tableId}Object", headBar.InstanceId, headBarObject);
-
-        headBarObject.transform.position = position;
-        headBarObject.transform.SetParent(parent, false);
+        entityObject.transform.position = position;
     }
-
     public void RemoveEntity(IData data)
     {
         var gameRuntimeDataModel = App.GameModel.RuntimeDataModel;
