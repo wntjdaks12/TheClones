@@ -15,4 +15,8 @@ public class Popup : GameView
     {
         popup.SetActive(false);
     }
+
+    public virtual void Init()
+    { 
+    }
 }

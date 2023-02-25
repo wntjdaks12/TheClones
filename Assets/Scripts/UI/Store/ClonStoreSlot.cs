@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using TMPro;
+using System;
 
 public class ClonStoreSlot : GameView, IPollingScrollview
 {
@@ -10,6 +11,8 @@ public class ClonStoreSlot : GameView, IPollingScrollview
     [SerializeField] private new TextMeshProUGUI name;
 
     private int index;
+
+    public Action<int> ClickEvent { get ; set; }
 
     public new void Awake()
     {
@@ -29,6 +32,7 @@ public class ClonStoreSlot : GameView, IPollingScrollview
 
     private void ShowData()
     {
+        Debug.Log(index);
         var iap = App.GameModel.PresetDataModel.ReturnDatas<IAP>()[index];
 
         iapButton.productId = iap.ProductID;

@@ -17,7 +17,7 @@ public class PlayerInfo
 public class ClonInfo
 {
     public uint clonId;
-    public uint skillId;
+    public uint[] skillId;
 }
 
 
@@ -27,4 +27,5 @@ public class AssetBundleInfo
     public AssetBundle texture;
     public AssetBundle prefab;
     public AssetBundle material;
+    public AssetBundle font;
 }

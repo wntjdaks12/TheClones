@@ -20,11 +20,54 @@ public class HTTPAssetBundle : MonoBehaviour
     private IEnumerator GetRequestAssetBundles(Action callback)
     {
         yield return StartCoroutine(GetRequestTextures());
+        yield return StartCoroutine(GetRequestFonts());
         yield return StartCoroutine(GetRequestMaterials());
         yield return StartCoroutine(GetRequestPrefabs());
 
         callback?.Invoke();
         Debug.Log("에셋 번들 로드 성공");
+    }
+
+    // 머티리얼 쉐이더를 연결합니다.
+    private void FindMaterialShader()
+    {
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+        var materials = assetBundleManager.AssetBundleInfo.material.LoadAllAssets<Material>();
+
+        foreach (Material m in materials)
+        {
+            var shaderName = m.shader.name;
+            var newShader = Shader.Find(shaderName);
+            if (newShader != null)
+            {
+                m.shader = newShader;
+            }
+            else
+            {
+                Debug.LogWarning("unable to refresh shader: " + shaderName + " in material " + m.name);
+            }
+        }
+    }
+
+    // 폰트 쉐이더를 연결합니다.
+    private void FindFontShader()
+    {
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+        var materials = assetBundleManager.AssetBundleInfo.font.LoadAllAssets<Material>();
+
+        foreach (Material m in materials)
+        {
+            var shaderName = m.shader.name;
+            var newShader = Shader.Find(shaderName);
+            if (newShader != null)
+            {
+                m.shader = newShader;
+            }
+            else
+            {
+                Debug.LogWarning("unable to refresh shader: " + shaderName + " in material " + m.name);
+            }
+        }
     }
 
     private IEnumerator GetRequestTextures()
@@ -75,6 +118,8 @@ public class HTTPAssetBundle : MonoBehaviour
                     break;
             }
         }
+
+        FindFontShader();
     }
 
     private IEnumerator GetRequestMaterials()
@@ -96,6 +141,35 @@ public class HTTPAssetBundle : MonoBehaviour
 
                     var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
                     assetBundleManager.AssetBundleInfo.material = DownloadHandlerAssetBundle.GetContent(www);
+
+                    FindMaterialShader(); // 에셋 번들로 인해 깨진 쉐이더를 한번 더 찾기
+
+                    break;
+            }
+        }
+    }
+
+    private IEnumerator GetRequestFonts()
+    {
+        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/fontassetbundle";
+
+        nameRP.Value = "폰트 에셋 번들 로드";
+
+        using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
+        {
+            yield return DownloadProgress(www);
+
+            switch (www.result)
+            {
+                case UnityWebRequest.Result.ConnectionError: break;
+                case UnityWebRequest.Result.DataProcessingError: break;
+                case UnityWebRequest.Result.ProtocolError: break;
+                case UnityWebRequest.Result.Success:
+
+                    var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+                    assetBundleManager.AssetBundleInfo.font = DownloadHandlerAssetBundle.GetContent(www);
+
+                    FindFontShader(); // 에셋 번들로 인해 깨진 쉐이더를 한번 더 찾기
 
                     break;
             }

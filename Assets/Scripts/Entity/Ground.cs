@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Ground : EntityObject, IHuntingPoint
 {
-    [SerializeField] private MaterialSystem materialSystem;
-
     private void Start()
     {
         GameObject.FindObjectOfType<GameApplication>().GameController.GetComponent<StaticEntityController>().Spawn("StaticEntity", 80001, this);
@@ -13,11 +11,11 @@ public class Ground : EntityObject, IHuntingPoint
 
     public void OnPoint()
     {
-        materialSystem.ChangeMaterial();
+        Entity.BlendAddMaterial(Entity.MeshRenderer, materialSystem.ChangedMaterials);
     }
 
     public void OffPoint()
     {
-        materialSystem.RevertMaterial();
+        Entity.BlendRemoveMaterial(Entity.MeshRenderer, materialSystem.ChangedMaterials);
     }
 }

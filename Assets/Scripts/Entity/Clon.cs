@@ -4,4 +4,6 @@ using UnityEngine;
 
 public class Clon : Character
 {
+    public string nameKr;
+    public uint attributeId;
 }

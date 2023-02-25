@@ -25,12 +25,12 @@ public class ForceSpawnStrategy : SkillStrategy
 
     public void AddMaterial()
     {
-        monster.HeadBarTransform.GetComponent<MeshRenderer>().AddMaterial(Resources.Load<Material>("Materials/Skills/30002/Skill_30002_RimLight"));
+      //  monster.HeadBarTransform.GetComponent<MeshRenderer>().AddMaterial(Resources.Load<Material>("Materials/Skills/30002/Skill_30002_RimLight"));
     }
 
     public void ReMoveMaterial()
     {
-        monster.HeadBarTransform.GetComponent<MeshRenderer>().RemoveMaterial(Resources.Load<Material>("Materials/Skills/30002/Skill_30002_RimLight"));
+      //  monster.HeadBarTransform.GetComponent<MeshRenderer>().RemoveMaterial(Resources.Load<Material>("Materials/Skills/30002/Skill_30002_RimLight"));
     }
 
     public void setMonster(IData data)

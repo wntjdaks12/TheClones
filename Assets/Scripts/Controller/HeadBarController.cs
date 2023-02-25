@@ -14,7 +14,7 @@ public class HeadBarController : GameController
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
 
-    public void Spawn(string tableId, uint id, Vector3 position, Transform parent, Actor actor)
+    public void Spawn(string tableId, uint id, Vector3 position, Transform parent, ICaster caster)
     {
         var headBar = dataController.AddData(tableId, id) as HeadBar;
 
@@ -26,8 +26,12 @@ public class HeadBarController : GameController
         headBar.OnDataRemove += RemoveEntity;
         headBarObject.gameObject.SetActive(true);
 
+        var actor = caster as Actor;
+
         headBar.HeadBarTransform = actor.HeadBarTransform;
-        headBar.Subject = actor.Subject;
+
+        headBar.Caster = actor;
+        headBar.Subject = actor;
 
         headBar.Init(headBarObject.transform, transform.GetComponent<Collider>());
         headBarObject.Init(headBar);

@@ -1,6 +1,4 @@
-public class Range : Entity, ICaster
+public class Range : Entity
 {
     public float Radius { get; set; }
-
-    public Caster Caster { get; set ; }
 }

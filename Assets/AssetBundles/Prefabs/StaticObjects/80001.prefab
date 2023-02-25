@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7524354019181317427}
   - component: {fileID: 9199294641574728116}
   - component: {fileID: 9199294641574728112}
-  - component: {fileID: 919132149208968090}
+  - component: {fileID: 6846136432620889530}
   m_Layer: 0
   m_Name: 80001
   m_TagString: Untagged
@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.607171, y: -4.967576, z: 1.626492}
   m_LocalScale: {x: 11.9595, y: 11.959502, z: 11.959502}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -62,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 603ea5bb15fafd84b94b73e93f6d08a4, type: 2}
+  - {fileID: 2100000, guid: c3ac40991329a1343aaa53bd1c6cd0ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a34ac0403c6d94690867e76e0457b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialSystem: {fileID: 919132149208968090}
---- !u!114 &919132149208968090
+  materialSystem: {fileID: 6846136432620889530}
+--- !u!114 &6846136432620889530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,9 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8316772393145756902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd72e4795c68f484b8dd855f27d87de6, type: 3}
+  m_Script: {fileID: 11500000, guid: bd828c42a58136b4db41b4053c826c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 603ea5bb15fafd84b94b73e93f6d08a4, type: 2}
   - {fileID: 2100000, guid: f6d3e3c64fdfbbb43b8c40293f749f18, type: 2}

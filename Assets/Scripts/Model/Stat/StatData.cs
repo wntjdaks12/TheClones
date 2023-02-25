@@ -23,11 +23,11 @@ public class StatData:Data
         return resStatValues.Sum();
     }
 
-   /* public float GetTotalSkillStatValue(Stat.SkillStatType skillStatType)
+    public float GetTotalSkillStatValue(Stat.SkillStatType skillStatType)
     {
-        var resStatValues = Stats.Where(x => x.skillStatType == skillStatType)
+        var resStatValues = SkillStats.Where(x => x.skillStatType == skillStatType)
                             .Select(x => x.Value).ToList();
 
         return resStatValues.Sum();
-    }*/
+    }
 }

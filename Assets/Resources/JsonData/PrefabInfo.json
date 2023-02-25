@@ -5,19 +5,19 @@
         "path":"Prefabs/Heroes"
     },
     {
-        "id":"111001",
-        "prefabId":"111001",
+        "id":"20001",
+        "prefabId":"20001",
         "path":"Prefabs/Monsters"
     },
     {
-        "id":"111002",
-        "prefabId":"111002",
+        "id":"20002",
+        "prefabId":"20002",
         "path":"Prefabs/Monsters"
     }
     ,
     {
-        "id":"111003",
-        "prefabId":"111003",
+        "id":"20003",
+        "prefabId":"20003",
         "path":"Prefabs/Monsters"
     },
     {
@@ -88,5 +88,10 @@
         "id":"110001",
         "prefabId":"110001",
         "path":"Prefabs/HeadBars"
+    },
+    {
+        "id":"120101",
+        "prefabId":"120101",
+        "path":"Prefabs/Items"
     }
 ]

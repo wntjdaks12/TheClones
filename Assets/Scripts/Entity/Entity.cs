@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 //씬에 생성되는 개체
-public class Entity:Data
+public class Entity : Data, ISpell
 {
     public string Name { get; private set; }
 
@@ -13,15 +13,68 @@ public class Entity:Data
 
     public Transform Transform { get; private set; }
     public Collider Collider { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
+    public MeshRenderer MeshRenderer { get; private set; }
+    public Material[] originalMaterials { get; private set; }
+
+    public Entity Caster { get; set; }
+    public Entity Subject { get; set; }
+
     public virtual void Init(Transform transform, Collider collider)
     {
         Transform = transform;
         Collider = collider;
     }
+
+    public virtual void Init(Transform transform, Collider collider, Rigidbody rigidbody)
+    {
+        Transform = transform;
+        Collider = collider;
+        Rigidbody = rigidbody;
+    }
+
+    public virtual void Init(Transform transform, Collider collider, MeshRenderer meshRenderer)
+    {
+        Transform = transform;
+        Collider = collider;
+        MeshRenderer = meshRenderer;
+        originalMaterials = originalMaterials ?? meshRenderer?.sharedMaterials;
+    }
+
+    public virtual void Init(Transform transform, Collider collider, Rigidbody rigidbody, MeshRenderer meshRenderer)
+    {
+        Transform = transform;
+        Collider = collider;
+        MeshRenderer = meshRenderer;
+        Rigidbody = rigidbody;
+        originalMaterials = originalMaterials ?? meshRenderer?.sharedMaterials;
+    }
+
     public IEnumerator StartLifeTime()
     {
         yield return new WaitForSeconds(Lifetime);
 
         OnRemoveData();
+    }
+
+    public IEnumerator BlendMaterialAsync(MeshRenderer meshRenderer, float blendingDelay, float blendingTime, Material[] materials)
+    {
+        yield return new WaitForSeconds(blendingDelay);
+
+        BlendAddMaterial(meshRenderer, materials);
+
+        yield return new WaitForSeconds(blendingTime);
+
+        BlendRemoveMaterial(meshRenderer, materials);
+    }
+
+    public void BlendAddMaterial(MeshRenderer meshRenderer, Material[] materials)
+    {
+        meshRenderer.AddMaterial(materials);
+    }
+
+    public void BlendRemoveMaterial(MeshRenderer meshRenderer, Material[] materials)
+    {
+        meshRenderer.RemoveMaterial(materials);
     }
 }

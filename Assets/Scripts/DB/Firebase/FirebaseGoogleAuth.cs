@@ -123,11 +123,11 @@ public class FirebaseGoogleAuth : MonoBehaviour
                 playerManager.PlayerInfo.playerId = user.UserId;
 
                 CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
-                Debug.Log(user.UserId);
+
                 CFirebase.ReadData<PlayerInfo>(playerManager.PlayerInfo.playerId, data =>
                 {
                     GameManager.Instance.GetManager<PlayerManager>().PlayerInfo = data;
-                });            Debug.Log("ZXZCZX");
+                });
 
                 callback?.Invoke(true, "¼º°ø");
             }

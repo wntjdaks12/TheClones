@@ -1,6 +1,8 @@
-[
+﻿[
     {
         "id":"90001",
+        "nameKr":"나투라",
+        "attributeId":1,
         "visibleDistance":5,
         "visibleLayerName":
         [
@@ -9,6 +11,8 @@
     },
     {
         "id":"90002",
+        "nameKr":"제우스",
+        "attributeId":2,
         "visibleDistance":5,
         "visibleLayerName":
         [

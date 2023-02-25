@@ -18,7 +18,6 @@ public class MonsterController : GameView
     public IEnumerator Start()
     {
         var entityController = App.GameController.GetController<CharacterController>();
-        var headBarController = App.GameController.GetController<HeadBarController>();
 
         while (true)
         {
