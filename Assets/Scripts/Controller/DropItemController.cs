@@ -22,19 +22,19 @@ public class DropItemController : GameController
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
-        var entityObject = PoolObjectContainer.CreatePoolableObject<EntityObject>(prefabInfo.PrefabId.ToString());
+        var dropItemObject = PoolObjectContainer.CreatePoolableObject<DropItemObject>(prefabInfo.PrefabId.ToString());
 
-        entityObject.OnDataRemove += RemoveEntity;
-        entityObject.gameObject.SetActive(true);
+        dropItemObject.OnDataRemove += RemoveEntity;
+        dropItemObject.gameObject.SetActive(true);
 
         dropItem.Caster = caster as Entity;
 
-        dropItem.Init(entityObject.transform, entityObject.GetComponent<Collider>());
-        entityObject.Init(dropItem);
+        dropItem.Init(dropItemObject.transform, dropItemObject.GetComponent<Collider>(), dropItemObject.GetComponent<Rigidbody>(), dropItemObject.MeshRenderer);
+        dropItemObject.Init(dropItem);
 
-        runtimeDataModel.AddData($"{tableId}Object", dropItem.InstanceId, entityObject);
+        runtimeDataModel.AddData($"{tableId}Object", dropItem.InstanceId, dropItemObject);
 
-        entityObject.transform.position = position;
+        dropItemObject.transform.position = position;
     }
     public void RemoveEntity(IData data)
     {
