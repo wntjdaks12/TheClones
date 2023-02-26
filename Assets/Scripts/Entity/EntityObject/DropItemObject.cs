@@ -18,7 +18,7 @@ public class DropItemObject : EntityObject
     public void Start()
     {
         pos = transform.position; pos.y = pos.y + length;
-
+        
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -26,23 +26,18 @@ public class DropItemObject : EntityObject
 
                 var yPos = Mathf.Sin(runningTime) * length;
                 
-                transform.position = new Vector3(pos.x, pos.y + yPos, pos.z);
+                transform.position = new Vector3(transform.position.x, pos.y + yPos, transform.position.z);
             });
     }
 
     public void Init(Data data)
     {
-        if(data is Entity) base.Init(data as Entity);
+        if (data is Entity) base.Init(data as Entity);
 
-        if (data is ImageInfo)
-        {
-            var imageInfo = data as ImageInfo;
+        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
-            var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
+        var texture = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Texture>(data.Id.ToString());
 
-            var texture = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Texture>(imageInfo.Id.ToString());
-
-            Entity.originalMaterials[0].SetTexture("_MainTex", texture);
-        }
+        Entity.originalMaterials[0].SetTexture("_MainTex", texture);
     }
 }

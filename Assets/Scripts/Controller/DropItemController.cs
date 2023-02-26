@@ -17,7 +17,6 @@ public class DropItemController : GameController
 
     public void Spawn(string tableId, uint id, Vector3 position, ICaster caster)
     {
-        Debug.Log(" 아이템 스폰 :" + tableId + id);
         var dropItem = dataController.AddData(tableId, id) as DropItem;
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();

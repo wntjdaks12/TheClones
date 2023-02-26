@@ -57,6 +57,8 @@ public class CharacterController : GameController
         {
             var a = App.GameModel.PresetDataModel.ReturnData<DropItemData>(nameof(DropItemData), id);
 
+            var dropItemIds = new List<uint>();
+
             for (int i = 0; i < a.DropItemInfos.Count; i++)
             {
                 var probability = a.DropItemInfos[i].dropItemTypes.Where(x => x.dropItemInfoType == DropItemType.DropItemInfoType.Probability).Select(x => x.Value).Sum();
@@ -65,9 +67,20 @@ public class CharacterController : GameController
 
                 if (randVal <= probability)
                 {
-                    character.actorDeath += (actor) => { Debug.Log(i - 1); App.GameController.GetController<DropItemController>().Spawn(nameof(DropItem), a.DropItemInfos[i - 1].ItemId, actor.Transform.position, actor); };
+                    dropItemIds.Add(a.DropItemInfos[i].ItemId);
                 }
             }
+
+            character.actorDeath += (actor) =>
+            {
+                for (int i = 0; i < dropItemIds.Count; i++)
+                {
+                    var pos = actor.Transform.position;
+                    pos.x = pos.x + i - (dropItemIds.Count * 0.5f) + 0.5f;
+
+                    App.GameController.GetController<DropItemController>().Spawn(nameof(DropItem), dropItemIds[i], pos, actor);
+                }
+            };
         }
 
         runtimeDataModel.AddData($"{tableId}Object", character.InstanceId, characterObject);
