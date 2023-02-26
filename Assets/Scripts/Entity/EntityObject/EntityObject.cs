@@ -12,6 +12,8 @@ public class EntityObject : PoolableObject
     public virtual void Init(Entity entity)
     {
         this.Entity = entity;
+
+        if (Entity.Lifetime != 0) StartCoroutine(Entity.StartLifeTime());
     }
     public void OnRemoveEntity()
     {

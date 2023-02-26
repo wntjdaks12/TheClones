@@ -15,7 +15,5 @@ public class CharacterObject : ActorObject
         var actor = character as Actor;
 
         if (ai != null) ai.Init(character);
-
-        if (character.Lifetime != 0) StartCoroutine(character.StartLifeTime());
     }
 }
