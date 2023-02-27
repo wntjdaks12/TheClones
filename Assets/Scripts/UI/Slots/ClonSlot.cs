@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UniRx;
-using UniRx.Triggers;
 using System;
 
 public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPollingScrollview
@@ -28,17 +26,6 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
         originalParent = transform.parent;
 
         raycaster = new Raycaster();
-    }
-
-    private void Start()
-    {
-        var mouseUp = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
-        var mouseDown = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
-
-        var mouseMove = this.UpdateAsObservable()
-            .SkipUntil(mouseDown)
-            .TakeUntil(mouseUp)
-            .Subscribe(_ => Debug.Log("asd"));
     }
 
     public void Init(int index)
