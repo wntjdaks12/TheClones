@@ -23,7 +23,7 @@ public class DropItemController : GameController
 
         var dropItemObject = PoolObjectContainer.CreatePoolableObject<DropItemObject>(prefabInfo.PrefabId.ToString());
 
-        dropItemObject.OnDataRemove += RemoveEntity;
+        dropItem.OnDataRemove += RemoveEntity;
         dropItemObject.gameObject.SetActive(true);
 
         dropItem.Caster = caster as Entity;

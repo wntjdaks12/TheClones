@@ -10,14 +10,14 @@ public class DropItemObject : EntityObject
     [SerializeField] [Range(0f, 10f)] private float length = 1f;
 
     private float runningTime = 0f;
-    private Vector3 pos;
+    private Vector3 originalPosition;
 
     [SerializeField] private MeshRenderer meshRenderer;
     public MeshRenderer MeshRenderer { get => meshRenderer; }
 
     public void Start()
     {
-        pos = transform.position; pos.y = pos.y + length;
+        originalPosition = transform.position; originalPosition.y = originalPosition.y + length;
         
         this.UpdateAsObservable()
             .Subscribe(_ =>
@@ -26,12 +26,14 @@ public class DropItemObject : EntityObject
 
                 var yPos = Mathf.Sin(runningTime) * length;
                 
-                transform.position = new Vector3(transform.position.x, pos.y + yPos, transform.position.z);
+                transform.position = new Vector3(transform.position.x, originalPosition.y + yPos, transform.position.z);
             });
     }
 
     public void Init(Data data)
     {
+        runningTime = 0;
+
         if (data is Entity) base.Init(data as Entity);
 
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
