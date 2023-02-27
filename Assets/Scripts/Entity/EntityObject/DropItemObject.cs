@@ -15,6 +15,13 @@ public class DropItemObject : EntityObject
     [SerializeField] private MeshRenderer meshRenderer;
     public MeshRenderer MeshRenderer { get => meshRenderer; }
 
+    private Raycaster raycaster;
+
+    private void Awake()
+    {
+        raycaster = new Raycaster();
+    }
+
     public void Start()
     {
         originalPosition = transform.position; originalPosition.y = originalPosition.y + length;
@@ -27,6 +34,23 @@ public class DropItemObject : EntityObject
                 var yPos = Mathf.Sin(runningTime) * length;
                 
                 transform.position = new Vector3(transform.position.x, originalPosition.y + yPos, transform.position.z);
+            });
+
+        var mouseMove = this.UpdateAsObservable()
+            .Where(_ => Input.GetMouseButton(0))
+            .Subscribe(_ => 
+            {
+                var hits = raycaster.ReturnScreenToWorldHits<DropItemObject>();
+
+                if (hits.Length > 0)
+                {
+                    var hitObject = hits[0].transform.gameObject;
+
+                    if (hitObject == gameObject)
+                    {
+                        Entity.OnRemoveData();
+                    }
+                }
             });
     }
 
