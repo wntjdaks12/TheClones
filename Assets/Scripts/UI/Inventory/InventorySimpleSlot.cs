@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class InventorySimpleSlot : GameView, IPollingScrollview
+public class InventorySimpleSlot : GameView
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private Button slotButton;
@@ -13,7 +13,7 @@ public class InventorySimpleSlot : GameView, IPollingScrollview
 
     public Action<int> ClickEvent { get; set; }
 
-    public void Init(int index)
+    public void Init(int index, Sprite sprite)
     {
         slotButton.onClick.RemoveAllListeners();
         slotButton.onClick.AddListener(() => 
@@ -23,20 +23,11 @@ public class InventorySimpleSlot : GameView, IPollingScrollview
             ClickEvent?.Invoke(index);
         });
 
-        ShowData(index);
+        ShowData(sprite);
     }
 
-    private void ShowData(int index)
+    private void ShowData(Sprite sprite)
     {
-        var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
-        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-
-        var presetDataModel = App.GameModel.PresetDataModel;
-
-        var cloneId = playerManager.PlayerInfo.cloneInofs[index].clonId;
-
-        var imageInfo = presetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), cloneId);
-
-        itemImage.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Icon);
+        itemImage.sprite = sprite;
     }
 }
