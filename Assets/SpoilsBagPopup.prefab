@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6ca1570554784ebcf1ffd997096c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 8623490547965351564, guid: 21156657b7b2a274182c901f53ea399a, type: 3}
+  item: {fileID: 8623490547965351564, guid: ab8c87dbdcd2aad4c9b7e20dfb569b2c, type: 3}
   parent: {fileID: 963483787873859940}
 --- !u!1 &3251769373143335299
 GameObject:
@@ -944,3 +944,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 4863000046479685900}
+  TitleTMP: {fileID: 4449823822506707748}
+  exitBtn: {fileID: 4863000045380701204}
+  poolingScrollview: {fileID: 5075642851984797415}
