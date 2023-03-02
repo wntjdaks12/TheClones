@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
-
+/*
 public interface IEquippable
 {
     public enum EquipType{Hat,Weapon }
@@ -258,3 +258,4 @@ public class UnlockController:GameController
         }
     }
 }
+*/

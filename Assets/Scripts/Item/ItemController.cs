@@ -5,7 +5,7 @@ public class ItemController : GameController
 
     public GameDataContainerModel PresetDataModel { get; set; }
 
-    public T GetItem<T>(uint itemId) where T:Item
+   /* public T GetItem<T>(uint itemId) where T:Item
     {
         return PresetDataModel.ReturnData<T>("Item", itemId);
     }
@@ -32,5 +32,5 @@ public class ItemController : GameController
         {
             App.GameModel.UserDataModel.SaveData("OwnedEquipItem", "Assets/Resources/JsonData/OwnedEquipItem.json");
         }
-    }
+    }*/
 }
