@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System.Linq;
 
 public class DropItemObject : EntityObject
 {
@@ -49,6 +50,24 @@ public class DropItemObject : EntityObject
                     if (hitObject == gameObject)
                     {
                         Entity.OnRemoveData();
+
+                        var itemInfo = new ItemInfo { itemId = Entity.Id, count = 1 };
+
+                        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+
+                        for (int i = 0; i < playerManager.PlayerInfo.itemInfos.Count; i++)
+                        {
+                            if (playerManager.PlayerInfo.itemInfos[i].itemId == itemInfo.itemId)
+                            {
+                                playerManager.PlayerInfo.itemInfos[i].count += itemInfo.count;
+                                playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
+
+                                return;
+                            }
+                        }
+
+                        playerManager.PlayerInfo.itemInfos.Add(itemInfo);
+                        playerManager.PlayerInfo.itemInfosRP.Add(itemInfo);
                     }
                 }
             });

@@ -9,9 +9,9 @@ public class InventorySimpleSpoilsBagSlot : InventorySimpleSlot, IPollingScrollv
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-        var cloneId = playerManager.PlayerInfo.cloneInofs[index].clonId;
+        var itemId = playerManager.PlayerInfo.itemInfos[index].itemId;
 
-        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), cloneId);
+        var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), itemId);
 
         base.Init(index, assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Icon));
     }
