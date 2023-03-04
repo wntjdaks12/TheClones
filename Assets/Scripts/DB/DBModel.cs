@@ -9,12 +9,12 @@ public class PlayerInfo
     public string playerId;
 
     public List<ClonInfo> cloneInofs = new List<ClonInfo>();
-    [HideInInspector]
-    public ReactiveCollection<ClonInfo> cloneInfosRP = new ReactiveCollection<ClonInfo>();
+   // [HideInInspector]
+   //public ReactiveCollection<ClonInfo> cloneInfosRP = new ReactiveCollection<ClonInfo>();
 
     public List<ItemInfo> itemInfos = new List<ItemInfo>();
-    [HideInInspector]
-    public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
+   // [HideInInspector]
+  //  public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
 }
 
 [Serializable]

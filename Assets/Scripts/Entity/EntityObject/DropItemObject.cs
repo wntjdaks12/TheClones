@@ -60,14 +60,14 @@ public class DropItemObject : EntityObject
                             if (playerManager.PlayerInfo.itemInfos[i].itemId == itemInfo.itemId)
                             {
                                 playerManager.PlayerInfo.itemInfos[i].count += itemInfo.count;
-                                playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
+                               // playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
 
                                 return;
                             }
                         }
 
                         playerManager.PlayerInfo.itemInfos.Add(itemInfo);
-                        playerManager.PlayerInfo.itemInfosRP.Add(itemInfo);
+                      //  playerManager.PlayerInfo.itemInfosRP.Add(itemInfo);
                     }
                 }
             });

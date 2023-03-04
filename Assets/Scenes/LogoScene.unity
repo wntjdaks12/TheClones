@@ -935,6 +935,7 @@ MonoBehaviour:
   playerInfo:
     playerId: 
     cloneInofs: []
+    itemInfos: []
 --- !u!114 &1936442794
 MonoBehaviour:
   m_ObjectHideFlags: 0

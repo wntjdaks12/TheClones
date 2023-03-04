@@ -19,8 +19,9 @@ public class CFirebase
     public static void WriteData<T>(string playerId, T data)
     {
         var json = JsonUtility.ToJson(data);
-
-        reference.Child(typeof(T).ToString()).Child(playerId).SetRawJsonValueAsync(json);
+        Debug.Log("asdad. : " + json);
+        reference.SetRawJsonValueAsync(json);
+//        reference.Child(typeof(T).ToString()).Child(playerId).SetRawJsonValueAsync(json);
 
         Debug.Log("데이터 베이스 저장 성공");
     }
