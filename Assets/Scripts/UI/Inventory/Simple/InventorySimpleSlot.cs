@@ -7,7 +7,7 @@ using System;
 public class InventorySimpleSlot : GameView
 {
     [SerializeField] private Image itemImage;
-    [SerializeField] private Button slotButton;
+    [SerializeField] protected Button slotButton;
 
     [SerializeField] private CanvasGroup canvasGroup;
 
