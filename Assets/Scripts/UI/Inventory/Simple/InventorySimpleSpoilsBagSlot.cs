@@ -15,9 +15,12 @@ public class InventorySimpleSpoilsBagSlot : InventorySimpleSlot, IPollingScrollv
         var itemInfo = playerManager.PlayerInfo.itemInfos[index];
 
         var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), itemInfo.itemId);
+        var tooltip = App.GameModel.PresetDataModel.ReturnData<Tooltip>(nameof(Tooltip), itemInfo.itemId);
 
         countTMP.text = itemInfo.count.ToString();
 
         base.Init(index, assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Icon));
+
+        slotButton.onClick.AddListener(() => UISystem.TooltipBox(tooltip.description, transform.root));
     }
 }
