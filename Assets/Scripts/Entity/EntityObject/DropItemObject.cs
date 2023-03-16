@@ -37,7 +37,7 @@ public class DropItemObject : EntityObject
                 transform.position = new Vector3(transform.position.x, originalPosition.y + yPos, transform.position.z);
             });
 
-        var mouseMove = this.UpdateAsObservable()
+        this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButton(0))
             .Subscribe(_ => 
             {
@@ -51,23 +51,13 @@ public class DropItemObject : EntityObject
                     {
                         Entity.OnRemoveData();
 
-                        var itemInfo = new ItemInfo { itemId = Entity.Id, count = 1 };
-
-                        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
-
-                        for (int i = 0; i < playerManager.PlayerInfo.itemInfos.Count; i++)
+                        if (Entity is DropItem)
                         {
-                            if (playerManager.PlayerInfo.itemInfos[i].itemId == itemInfo.itemId)
-                            {
-                                playerManager.PlayerInfo.itemInfos[i].count += itemInfo.count;
-                               // playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
+                            var dropItem = Entity as DropItem;
+                            dropItem.Pickup();
 
-                                return;
-                            }
+                            GameManager.Instance.HTTPController.GetController<HTTPDropItem>().GetRequestAsync();
                         }
-
-                        playerManager.PlayerInfo.itemInfos.Add(itemInfo);
-                      //  playerManager.PlayerInfo.itemInfosRP.Add(itemInfo);
                     }
                 }
             });
