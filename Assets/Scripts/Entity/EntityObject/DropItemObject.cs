@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class DropItemObject : EntityObject
 {
@@ -41,22 +42,25 @@ public class DropItemObject : EntityObject
             .Where(_ => Input.GetMouseButton(0))
             .Subscribe(_ => 
             {
-                var hits = raycaster.ReturnScreenToWorldHits<DropItemObject>();
-
-                if (hits.Length > 0)
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    var hitObject = hits[0].transform.gameObject;
+                    var hits = raycaster.ReturnScreenToWorldHits<DropItemObject>();
 
-                    if (hitObject == gameObject)
+                    if (hits.Length > 0)
                     {
-                        Entity.OnRemoveData();
+                        var hitObject = hits[0].transform.gameObject;
 
-                        if (Entity is DropItem)
+                        if (hitObject == gameObject)
                         {
-                            var dropItem = Entity as DropItem;
-                            dropItem.Pickup();
+                            Entity.OnRemoveData();
 
-                            GameManager.Instance.HTTPController.GetController<HTTPDropItem>().GetRequestAsync();
+                            if (Entity is DropItem)
+                            {
+                                var dropItem = Entity as DropItem;
+                                dropItem.Pickup();
+
+                                GameManager.Instance.HTTPController.GetController<HTTPDropItem>().GetRequestAsync();
+                            }
                         }
                     }
                 }
