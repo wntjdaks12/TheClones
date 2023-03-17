@@ -17,7 +17,7 @@ public class PlayerInfo
     [HideInInspector]
     public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
 
-    public StatData runeInfos = new StatData();
+    public StatData runeInfo = new StatData();
 }
 
 [Serializable]

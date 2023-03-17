@@ -16,8 +16,8 @@ public class RuneSlot : MonoBehaviour
 
     public void Init()
     {
-       // var playerManager = GameManager.Instance.GetManager<PlayerManager>();
+        var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
-  //      valueTMP.text = playerManager.PlayerInfo.runeStatData.GetStat((Stat.StatType)num).ToString();
+        valueTMP.text = playerManager.PlayerInfo.runeInfo.GetStat((Stat.StatType)num).ToString();
     }
 }
