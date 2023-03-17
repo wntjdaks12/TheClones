@@ -949,6 +949,45 @@ MonoBehaviour:
     playerId: 
     cloneInofs: []
     itemInfos: []
+    runeInfos:
+      <Stats>k__BackingField:
+      - <statType>k__BackingField: 0
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 1
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 6
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 2
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 3
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 7
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 4
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 5
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 8
+        <Value>k__BackingField: 0
+      <SkillStats>k__BackingField:
+      - <statType>k__BackingField: 0
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 1
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 6
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 2
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 3
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 7
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 4
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 5
+        <Value>k__BackingField: 0
+      - <statType>k__BackingField: 8
+        <Value>k__BackingField: 0
 --- !u!114 &1936442794
 MonoBehaviour:
   m_ObjectHideFlags: 0

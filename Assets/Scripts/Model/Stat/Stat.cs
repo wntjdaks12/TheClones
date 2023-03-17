@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class Stat
@@ -28,10 +29,10 @@ public class Stat
         DamageOverTimeCount = 2
     }
 
-    public StatType statType { get; set; }
+    [field: SerializeField] public StatType statType { get; set; }
     public SkillStatType skillStatType { get; set; }
 
-    public float Value { get; set; }
+    [field: SerializeField] public float Value { get; set; }
     public uint TargetDataId { get; set; }
 }
 

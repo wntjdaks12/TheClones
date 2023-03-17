@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using System.Linq;
 
 [Serializable]
 public class PlayerInfo
@@ -15,6 +16,8 @@ public class PlayerInfo
     public List<ItemInfo> itemInfos = new List<ItemInfo>();
     [HideInInspector]
     public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
+
+    public StatData runeInfos = new StatData();
 }
 
 [Serializable]

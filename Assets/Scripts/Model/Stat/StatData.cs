@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine;
 
 [System.Serializable]
 public class StatData:Data
 {
-    public List<Stat> Stats { get; set; }
-    public List<Stat> SkillStats { get; set; }
+    [field: SerializeField] public List<Stat> Stats { get; set; }
+    [field: SerializeField] public List<Stat> SkillStats { get; set; }
 
     public  float GetTotalStatValue(Stat.StatType statType)
     {
