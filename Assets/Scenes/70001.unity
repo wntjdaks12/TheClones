@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 297190346}
   - component: {fileID: 297190345}
   m_Layer: 5
-  m_Name: CloneSettingIcon
+  m_Name: CloneSettingBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 903699033}
   - component: {fileID: 903699032}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SpoilsBgBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

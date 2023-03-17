@@ -16,7 +16,7 @@ public class DropItem : Entity
             if (playerManager.PlayerInfo.itemInfos[i].itemId == itemInfo.itemId)
             {
                 playerManager.PlayerInfo.itemInfos[i].count += itemInfo.count;
-                playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
+                //playerManager.PlayerInfo.itemInfosRP[i].count += itemInfo.count;
 
                 return;
             }
