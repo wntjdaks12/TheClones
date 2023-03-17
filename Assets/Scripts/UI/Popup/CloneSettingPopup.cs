@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CloneSettingPopup : Popup
 {
     [Header("¹öÆ°"), SerializeField] private Button ExitBtn;
+    [SerializeField] private Button RuneBtn;
 
     [Header("ÄÁÅÙÃ÷"), SerializeField] private CloneSettingDetailContents detailContents;
     [SerializeField] private PoolingScrollview poolingScrollview;
@@ -16,6 +17,9 @@ public class CloneSettingPopup : Popup
 
         ExitBtn.onClick.RemoveAllListeners();
         ExitBtn.onClick.AddListener(OnHide);
+
+        RuneBtn.onClick.RemoveAllListeners();
+        RuneBtn.onClick.AddListener(() => ReturnPopup<RunePopup>().Init());
 
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 
