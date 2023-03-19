@@ -18,6 +18,16 @@ public class PlayerInfo
     public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
 
     public StatData runeInfo = new StatData();
+
+    public enum ItemTypes { Consumable }
+    public ItemInfo[] GetItem(ItemTypes itemTypes)
+    {
+        switch (itemTypes)
+        {
+            case ItemTypes.Consumable: return itemInfos.Where(x => 120200 < x.itemId && x.itemId < 120300).ToArray();
+            default: return null;
+        }
+    }
 }
 
 [Serializable]
