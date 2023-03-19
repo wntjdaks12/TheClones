@@ -13,6 +13,6 @@ public class InventorySimpleCloneSlot : InventorySimpleSlot, IPollingScrollview
 
         var imageInfo = App.GameModel.PresetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), cloneId);
 
-        base.Init(index, assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Icon));
+        Init(index, assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(imageInfo.Icon));
     }
 }

@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 356946552969955587}
   - component: {fileID: 3693678361189214767}
   m_Layer: 5
-  m_Name: Scroll View (1)
+  m_Name: 'Scroll View '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6ca1570554784ebcf1ffd997096c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 6546069154921885063, guid: 4f54ea1d65d2bc047aa749e61c209856, type: 3}
+  item: {fileID: 8623490547965351564, guid: 249888b34113e8a49a3fcb9c65479f59, type: 3}
   parent: {fileID: 1861066871006305601}
 --- !u!1 &4883376216642564639
 GameObject:
