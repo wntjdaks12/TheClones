@@ -11,6 +11,6 @@ public class PlayerManager : GameManager
     // 나중에 삭제
     public void Start()
     {
-        playerInfo.itemInfos.Add(new ItemInfo { itemId = 120201, count = 1});
+        playerInfo.itemInfos.Add(new ItemInfo { itemId = 120201, count = 3});
     }
 }

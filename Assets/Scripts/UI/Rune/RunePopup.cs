@@ -8,6 +8,7 @@ public class RunePopup : Popup
     [Header("¹öÆ°"), SerializeField] private Button ExitBtn;
 
     [Header("ÄÁÅÙÃ÷"), SerializeField] private RuneFragmentContents runeFragmentContents;
+    [SerializeField] private RunePageContents runePageContents;
 
     public override void Init()
     {
@@ -17,5 +18,6 @@ public class RunePopup : Popup
         ExitBtn.onClick.AddListener(OnHide);
 
         runeFragmentContents.Init();
+        runePageContents.Init();
     }
 }

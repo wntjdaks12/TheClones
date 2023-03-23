@@ -28,6 +28,16 @@ public class PlayerInfo
             default: return null;
         }
     }
+
+    public ItemInfo GetItem(int id)
+    {
+        return itemInfos.Where(x => x.itemId == id).FirstOrDefault();
+    }
+
+    public void OnRemove(ItemInfo itemInfo)
+    {
+        itemInfos.Remove(itemInfo);
+    }
 }
 
 [Serializable]

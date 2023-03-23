@@ -30,7 +30,7 @@ public class Popup : GameView
     {
     }
 
-    public T ReturnPopup<T>() where T : Popup
+    public static T ReturnPopup<T>() where T : Popup
     {
         return popups.Select(x => (T)x).FirstOrDefault();
     }

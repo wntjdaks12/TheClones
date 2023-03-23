@@ -10,12 +10,9 @@ public class RuneSlot : MonoBehaviour
 
     [Header("이미지"), SerializeField] private Image iconImage;
 
-    public Stat.StatType statType;
+    [Header("버튼"), SerializeField] private Button increaseButton;
 
-    public void Start()
-    {
-        Init();
-    }
+    public Stat.StatType statType;
 
     public void Init()
     {
@@ -25,5 +22,11 @@ public class RuneSlot : MonoBehaviour
         valueTMP.text = playerManager.PlayerInfo.runeInfo.GetStat(statType).ToString();
 
         iconImage.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(Stat.GetId(statType).ToString());
+
+        increaseButton.onClick.RemoveAllListeners();
+        increaseButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.HTTPController.GetController<HttpItem>().GetRequestAsync(statType, 120201, Popup.ReturnPopup<RunePopup>().Init);
+        });
     }
 }
