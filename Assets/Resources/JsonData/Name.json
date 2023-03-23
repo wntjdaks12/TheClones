@@ -1,5 +1,41 @@
 ﻿[
     {
+        "id":101,
+        "languageKR":"최대 체력"
+    },
+    {
+        "id":101,
+        "languageKR":"최대 체력 증가율"
+    },
+    {
+        "id":103,
+        "languageKR":"최대 체력 감소율"
+    },
+    {
+        "id":104,
+        "languageKR":"공격력"
+    },
+    {
+        "id":105,
+        "languageKR":"공격력 증가율"
+    },
+    {
+        "id":106,
+        "languageKR":"공격력 감소율"
+    },
+    {
+        "id":107,
+        "languageKR":"이동 속도"
+    },
+    {
+        "id":108,
+        "languageKR":"이동 속도 증가율"
+    },
+    {
+        "id":109,
+        "languageKR":"이동 속도 감소율"
+    },
+    {
         "id":90001,
         "languageKR":"나투라"
     },
