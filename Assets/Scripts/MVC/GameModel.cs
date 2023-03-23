@@ -50,7 +50,7 @@ public class GameModel : Element
 
         PresetDataModel.LoadData<DamageTMP>(nameof(DamageTMP), "JsonData/DamageTMP");
 
-       // PresetDataModel.LoadData<EquipItem>("Item", "JsonData/EquipItem");
+        // PresetDataModel.LoadData<EquipItem>("Item", "JsonData/EquipItem");
 
         PresetDataModel.LoadData<Particle>(nameof(Particle), "JsonData/Particle");
 
@@ -71,5 +71,7 @@ public class GameModel : Element
 
         PresetDataModel.LoadData<DropItemData>(nameof(DropItemData), "JsonData/DropItemData");
         PresetDataModel.LoadData<DropItem>(nameof(DropItem), "JsonData/DropItem");
+
+        PresetDataModel.LoadData<Name>(nameof(Name), "JsonData/Name");
     }
 }
