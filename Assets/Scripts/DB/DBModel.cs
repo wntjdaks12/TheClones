@@ -19,6 +19,13 @@ public class PlayerInfo
 
     public StatData runeInfo = new StatData();
 
+    public List<StatInfo> statInfo = new List<StatInfo>();
+
+    public StatInfo GetStatInfo(uint id)
+    {
+        return statInfo.Where(x => x.statData.Id == id).FirstOrDefault();
+    }
+
     public enum ItemTypes { Consumable }
     public ItemInfo[] GetItem(ItemTypes itemTypes)
     {
@@ -38,6 +45,13 @@ public class PlayerInfo
     {
         itemInfos.Remove(itemInfo);
     }
+}
+
+[Serializable]
+public class StatInfo
+{
+    public int holdingPoint;
+    public StatData statData;
 }
 
 [Serializable]
