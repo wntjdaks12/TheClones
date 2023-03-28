@@ -27,14 +27,25 @@ public class HTTPCloneGacha : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     var dataStr = www.downloadHandler.text;
-                    Debug.Log(dataStr);
+
                     var clonInfo = JsonUtility.FromJson<ClonInfo>(dataStr);
-                    Debug.Log(clonInfo.clonId);
-                    Debug.Log(clonInfo.skillId.Length);
+
                     var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
                     playerManager.PlayerInfo.cloneInofs.Add(clonInfo);
                     playerManager.PlayerInfo.cloneInfosRP.Add(clonInfo);
+
+                    var statInfo = new StatInfo();
+                    statInfo.holdingPoint.Value = 10;
+                    statInfo.statDatas.Id = clonInfo.clonId;
+                    statInfo.statDatas.Stats = new List<Stat>();
+
+                    for (int i = 0; i < Enum.GetValues(typeof(Stat.StatType)).Length; i++)
+                    {
+                        statInfo.statDatas.Stats.Add(new Stat((Stat.StatType)i, 0));
+                    }
+
+                    playerManager.PlayerInfo.statInfos.Add(statInfo);
 
                     CFirebase.WriteData<PlayerInfo>(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 

@@ -32,7 +32,7 @@ public class StatData:Data
         return resStatValues.Sum();
     }
 
-    public void SetStat(Stat.StatType statType, int value)
+    public void SetStat(Stat.StatType statType, float value)
     {
         Stats.Find(x => x.statType == statType).Value = GetStat(statType) + value;
     }

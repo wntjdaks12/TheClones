@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class PlayerManager : GameManager
 {
@@ -13,17 +14,5 @@ public class PlayerManager : GameManager
     {
         // æ∆¿Ã≈€ 
         playerInfo.itemInfos.Add(new ItemInfo { itemId = 120201, count = 3});
-
-        //Ω∫≈› 
-        var statData = new StatData();
-        statData.Id = 90001;
-        statData.Stats = new List<Stat>();
-
-        for (int i = 0; i < System.Enum.GetValues(typeof(Stat.StatType)).Length; i++)
-        {
-            statData.Stats.Add(new Stat((Stat.StatType)i, 0));   
-        }
-
-        playerInfo.statInfo.Add(new StatInfo { holdingPoint = 10, statData = statData });
     }
 }

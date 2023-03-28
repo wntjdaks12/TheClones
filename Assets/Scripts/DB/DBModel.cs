@@ -19,11 +19,11 @@ public class PlayerInfo
 
     public StatData runeInfo = new StatData();
 
-    public List<StatInfo> statInfo = new List<StatInfo>();
+    public List<StatInfo> statInfos = new List<StatInfo>();
 
     public StatInfo GetStatInfo(uint id)
     {
-        return statInfo.Where(x => x.statData.Id == id).FirstOrDefault();
+        return statInfos.Where(x => x.statDatas.Id == id).FirstOrDefault();
     }
 
     public enum ItemTypes { Consumable }
@@ -50,8 +50,8 @@ public class PlayerInfo
 [Serializable]
 public class StatInfo
 {
-    public int holdingPoint;
-    public StatData statData;
+    public ReactiveProperty<int> holdingPoint = new ReactiveProperty<int>(0);
+    public StatData statDatas = new StatData();
 }
 
 [Serializable]

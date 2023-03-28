@@ -26,7 +26,12 @@ public class CloneSettingPopup : Popup
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 
         // 풀링 스크롤 뷰 초기화 및 아이템 클릭 콜백 메소드 추가
-        poolingScrollview.Init(cloneInfos.Count, (index) => DetailContentsInit(cloneInfos, index));
+        poolingScrollview.Init(cloneInfos.Count, (index) => 
+        { 
+            DetailContentsInit(cloneInfos, index);
+
+            statContents.Init(cloneInfos[index].clonId);
+        });
 
         if (cloneInfos.Count > 0)
         {
