@@ -17,9 +17,14 @@ public class PlayerInfo
     [HideInInspector]
     public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
 
-    public StatData runeInfo = new StatData();
+    public List<StatData> runeInfos = new List<StatData>();
 
     public List<StatInfo> statInfos = new List<StatInfo>();
+
+    public StatData GetRuneInfo(uint id)
+    {
+        return runeInfos.Where(x => x.Id == id).FirstOrDefault();
+    }
 
     public StatInfo GetStatInfo(uint id)
     {
@@ -36,7 +41,7 @@ public class PlayerInfo
         }
     }
 
-    public ItemInfo GetItem(int id)
+    public ItemInfo GetItem(uint id)
     {
         return itemInfos.Where(x => x.itemId == id).FirstOrDefault();
     }
