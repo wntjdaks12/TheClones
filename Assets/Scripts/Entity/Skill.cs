@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Skill : Entity, IAbility, ISpell
+public class Skill : Entity, IAbility
 {
     public event Action<Skill> destroy;
 
