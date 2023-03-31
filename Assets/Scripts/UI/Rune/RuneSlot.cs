@@ -14,19 +14,38 @@ public class RuneSlot : MonoBehaviour
 
     public Stat.StatType statType;
 
-    public void Init()
+    public void Init(ClonInfo cloneInfo)
     {
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
-        valueTMP.text = playerManager.PlayerInfo.runeInfo.GetStat(statType).ToString();
+        valueTMP.text = playerManager.PlayerInfo.GetRuneInfo(cloneInfo.clonId).GetStat(statType).ToString();
 
         iconImage.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(Stat.GetId(statType).ToString());
+
+        CheckButtonInteractable(Temp());
 
         increaseButton.onClick.RemoveAllListeners();
         increaseButton.onClick.AddListener(() =>
         {
-            GameManager.Instance.HTTPController.GetController<HttpItem>().GetRequestAsync(statType, 120201, Popup.ReturnPopup<RunePopup>().Init);
+            GameManager.Instance.HTTPController.GetController<HttpItem>().GetRequestAsync(cloneInfo, statType, Temp(), () => Popup.ReturnPopup<RunePopup>().Init(cloneInfo));
         });
+    }
+
+    private void CheckButtonInteractable(uint id)
+    {
+        var itemInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.GetItem(id);
+
+        increaseButton.interactable = itemInfo != null ? true : false;
+    }
+
+    public uint Temp()
+    {
+        switch (statType)
+        {
+            case Stat.StatType.MaxHp: return 120201;
+        }
+
+        return 0;
     }
 }
