@@ -10,7 +10,7 @@ public class RunePopup : Popup
     [Header("ÄÁÅÙÃ÷"), SerializeField] private RuneFragmentContents runeFragmentContents;
     [SerializeField] private RunePageContents runePageContents;
 
-    public override void Init()
+    public void Init(ClonInfo cloneInfo)
     {
         OnShow();
 
@@ -18,6 +18,6 @@ public class RunePopup : Popup
         ExitBtn.onClick.AddListener(OnHide);
 
         runeFragmentContents.Init();
-        runePageContents.Init();
+        runePageContents.Init(cloneInfo);
     }
 }
