@@ -26,12 +26,12 @@ public class GameModel : Element
     }
     private GameDataContainerModel userDataModel;
 
-
+    /*
     public InventoryModel Inventory
     {
         get => inventory ??= new InventoryModel(App.GameModel.UserDataModel);
     }
-    private InventoryModel inventory;
+    private InventoryModel inventory;*/
 
     protected override void Awake()
     {
@@ -50,7 +50,7 @@ public class GameModel : Element
 
         PresetDataModel.LoadData<DamageTMP>(nameof(DamageTMP), "JsonData/DamageTMP");
 
-        PresetDataModel.LoadData<EquipItem>("Item", "JsonData/EquipItem");
+        // PresetDataModel.LoadData<EquipItem>("Item", "JsonData/EquipItem");
 
         PresetDataModel.LoadData<Particle>(nameof(Particle), "JsonData/Particle");
 
@@ -62,7 +62,7 @@ public class GameModel : Element
 
         PresetDataModel.LoadData<HeadBar>(nameof(HeadBar), "JsonData/HeadBar");
 
-        UserDataModel.LoadData<SlotItem>("OwnedEquipItem", "JsonData/OwnedEquipItem");
+        //UserDataModel.LoadData<SlotItem>("OwnedEquipItem", "JsonData/OwnedEquipItem");
         //  UserDataModel.LoadData<SlotItem>("OwnedconsumableItem", "JsonData/Inventroy");
 
         PresetDataModel.LoadData<IAP>(nameof(IAP), "JsonData/IAP");
@@ -71,5 +71,7 @@ public class GameModel : Element
 
         PresetDataModel.LoadData<DropItemData>(nameof(DropItemData), "JsonData/DropItemData");
         PresetDataModel.LoadData<DropItem>(nameof(DropItem), "JsonData/DropItem");
+
+        PresetDataModel.LoadData<Name>(nameof(Name), "JsonData/Name");
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine;
 
 [System.Serializable]
 public class StatData:Data
 {
-    public List<Stat> Stats { get; set; }
-    public List<Stat> SkillStats { get; set; }
+    [field: SerializeField] public List<Stat> Stats { get; set; }
+    [field: SerializeField] public List<Stat> SkillStats { get; set; }
 
     public  float GetTotalStatValue(Stat.StatType statType)
     {
@@ -29,5 +30,10 @@ public class StatData:Data
                             .Select(x => x.Value).ToList();
 
         return resStatValues.Sum();
+    }
+
+    public void SetStat(Stat.StatType statType, float value)
+    {
+        Stats.Find(x => x.statType == statType).Value = GetStat(statType) + value;
     }
 }

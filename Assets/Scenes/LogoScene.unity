@@ -649,7 +649,9 @@ GameObject:
   - component: {fileID: 638807973}
   - component: {fileID: 638807975}
   - component: {fileID: 638807974}
+  - component: {fileID: 638807977}
   - component: {fileID: 638807976}
+  - component: {fileID: 638807978}
   m_Layer: 0
   m_Name: HTTP
   m_TagString: Untagged
@@ -712,6 +714,30 @@ MonoBehaviour:
     value: 0
   nameRP:
     value: 
+--- !u!114 &638807977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638807972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a44bb76d5cfffd4598e261c511f5806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &638807978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638807972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1ace4a86ad3204b8b60774d2b2e807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904792808
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +961,12 @@ MonoBehaviour:
   playerInfo:
     playerId: 
     cloneInofs: []
+    itemInfos: []
+    runeInfo:
+      <Stats>k__BackingField:
+      - <statType>k__BackingField: 0
+        <Value>k__BackingField: 0
+      <SkillStats>k__BackingField: []
 --- !u!114 &1936442794
 MonoBehaviour:
   m_ObjectHideFlags: 0

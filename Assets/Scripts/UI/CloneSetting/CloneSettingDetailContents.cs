@@ -24,7 +24,7 @@ public class CloneSettingDetailContents : GameView
     {
         var assetBundleManager = GameManager.Instance.GetManager<AssetBundleManager>();
 
-        cloneNameTMP.text = clone.nameKr;
+        cloneNameTMP.text = App.GameModel.PresetDataModel.ReturnData<Name>(nameof(Name), clone.Id).LanguageKR;
         cloneSkillTitle.text = "고유 스킬";
 
         attributeIconImg.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(clone.attributeId.ToString());

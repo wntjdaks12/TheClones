@@ -11,7 +11,6 @@ public static class MeshRendererExtension
 
         for (int i = 0; i < meshRenderer.materials.Length; i++)
         {
-            Debug.Log(meshRenderer.sharedMaterials[i]);
             mat[i] = meshRenderer.sharedMaterials[i];
         }
 

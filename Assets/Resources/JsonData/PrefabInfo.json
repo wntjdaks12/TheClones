@@ -91,7 +91,12 @@
     },
     {
         "id":"120101",
-        "prefabId":"120101",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120102",
+        "prefabId":"120100",
         "path":"Prefabs/Items"
     }
 ]

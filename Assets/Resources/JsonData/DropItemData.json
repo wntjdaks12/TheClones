@@ -13,6 +13,16 @@
                         "value":100
                     }
                 ]
+            },
+            {
+                "itemId":120102,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
             }
         ]
     },
@@ -30,6 +40,16 @@
                         "value":100
                     }
                 ]
+            },
+            {
+                "itemId":120102,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
             }
         ]
     },
@@ -40,6 +60,16 @@
         [
             {
                 "itemId":120101,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
+            },
+            {
+                "itemId":120102,
                 "dropItemTypes":
                 [
                     {

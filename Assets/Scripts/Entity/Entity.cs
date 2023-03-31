@@ -47,7 +47,7 @@ public class Entity : Data, ISpell
         Collider = collider;
         MeshRenderer = meshRenderer;
         Rigidbody = rigidbody;
-        originalMaterials = originalMaterials ?? meshRenderer?.sharedMaterials;
+        originalMaterials = originalMaterials ?? meshRenderer?.materials;
     }
 
     public IEnumerator StartLifeTime()

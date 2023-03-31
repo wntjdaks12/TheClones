@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class Stat
@@ -28,10 +29,27 @@ public class Stat
         DamageOverTimeCount = 2
     }
 
-    public StatType statType { get; set; }
+    public static uint GetId(StatType statType)
+    {
+        switch (statType)
+        {
+            case StatType.MaxHp: return 101;
+            case StatType.MaxHpIncRate: return 102;
+            case StatType.AttackPower: return 104;
+            case StatType.AttackPowerIncRate: return 105;
+            case StatType.MoveSpeed: return 107;
+            case StatType.MoveSpeedIncRate:return 108;
+            case StatType.MaxHpDecRate: return 103;
+            case StatType.AttackPowerDecRate: return 106;
+            case StatType.MoveSpeedDecRate: return 109;
+            default:return 0;
+        }
+    }
+
+    [field: SerializeField] public StatType statType { get; set; }
     public SkillStatType skillStatType { get; set; }
 
-    public float Value { get; set; }
+    [field: SerializeField] public float Value { get; set; }
     public uint TargetDataId { get; set; }
 }
 
