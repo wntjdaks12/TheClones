@@ -13,6 +13,8 @@ public class CloneSettingPopup : Popup
     [SerializeField] private PoolingScrollview poolingScrollview;
     [SerializeField] private GameObject Content1, Content2;
 
+    private ClonInfo cloneInfo;
+
     public override void Init()
     {
         OnShow();
@@ -21,26 +23,30 @@ public class CloneSettingPopup : Popup
         ExitBtn.onClick.AddListener(OnHide);
 
         RuneBtn.onClick.RemoveAllListeners();
-        RuneBtn.onClick.AddListener(() => ReturnPopup<RunePopup>().Init());
+        RuneBtn.onClick.AddListener(() => ReturnPopup<RunePopup>().Init(cloneInfo));
 
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 
         // 풀링 스크롤 뷰 초기화 및 아이템 클릭 콜백 메소드 추가
-        poolingScrollview.Init(cloneInfos.Count, (index) => 
-        { 
+        poolingScrollview.Init(cloneInfos.Count, (index) =>
+        {
+            cloneInfo = cloneInfos[index];
+
             DetailContentsInit(cloneInfos, index);
 
-            statContents.Init(cloneInfos[index].clonId);
+            statContents.Init(cloneInfo.clonId);
         });
 
         if (cloneInfos.Count > 0)
         {
+            cloneInfo = cloneInfos[0];
+
             Content1.SetActive(true);
             Content2.SetActive(false);
 
             DetailContentsInit(cloneInfos, 0); // 팝업 초기화 시 첫번째 클론으로 초기화
 
-            statContents.Init(cloneInfos[0].clonId); // 스텟 컨텐츠 초기화
+            statContents.Init(cloneInfo.clonId); // 스텟 컨텐츠 초기화
         }
         else
         {
