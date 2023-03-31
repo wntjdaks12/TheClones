@@ -5,12 +5,12 @@ using System;
 
 public class HttpItem : MonoBehaviour
 {
-    public void GetRequestAsync(Stat.StatType statType, int id, Action callback = null)
+    public void GetRequestAsync(ClonInfo cloneInfo, Stat.StatType statType, uint id, Action callback = null)
     {
-        StartCoroutine(GetRequest(statType, id, callback));
+        StartCoroutine(GetRequest(cloneInfo, statType, id, callback));
     }
 
-    private IEnumerator GetRequest(Stat.StatType statType, int id, Action callback)
+    private IEnumerator GetRequest(ClonInfo cloneInfo, Stat.StatType statType, uint id, Action callback)
     {
         var playerManager = GameManager.Instance.GetManager<PlayerManager>();
 
@@ -22,7 +22,7 @@ public class HttpItem : MonoBehaviour
 
             if (itemInfo.count == 0) playerManager.PlayerInfo.OnRemove(itemInfo);
 
-            playerManager.PlayerInfo.runeInfo.SetStat(statType, 1);
+            playerManager.PlayerInfo.GetRuneInfo(cloneInfo.clonId).SetStat(statType, 1);
 
             CFirebase.WriteData(playerManager.PlayerInfo.playerId, playerManager.PlayerInfo);
 
