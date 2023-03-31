@@ -113,6 +113,7 @@ public class CharacterAI : ActorAI
                     if (entity is ISpell)
                     {
                         var spell = entity as ISpell;
+                        spell.Caster = Entity;
                         spell.Subject = entity;
 
                         var character = Entity as Character;
