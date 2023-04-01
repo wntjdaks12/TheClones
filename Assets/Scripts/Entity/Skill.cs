@@ -17,7 +17,7 @@ public class Skill : Entity, IAbility
         {
             var attackPower = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.GetStatInfo(Caster.Id).statDatas.GetStat(Stat.StatType.AttackPower);
             var damage = Ability.OnReturnValue(this, Stat.SkillStatType.Damage);
-
+            // ·éµµ Ãß°¡
             var totalDamage = attackPower + damage;
 
             return totalDamage;
