@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3722268575
+CRC: 3071432544
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 25e39b6af45e534853f6c5d890569dbf
+    Hash: e700a7a9fea04aa22ab735e0b71ee6cb
   TypeTreeHash:
     serializedVersion: 2
     Hash: c21d61fe394c58399df3c6fb5c7c99b3
@@ -27,6 +27,7 @@ Assets:
 - Assets/AssetBundles/Textures/Slots/Slot1.png
 - Assets/AssetBundles/Textures/Icons/Skills/30001.jpg
 - Assets/AssetBundles/Textures/Icons/Clons/90002.jpg
+- Assets/AssetBundles/Textures/Icons/Goods/200.png
 - Assets/AssetBundles/Textures/Icons/Stats/108.jpg
 - Assets/AssetBundles/Textures/UI/SkillCont/SkillCont.png
 - Assets/AssetBundles/Textures/Icons/Stats/106.jpg

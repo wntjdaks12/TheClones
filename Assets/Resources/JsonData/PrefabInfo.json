@@ -1,5 +1,10 @@
 [
     {
+        "id":"200",
+        "prefabId":"120100",
+        "path":"Prefabs/Goods"
+    },
+    {
         "id":"111101",
         "prefabId":"111101",
         "path":"Prefabs/Heroes"

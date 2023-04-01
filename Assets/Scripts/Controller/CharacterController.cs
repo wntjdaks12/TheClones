@@ -55,21 +55,33 @@ public class CharacterController : GameController
 
         if (character is Monster)
         {
-            var a = App.GameModel.PresetDataModel.ReturnData<DropItemData>(nameof(DropItemData), id);
+            var dropItemData = App.GameModel.PresetDataModel.ReturnData<DropItemData>(nameof(DropItemData), id);
 
             var dropItemIds = new List<uint>();
 
-            for (int i = 0; i < a.DropItemInfos.Count; i++)
+            dropItemData.DropItemInfos.ForEach(x =>
             {
-                var probability = a.DropItemInfos[i].dropItemTypes.Where(x => x.dropItemInfoType == DropItemType.DropItemInfoType.Probability).Select(x => x.Value).Sum();
+                var probability = x.dropItemTypes.Where(x => x.dropItemInfoType == DropItemType.DropItemInfoType.Probability).Select(x => x.Value).Sum();
 
                 var randVal = UnityEngine.Random.Range(0, 101);
 
                 if (randVal <= probability)
                 {
-                    dropItemIds.Add(a.DropItemInfos[i].ItemId);
+                    dropItemIds.Add(x.ItemId);
                 }
-            }
+            });
+
+            dropItemData.DropGoodsInfos.ForEach(x =>
+            {
+                var probability = x.dropItemTypes.Where(x => x.dropItemInfoType == DropItemType.DropItemInfoType.Probability).Select(x => x.Value).Sum();
+
+                var randVal = UnityEngine.Random.Range(0, 101);
+
+                if (randVal <= probability)
+                {
+                    dropItemIds.Add(x.ItemId);
+                }
+            });
 
             character.actorDeath += (actor) =>
             {
