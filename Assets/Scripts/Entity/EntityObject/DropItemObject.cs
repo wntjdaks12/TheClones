@@ -19,6 +19,8 @@ public class DropItemObject : EntityObject
 
     private Raycaster raycaster;
 
+    private GameApplication app;
+
     private void Awake()
     {
         raycaster = new Raycaster();
@@ -58,6 +60,8 @@ public class DropItemObject : EntityObject
                             {
                                 var dropItem = Entity as DropItem;
                                 dropItem.Pickup();
+                                Debug.Log(app);
+                                app?.GameController.GetController<ParticleController>().Spawn(nameof(Particle), 60003, transform.position);
 
                                 GameManager.Instance.HTTPController.GetController<HTTPDropItem>().GetRequestAsync();
                             }
@@ -67,8 +71,10 @@ public class DropItemObject : EntityObject
             });
     }
 
-    public void Init(Data data)
+    public void Init(Data data, object app)
     {
+        if (app is GameApplication) this.app = app as GameApplication;
+
         runningTime = 0;
 
         if (data is Entity) base.Init(data as Entity);

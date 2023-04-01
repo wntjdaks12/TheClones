@@ -65,6 +65,11 @@
         "path":"Prefabs/Particles"
     },
     {
+        "id":"60003",
+        "prefabId":"60003",
+        "path":"Prefabs/Particles"
+    },
+    {
         "id":"30003",
         "prefabId":"30003",
         "path":"Prefabs/Skills"
