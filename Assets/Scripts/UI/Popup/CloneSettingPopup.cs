@@ -12,6 +12,7 @@ public class CloneSettingPopup : Popup
     [SerializeField] private StatContents statContents;
     [SerializeField] private PoolingScrollview poolingScrollview;
     [SerializeField] private GameObject Content1, Content2;
+    [SerializeField] private List<GoodsSlot> goodsSlots;
 
     private ClonInfo cloneInfo;
 
@@ -53,6 +54,8 @@ public class CloneSettingPopup : Popup
             Content1.SetActive(false);
             Content2.SetActive(true);
         }
+
+        goodsSlots.ForEach(x => x.Init());
     }
 
     /// <summary>

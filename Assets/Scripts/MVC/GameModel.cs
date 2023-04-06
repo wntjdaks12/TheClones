@@ -73,5 +73,7 @@ public class GameModel : Element
         PresetDataModel.LoadData<DropItem>(nameof(DropItem), "JsonData/DropItem");
 
         PresetDataModel.LoadData<Name>(nameof(Name), "JsonData/Name");
+
+        PresetDataModel.LoadData<Goods>(nameof(Goods), "JsonData/Goods");
     }
 }

@@ -1,5 +1,9 @@
 ﻿[
     {
+        "id":200,
+        "Description":"거래할 때 쓰입니다. "
+    },
+    {
         "id":30001,
         "Description":"라이트닝<br><br> 하늘에서 번개가 떨어져 <color=red>?0</color>피해를 입힙니다."
     },

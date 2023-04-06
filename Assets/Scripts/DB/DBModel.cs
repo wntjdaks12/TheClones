@@ -17,6 +17,8 @@ public class PlayerInfo
     [HideInInspector]
     public ReactiveCollection<ItemInfo> itemInfosRP = new ReactiveCollection<ItemInfo>();
 
+    public List<GoodsInfo> goodsInfos = new List<GoodsInfo>();
+
     public List<StatData> runeInfos = new List<StatData>();
 
     public List<StatInfo> statInfos = new List<StatInfo>();
@@ -46,6 +48,39 @@ public class PlayerInfo
         return itemInfos.Where(x => x.itemId == id).FirstOrDefault();
     }
 
+    public void SetDropItem(uint id, int value)
+    {
+        if (200 <= id && id <= 250)
+        {
+            SetGoods(id, value);
+        }
+        else
+        {
+            SetItem(id, value);
+        }
+    }
+
+    public void SetItem(uint id, int value)
+    {
+        if (itemInfos.Any(x => x.itemId == id))
+            itemInfos.Find(x => x.itemId == id).count += value;
+        else
+            itemInfos.Add(new ItemInfo() {itemId = id, count = value});
+    }
+
+    public void SetGoods(uint id, int value)
+    {
+        if (goodsInfos.Any(x => x.id == id))
+            goodsInfos.Find(x => x.id == id).count += value;
+        else
+            goodsInfos.Add(new GoodsInfo() { id = id, count = value });
+    }
+
+    public GoodsInfo GetGoods(uint id)
+    {
+        return goodsInfos.Where(x => x.id == id).FirstOrDefault();
+    }
+
     public void OnRemove(ItemInfo itemInfo)
     {
         itemInfos.Remove(itemInfo);
@@ -70,6 +105,13 @@ public class ClonInfo
 public class ItemInfo
 {
     public uint itemId;
+    public int count;
+}
+
+[Serializable]
+public class GoodsInfo
+{
+    public uint id;
     public int count;
 }
 
