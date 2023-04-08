@@ -17,7 +17,7 @@ public class StaticEntityController : GameController
     {
         var staticEntity = dataController.AddData(tableId, id) as StaticEntity;
 
-        staticEntity.Init(entityObject.transform, entityObject.GetComponent<Collider>(), entityObject.GetComponent<MeshRenderer>());
+        staticEntity.Init(entityObject.transform, entityObject.GetComponent<Collider>());
         entityObject.Init(staticEntity);
 
         runtimeDataModel.AddData($"{tableId}Object", staticEntity.InstanceId, entityObject);

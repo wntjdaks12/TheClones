@@ -6,7 +6,7 @@ public class Ground : EntityObject, IHuntingPoint
 {
     private void Start()
     {
-        GameObject.FindObjectOfType<GameApplication>().GameController.GetComponent<StaticEntityController>().Spawn("StaticEntity", 80001, this);
+        GameObject.FindObjectOfType<GameApplication>().GameController.GetComponent<StaticEntityController>().Spawn("StaticEntity", 80002, this);
     }
 
     public void OnPoint()

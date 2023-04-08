@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 //씬에 생성되는 개체
 public class Entity : Data, ISpell
 {
@@ -14,8 +15,8 @@ public class Entity : Data, ISpell
     public Transform Transform { get; private set; }
     public Collider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
-    public MeshRenderer MeshRenderer { get; private set; }
-    public Material[] originalMaterials { get; private set; }
+    public List<MeshRenderer> MeshRenderer { get; private set; }
+    public Dictionary<MeshRenderer, Material[]> originalMaterials;
 
     public Entity Caster { get; set; }
     public Entity Subject { get; set; }
@@ -24,30 +25,47 @@ public class Entity : Data, ISpell
     {
         Transform = transform;
         Collider = collider;
+        MeshRenderer = new List<MeshRenderer>();
+        ChangeLayersRecursively(transform);
+        if (originalMaterials == null)
+        {
+            originalMaterials = new Dictionary<MeshRenderer, Material[]>();
+
+            for (int i = 0; i < MeshRenderer.Count; i++)
+            {
+                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].sharedMaterials);
+            }
+        }
     }
 
     public virtual void Init(Transform transform, Collider collider, Rigidbody rigidbody)
     {
         Transform = transform;
         Collider = collider;
+        MeshRenderer = new List<MeshRenderer>();
+        ChangeLayersRecursively(transform);
+        if (originalMaterials == null)
+        {
+            originalMaterials = new Dictionary<MeshRenderer, Material[]>();
+
+            for (int i = 0; i < MeshRenderer.Count; i++)
+            {
+                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].sharedMaterials);
+            }
+        }
         Rigidbody = rigidbody;
     }
 
-    public virtual void Init(Transform transform, Collider collider, MeshRenderer meshRenderer)
+    public void ChangeLayersRecursively(Transform _transform)
     {
-        Transform = transform;
-        Collider = collider;
-        MeshRenderer = meshRenderer;
-        originalMaterials = originalMaterials ?? meshRenderer?.sharedMaterials;
-    }
+        var meshRenderer = _transform.GetComponent<MeshRenderer>();
 
-    public virtual void Init(Transform transform, Collider collider, Rigidbody rigidbody, MeshRenderer meshRenderer)
-    {
-        Transform = transform;
-        Collider = collider;
-        MeshRenderer = meshRenderer;
-        Rigidbody = rigidbody;
-        originalMaterials = originalMaterials ?? meshRenderer?.materials;
+        if (meshRenderer != null) MeshRenderer.Add(meshRenderer);
+
+        foreach (Transform child in _transform)
+        {
+            ChangeLayersRecursively(child);
+        }
     }
 
     public IEnumerator StartLifeTime()
@@ -57,7 +75,7 @@ public class Entity : Data, ISpell
         OnRemoveData();
     }
 
-    public IEnumerator BlendMaterialAsync(MeshRenderer meshRenderer, float blendingDelay, float blendingTime, Material[] materials)
+    public IEnumerator BlendMaterialAsync(List<MeshRenderer> meshRenderer, float blendingDelay, float blendingTime, Material[] materials)
     {
         yield return new WaitForSeconds(blendingDelay);
 
@@ -68,13 +86,13 @@ public class Entity : Data, ISpell
         BlendRemoveMaterial(meshRenderer, materials);
     }
 
-    public void BlendAddMaterial(MeshRenderer meshRenderer, Material[] materials)
+    public void BlendAddMaterial(List<MeshRenderer> meshRenderer, Material[] materials)
     {
-        meshRenderer.AddMaterial(materials);
+        meshRenderer.ForEach(x => x.AddMaterial(materials));
     }
 
-    public void BlendRemoveMaterial(MeshRenderer meshRenderer, Material[] materials)
+    public void BlendRemoveMaterial(List<MeshRenderer> meshRenderer, Material[] materials)
     {
-        meshRenderer.RemoveMaterial(materials);
+        meshRenderer.ForEach(x => x.RemoveMaterial(materials));
     }
 }

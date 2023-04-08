@@ -50,7 +50,7 @@ public class CharacterController : GameController
 
         character.skillId = skillId;
 
-        character.Init(characterObject.transform, characterObject.GetComponent<Collider>(), characterObject.GetComponent<MeshRenderer>());
+        character.Init(characterObject.transform, characterObject.GetComponent<Collider>());
         characterObject.Init(character);
 
         if (character is Monster)

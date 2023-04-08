@@ -83,6 +83,6 @@ public class DropItemObject : EntityObject
 
         var texture = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Texture>(data.Id.ToString());
 
-        Entity.originalMaterials[0].SetTexture("_MainTex", texture);
+        Entity.originalMaterials[meshRenderer][0].SetTexture("_MainTex", texture);
     }
 }

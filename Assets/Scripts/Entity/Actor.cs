@@ -38,9 +38,9 @@ public class Actor : Entity, IAbility
         }
     }
 
-    public override void Init(Transform transform, Collider collider, MeshRenderer meshRenderer)
+    public override void Init(Transform transform, Collider collider)
     {
-        base.Init(transform, collider, meshRenderer);
+        base.Init(transform, collider);
 
         Subject = this;
 

@@ -28,7 +28,7 @@ public class DropItemController : GameController
 
         dropItem.Caster = caster as Entity;
 
-        dropItem.Init(dropItemObject.transform, dropItemObject.GetComponent<Collider>(), dropItemObject.GetComponent<Rigidbody>(), dropItemObject.MeshRenderer);
+        dropItem.Init(dropItemObject.transform, dropItemObject.GetComponent<Collider>(), dropItemObject.GetComponent<Rigidbody>());
         dropItemObject.Init(dropItem, App);
 
         runtimeDataModel.AddData($"{tableId}Object", dropItem.InstanceId, dropItemObject);

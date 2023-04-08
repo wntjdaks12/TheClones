@@ -75,7 +75,7 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
     private void Generate()
     {
         var hits = raycaster.ReturnScreenToWorldHits<IHuntingPoint>();
-
+        Debug.Log(hits.Length);
         if (hits.Length > 0)
         {
             var tempEntityCont = App.GameController.GetComponent<ParticleController>();
