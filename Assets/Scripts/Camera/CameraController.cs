@@ -15,9 +15,9 @@ public class CameraController : MonoBehaviour
     {
      //   Drag();
 
-        Zoom();
+      //  Zoom();
 
-        MoveHuntingPoint();
+        //MoveHuntingPoint();
     }
 
    /* // 카메라를 드래그 합니다.

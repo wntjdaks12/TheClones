@@ -7,6 +7,7 @@ public class CloneSettingPopup : Popup
 {
     [Header("¹öÆ°"), SerializeField] private Button ExitBtn;
     [SerializeField] private Button RuneBtn;
+    [SerializeField] private Button BattleBtn;
 
     [Header("ÄÁÅÙÃ÷"), SerializeField] private CloneSettingDetailContents detailContents;
     [SerializeField] private StatContents statContents;
@@ -15,6 +16,8 @@ public class CloneSettingPopup : Popup
     [SerializeField] private List<GoodsSlot> goodsSlots;
 
     private ClonInfo cloneInfo;
+
+    private Raycaster raycaster = new Raycaster();
 
     public override void Init()
     {
@@ -25,6 +28,17 @@ public class CloneSettingPopup : Popup
 
         RuneBtn.onClick.RemoveAllListeners();
         RuneBtn.onClick.AddListener(() => ReturnPopup<RunePopup>().Init(cloneInfo));
+
+        BattleBtn.onClick.RemoveAllListeners();
+        BattleBtn.onClick.AddListener(() =>
+        {
+            var tempEntityCont = App.GameController.GetComponent<ParticleController>();
+            var entityCont = App.GameController.GetComponent<CharacterController>();
+            tempEntityCont.Spawn("Particle", 60002, raycaster.GetRaycastHit().point);
+            entityCont.Spawn("Clon", cloneInfo.clonId, raycaster.GetRaycastHit().point, cloneInfo.skillId);
+
+            OnHide();
+        });
 
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 

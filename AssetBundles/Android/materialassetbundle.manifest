@@ -1,0 +1,39 @@
+ManifestFileVersion: 0
+CRC: 3045119106
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9099a99c020f55be720316d1c2acab89
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f9f3d136959ac0e7043e721e899342fb
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/Materials/Lit.mat
+- Assets/AssetBundles/Materials/VFX/SpaceRefraction_Particle.mat
+- Assets/AssetBundles/Materials/VFX/SpaceRefraction.mat
+- Assets/AssetBundles/Materials/VFX/Skills/30004/Heal.mat
+- Assets/AssetBundles/Materials/VFX/60001/Ring.mat
+- Assets/AssetBundles/Materials/Skills/30002/Skill_30002_RimLight.mat
+- Assets/AssetBundles/Materials/VFX/RimLight/RimLight.mat
+- Assets/AssetBundles/Materials/VFX/60002/Circle.mat
+- Assets/AssetBundles/Materials/120000.mat
+- Assets/AssetBundles/Materials/VFX/Skills/30004/Light.mat
+- Assets/AssetBundles/Materials/Particles/M_RaindowBlood_Blood.mat
+- Assets/AssetBundles/Materials/VFX/Skills/30001/30001_Hit.mat
+- Assets/AssetBundles/Materials/VFX/Cloud.mat
+- Assets/AssetBundles/Materials/VFX/SelectedObject/SelectedObject.mat
+- Assets/AssetBundles/Materials/VFX/60002/Ring.mat
+- Assets/AssetBundles/Materials/VFX/Range/Range.mat
+- Assets/AssetBundles/Materials/VFX/Skills/30001/30001_Lightning.mat
+- Assets/AssetBundles/Materials/SkyBox/SkyBoxUnName.mat
+Dependencies:
+- C:/Users/workstation/TheClones/AssetBundles/Android/textureassetbundle
