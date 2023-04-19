@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5362069917491043524
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SelectedObject
+  m_Shader: {fileID: -6465566751694194690, guid: 6c3c026b5ec8f45408887b24fcd3ffb3, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_8cdeb8789e094729ab60cd7eea52c8af: 1.89
+    - Vector1_ba2e3e5a6d2246b197447eb04834a70a: 0.3
+    - Vector1_bac6bbb7911341a0a95b340768774e1b: 2
+    - Vector1_c1bb8b2ca5b84670b70376b914c59b50: -0.32
+    - Vector1_e658178c1b7a4f2ea667bbbd7f868d54: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - Color_2eb2c82d0fa64789b287c17b5e4425b8: {r: 0.40784314, g: 0.5019608, b: 0.7647059, a: 0}
+    - Color_3ccaab5c8464495da77720a388837ebc: {r: 1, g: 0.6766884, b: 0, a: 0}
+    - Color_40e1da832a634d7b888b9f7e8ae18536: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &9134649045613958701
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
