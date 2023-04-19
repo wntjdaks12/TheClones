@@ -61,4 +61,11 @@ public class Raycaster
 
         return ReturnRaycastResultList<T>(mouseWorldPos + vec2 * dist, vec1, 100, new Color(1, 1, 1), true);
     }
+
+    public RaycastHit GetRaycastHit()
+    {
+        RaycastHit[] hitInfos = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward * 1000);
+
+        return hitInfos[0];
+    }
 }
