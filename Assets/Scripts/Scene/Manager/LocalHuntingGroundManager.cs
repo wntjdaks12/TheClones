@@ -16,11 +16,11 @@ public class LocalHuntingGroundManager : GameView
 
     public void Init()
     {
-        var presetDataModel = App.GameModel.PresetDataModel;
+        var mapInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.mapInfo;
 
-        var map = presetDataModel.ReturnDatas<Map>()
-            .Where(x => SceneManager.GetActiveScene().name == x.SceneId.ToString()).FirstOrDefault();
+        var map = App.GameModel.PresetDataModel.ReturnDatas<Map>()
+            .Where(x => mapInfo.mapId == x.SceneId).FirstOrDefault();
 
-        nameTMP.text = map.Name;
+        nameTMP.text = map.Stage[mapInfo.stageIndex].Name;
     }
 }

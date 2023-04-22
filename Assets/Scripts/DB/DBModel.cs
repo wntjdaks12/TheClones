@@ -23,6 +23,8 @@ public class PlayerInfo
 
     public List<StatInfo> statInfos = new List<StatInfo>();
 
+    public MapInfo mapInfo = new MapInfo();
+
     public StatData GetRuneInfo(uint id)
     {
         return runeInfos.Where(x => x.Id == id).FirstOrDefault();
@@ -122,4 +124,11 @@ public class AssetBundleInfo
     public AssetBundle prefab;
     public AssetBundle material;
     public AssetBundle font;
+}
+
+[Serializable]
+public class MapInfo
+{
+    public uint mapId;
+    public int stageIndex;
 }

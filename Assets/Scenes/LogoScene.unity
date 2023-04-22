@@ -962,6 +962,7 @@ MonoBehaviour:
     playerId: 
     cloneInofs: []
     itemInfos: []
+    goodsInfos: []
     runeInfos: []
     statInfos: []
 --- !u!114 &1936442794
