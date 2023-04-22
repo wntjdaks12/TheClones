@@ -8,16 +8,20 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private HuntingPointSystem huntingPointSystem;
 
+    [SerializeField] private new Camera camera;
+
     // 줌 거리 값
     private float distance;
 
     private void Start()
     {
-     //   Drag();
+        //   Drag();
 
-      //  Zoom();
+        //  Zoom();
 
         //MoveHuntingPoint();
+
+        Drag();
     }
 
    /* // 카메라를 드래그 합니다.
@@ -59,5 +63,21 @@ public class CameraController : MonoBehaviour
             .TakeUntil(this.UpdateAsObservable().Where(_ => huntingPointSystem.IsStopped))
             .RepeatUntilDestroy(this)
             .Subscribe(_ => huntingPointSystem.Move());
+    }
+
+    private void Drag()
+    {
+        var downStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
+        var upStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
+        var dragStream = camera.UpdateAsObservable()
+            .SkipUntil(downStream)
+            .TakeUntil(upStream)
+            .Select(_ => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")))
+            .RepeatUntilDestroy(camera);
+
+        dragStream.Subscribe(hitInfo =>
+        {
+            camera.transform.position -= new Vector3(hitInfo.x, 0, hitInfo.y);
+        });
     }
 }
