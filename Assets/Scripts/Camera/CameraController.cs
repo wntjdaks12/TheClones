@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CameraController : MonoBehaviour
     {
         // 거리 값을 체크합니다.
         this.UpdateAsObservable()
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(pos => distance = Input.GetAxis("Mouse ScrollWheel") * -1 * 10);
 
         // 거리 값이 변할 경우 줌 인 아웃을 합니다.
@@ -51,7 +53,7 @@ public class CameraController : MonoBehaviour
     // 카메라를 드래그합니다.
     private void Drag()
     {
-        var downStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
+        var downStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject());
         var upStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
         var dragStream = camera.UpdateAsObservable()
             .SkipUntil(downStream)
