@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private HuntingPointSystem huntingPointSystem;
-
     [SerializeField] private new Camera camera;
 
     // ÁÜ °Å¸® °ª

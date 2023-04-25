@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ground : EntityObject, IHuntingPoint
+public class Ground : EntityObject
 {
     private void Start()
     {

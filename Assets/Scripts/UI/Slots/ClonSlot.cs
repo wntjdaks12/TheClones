@@ -41,7 +41,7 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
     }
 
     public void OnPointerDown(PointerEventData eventData)
-    {
+    {    /*
         var huntingPoints = App.GameModel.RuntimeDataModel.ReturnDatas<IHuntingPoint>();
 
         foreach (IHuntingPoint huntingPoint in huntingPoints)
@@ -50,11 +50,11 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
         }
 
         transform.parent = canvasParent;
-        transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition;*/
     }
 
     public void OnPointerUp(PointerEventData eventData)
-    {
+    {/*
         var huntingPoints = App.GameModel.RuntimeDataModel.ReturnDatas<IHuntingPoint>();
 
         foreach (IHuntingPoint huntingPoint in huntingPoints)
@@ -64,14 +64,14 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
 
         transform.parent = originalParent;
 
-        Generate();
+        Generate();*/
     }
 
-    public void OnDrag(PointerEventData eventData)
+        public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position;
     }
-
+    /*
     private void Generate()
     {
         var hits = raycaster.ReturnScreenToWorldHits<IHuntingPoint>();
@@ -83,5 +83,5 @@ public class ClonSlot : GameView, IPointerDownHandler, IPointerUpHandler, IDragH
             tempEntityCont.Spawn("Particle", 60002, hits[0].point);
             entityCont.Spawn("Clon", CloneInfo.clonId, hits[0].point, CloneInfo.skillId);
         }
-    }
+    }*/
 }
