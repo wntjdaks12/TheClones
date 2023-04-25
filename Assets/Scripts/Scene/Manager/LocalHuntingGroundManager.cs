@@ -23,4 +23,13 @@ public class LocalHuntingGroundManager : GameView
 
         nameTMP.text = map.Stage[mapInfo.stageIndex].Name;
     }
+
+    public void Update()
+    {/*
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red,  10000);
+
+        var Ground = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, 10000).Where(x => x.collider.GetComponent<Ground>()).Select(x => x.collider.GetComponent<Ground>()).ToList();
+
+        nameTMP.text = */
+    }
 }
