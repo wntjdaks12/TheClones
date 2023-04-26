@@ -20,7 +20,10 @@ public class MapPointSlot : GameView
         var map = App.GameModel.PresetDataModel.ReturnDatas<Map>()
             .Where(x => GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.mapInfo.mapId == x.SceneId).FirstOrDefault();
 
-        nameLeghtTMP.text = map.Stage[stageIndex].Name;
+        var stage = App.GameModel.PresetDataModel.ReturnDatas<Stage>()
+            .Where(x => x.Id == map.StageIds[stageIndex]).FirstOrDefault();
+
+        nameLeghtTMP.text = stage.name;
         nameTMP.text = nameLeghtTMP.text;
 
         rectTransform = transform.GetComponent<RectTransform>();

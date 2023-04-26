@@ -75,5 +75,9 @@ public class GameModel : Element
         PresetDataModel.LoadData<Name>(nameof(Name), "JsonData/Name");
 
         PresetDataModel.LoadData<Goods>(nameof(Goods), "JsonData/Goods");
+
+        PresetDataModel.LoadData<Stage>(nameof(Stage), "JsonData/Stage");
+
+        PresetDataModel.LoadData<Ground>(nameof(Ground), "JsonData/Ground");
     }
 }

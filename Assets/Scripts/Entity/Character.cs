@@ -11,7 +11,7 @@ public class Character : Actor, ISight
     public override void Init(Transform transform, Collider collider)
     {
         base.Init(transform, collider);
-        Debug.Log("asdda ");
+
         Caster = this;
         //Subject = new Subject(this);
     }

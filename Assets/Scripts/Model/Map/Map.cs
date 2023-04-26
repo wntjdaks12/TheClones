@@ -8,10 +8,5 @@ public class Map : Data
 
     public uint SceneId { get; set; }
 
-    public List<Stage> Stage { get; set; }
-}
-
-public class Stage 
-{
-    public string Name { get; set; }
+    public List<uint> StageIds { get; set; }
 }
