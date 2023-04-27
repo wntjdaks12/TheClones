@@ -9,6 +9,8 @@ public class LocalHuntingGroundManager : GameView
 {
     [SerializeField] private TextMeshProUGUI nameTMP;
 
+    private Stage stage;
+
     private void Start()
     {
         Init();
@@ -24,7 +26,10 @@ public class LocalHuntingGroundManager : GameView
         var stage = App.GameModel.PresetDataModel.ReturnDatas<Stage>()
             .Where(x => x.Id == map.StageIds[mapInfo.stageIndex]).FirstOrDefault();
 
-        //nameTMP.text = stage.name;
+        this.stage = stage;
+
+        StartCoroutine(nameTMP.TypingAsync(stage.name, 0.05f));
+        StartCoroutine(nameTMP.AlphaAsync(0.01f));
     }
 
     public void Update()
@@ -35,11 +40,16 @@ public class LocalHuntingGroundManager : GameView
 
         if (ground != null)
         {
-            Debug.Log("asd");
             var stage = App.GameModel.PresetDataModel.ReturnDatas<Stage>()
                 .Where(x => x.Id == ground.stageId).FirstOrDefault();
+            
+            if (this.stage != stage)
+            {
+                this.stage = stage;
 
-            nameTMP.text = stage.name;
+                StartCoroutine(nameTMP.TypingAsync(stage.name, 0.05f));
+                StartCoroutine(nameTMP.AlphaAsync(0.01f));
+            }
         }
     }
 }
