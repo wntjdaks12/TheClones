@@ -11,6 +11,8 @@ public class LocalHuntingGroundManager : GameView
 
     private Stage stage;
 
+    private IEnumerator typingAsync, alphaAsync;
+
     private void Start()
     {
         Init();
@@ -28,8 +30,7 @@ public class LocalHuntingGroundManager : GameView
 
         this.stage = stage;
 
-        StartCoroutine(nameTMP.TypingAsync(stage.name, 0.05f));
-        StartCoroutine(nameTMP.AlphaAsync(0.01f));
+        setFont();
     }
 
     public void Update()
@@ -47,9 +48,20 @@ public class LocalHuntingGroundManager : GameView
             {
                 this.stage = stage;
 
-                StartCoroutine(nameTMP.TypingAsync(stage.name, 0.05f));
-                StartCoroutine(nameTMP.AlphaAsync(0.01f));
+                setFont();
             }
         }
+    }
+
+    private void setFont()
+    {
+        if (typingAsync != null) StopCoroutine(typingAsync);
+        if (alphaAsync != null) StopCoroutine(alphaAsync);
+
+        typingAsync = nameTMP.TypingAsync(stage.name, 0.05f);
+        alphaAsync = nameTMP.AlphaAsync(0.01f);
+
+        StartCoroutine(typingAsync);
+        StartCoroutine(alphaAsync);
     }
 }

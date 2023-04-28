@@ -16,7 +16,7 @@ public class StaticEntityController : GameController
     public void Spawn(string tableId, uint id, EntityObject entityObject)
     {
         var ground = dataController.AddData(tableId, id) as Ground;
-        Debug.Log(ground);
+
         ground.Init(entityObject.transform, entityObject.GetComponent<Collider>());
         entityObject.Init(ground);
 

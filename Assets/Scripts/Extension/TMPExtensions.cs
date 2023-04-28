@@ -7,7 +7,6 @@ using UniRx.Triggers;
 
 public static class TMPExtensions
 {
-
     /// <summary>
     /// 타이핑 효과 코루틴을 적용합니다.
     /// </summary>
