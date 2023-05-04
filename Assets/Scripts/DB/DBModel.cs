@@ -130,5 +130,5 @@ public class AssetBundleInfo
 public class MapInfo
 {
     public uint mapId;
-    public int stageIndex;
+    public uint stageId;
 }

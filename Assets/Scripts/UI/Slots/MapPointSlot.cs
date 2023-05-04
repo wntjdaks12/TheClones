@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MapPointSlot : GameView
 {
-    [SerializeField] private int stageIndex;
-    public int StageIndex { get => stageIndex; }
+    [SerializeField] private uint stageId;
+    public uint StageId { get => stageId; }
 
     public RectTransform rectTransform { get; private set; }
 
@@ -17,11 +17,8 @@ public class MapPointSlot : GameView
 
     public void Init()
     {
-        var map = App.GameModel.PresetDataModel.ReturnDatas<Map>()
-            .Where(x => GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.mapInfo.mapId == x.SceneId).FirstOrDefault();
-
         var stage = App.GameModel.PresetDataModel.ReturnDatas<Stage>()
-            .Where(x => x.Id == map.StageIds[stageIndex]).FirstOrDefault();
+            .Where(x => x.Id == stageId).FirstOrDefault();
 
         nameLeghtTMP.text = stage.name;
         nameTMP.text = nameLeghtTMP.text;

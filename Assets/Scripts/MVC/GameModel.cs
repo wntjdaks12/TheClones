@@ -79,5 +79,7 @@ public class GameModel : Element
         PresetDataModel.LoadData<Stage>(nameof(Stage), "JsonData/Stage");
 
         PresetDataModel.LoadData<Ground>(nameof(Ground), "JsonData/Ground");
+
+        PresetDataModel.LoadData<SpawnInfo>(nameof(SpawnInfo), "JsonData/SpawnInfo");
     }
 }
