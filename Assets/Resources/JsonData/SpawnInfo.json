@@ -1,0 +1,24 @@
+﻿[
+	{
+		"stageId":130001,
+		"monsterInfos":
+		[
+			{
+				"id	": 20001,
+				"maxNumberOfSpawn": 10,
+				"spawnSpeed":5
+			}
+		]
+	},
+	{
+		"stageId":130002,
+		"monsterInfos":
+		[
+			{
+				"id	": 20002,
+				"maxNumberOfSpawn": 10,
+				"spawnSpeed":5
+			}
+		]
+	},
+]
