@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SpawnInfo : Data
 {
-    public uint StageId { get; set; }
     public List<MonsterInfo> monsterInfos { get; set; }
-
-    public class MonsterInfo
-    {
-        public int MaxNumberOfSpawn { get; set; }
-        public float SpawnSpeed { get; set; }
-    }
+}
+public class MonsterInfo
+{
+    public uint Id { get; set; }
+    public int MaxNumberOfSpawn { get; set; }
+    public float SpawnSpeed { get; set; }
 }

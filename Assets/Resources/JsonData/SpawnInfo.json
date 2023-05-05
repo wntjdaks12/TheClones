@@ -1,6 +1,6 @@
 ﻿[
 	{
-		"stageId":130001,
+		"id":130001,
 		"monsterInfos":
 		[
 			{
@@ -11,14 +11,14 @@
 		]
 	},
 	{
-		"stageId":130002,
+		"id":130002,
 		"monsterInfos":
 		[
 			{
-				"id	": 20002,
+				"id	": 20001,
 				"maxNumberOfSpawn": 10,
 				"spawnSpeed":5
 			}
 		]
-	},
+	}
 ]
