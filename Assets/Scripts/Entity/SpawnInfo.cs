@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SpawnInfo : Data
 {
-    public List<MonsterInfo> monsterInfos { get; set; }
+    public List<SpawnObjectInfo> SpawnObjectInfos { get; set; }
 }
-public class MonsterInfo
+[SerializeField]
+public class SpawnObjectInfo
 {
     public uint Id { get; set; }
     public int MaxNumberOfSpawn { get; set; }
-    public float SpawnSpeed { get; set; }
+    public int CurNumberOfSpawn { get; set; }
 }

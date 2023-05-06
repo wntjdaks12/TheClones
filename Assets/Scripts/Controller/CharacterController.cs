@@ -5,11 +5,13 @@ using System;
 using System.Linq;
 
 
-public class CharacterController : GameController
+public class CharacterController : GameController, ISpawner
 {
     GameDataContainerModel presetDataModel;
     GameDataContainerModel runtimeDataModel;
     DataController dataController;
+
+    public List<Spawner> Spawners { get; set; } = new List<Spawner>();
 
     protected override void Awake()
     {
@@ -17,23 +19,7 @@ public class CharacterController : GameController
         presetDataModel = App.GameModel.PresetDataModel;
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
-    
-    // 몬스터 컨트롤러 따로 만듬
-    /*
-    public IEnumerator Start()
-    {
-        Spawn("Hero", 111101);
 
-        while (true)
-        {
-            Spawn("Monster", 111001);
-            Spawn("Monster", 111002);
-            yield return new WaitForSeconds(15);
-        }
-    }*/
-
-    // 생성 시 위치 값 추가
-    // 스킬 id임시로 추가
     public void Spawn(string tableId, uint id, Vector3 position, uint[] skillId = null)
     {
         var character = dataController.AddData(tableId,id) as Character;
@@ -43,7 +29,14 @@ public class CharacterController : GameController
         //var characterObject = PoolObjectContainer.CreatePoolableObject<CharacterObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
         var characterObject = PoolObjectContainer.CreatePoolableObject<CharacterObject>(prefabInfo.PrefabId.ToString());
 
-        character.OnDataRemove += RemoveEntity; 
+        var a = Spawners[Spawners.Count - 1].stageId;
+
+        character.OnDataRemove += (data) =>
+        {
+            RemoveEntity(data);
+
+            --Spawners.Where(x => x.stageId == a).Select(x => x.SpawnObjectInfo).FirstOrDefault().CurNumberOfSpawn;
+        };
         characterObject.gameObject.SetActive(true);
 
         if (character is IAbility) GetController<AbilityController>().AddStat(character, character.Id);
