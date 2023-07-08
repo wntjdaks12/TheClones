@@ -8,13 +8,14 @@ public class Character : Actor, ISight
 
     public uint[] skillId { get; set; }
 
-    public override void Init(Transform transform, Collider collider)
+    public override void Init(Transform transform, Collider collider, Rigidbody rigidbody)
     {
-        base.Init(transform, collider);
+        base.Init(transform, collider, rigidbody);
 
         Caster = this;
         //Subject = new Subject(this);
     }
+
     public Collider[] ReturnVisibleObjects(Transform transform)
     {
         if (VisibleLayerName == null)

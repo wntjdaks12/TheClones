@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DropItem : Entity
+public class DropItem : Actor
 {
     public void Pickup()
     {

@@ -6,8 +6,9 @@ public class HeadBar : Entity
 {
     public Transform HeadBarTransform { get; set; }
 
-    public void OnRemove(Actor actor)
+    public void OnRemove(IData data)
     {
+        Debug.Log("!!!!!!!!!!!!");
         OnRemoveData();
     }
 }

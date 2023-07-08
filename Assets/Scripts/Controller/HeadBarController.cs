@@ -27,6 +27,12 @@ public class HeadBarController : GameController
         headBarObject.gameObject.SetActive(true);
 
         var actor = caster as Actor;
+        actor.Transform.GetComponent<CharacterAI>().traceStopEvent += () =>
+            {
+                headBar.OnRemove(headBar);
+
+                headBar.OnDataRemove -= RemoveEntity;
+            }; 
 
         headBar.HeadBarTransform = actor.HeadBarTransform;
 
@@ -36,7 +42,7 @@ public class HeadBarController : GameController
         headBar.Init(headBarObject.transform, transform.GetComponent<Collider>());
         headBarObject.Init(headBar);
 
-        actor.actorDeath += headBar.OnRemove;
+        actor.OnDataRemove += headBar.OnRemove;
 
         runtimeDataModel.AddData($"{tableId}Object", headBar.InstanceId, headBarObject);
 

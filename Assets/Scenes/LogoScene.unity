@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 487114694}
   - component: {fileID: 487114693}
   - component: {fileID: 487114703}
+  - component: {fileID: 487114704}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -518,6 +519,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad8f156b05651504cad3e872017f0870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &487114704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487114691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bd2db8a54104e459a95166237ead2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &637030784
@@ -965,6 +978,9 @@ MonoBehaviour:
     goodsInfos: []
     runeInfos: []
     statInfos: []
+    mapInfo:
+      mapId: 0
+      stageId: 0
 --- !u!114 &1936442794
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -100,6 +100,7 @@ public class StatInfo
 public class ClonInfo
 {
     public uint clonId;
+    public uint netId;
     public uint[] skillId;
 }
 

@@ -22,7 +22,7 @@ public class CharacterController : GameController, ISpawner
 
     public void Spawn(string tableId, uint id, Vector3 position, uint[] skillId = null)
     {
-        var character = dataController.AddData(tableId,id) as Character;
+        var character = dataController.AddData(tableId, id) as Character;
 
         var prefabInfo = (EntityPrefabInfo)presetDataModel.ReturnData<EntityPrefabInfo>(nameof(EntityPrefabInfo), id).Clone();
 
@@ -35,15 +35,18 @@ public class CharacterController : GameController, ISpawner
         {
             RemoveEntity(data);
 
-            --Spawners.Where(x => x.stageId == a).Select(x => x.SpawnObjectInfo).FirstOrDefault().CurNumberOfSpawn;
+            if (character is Monster) // 나중에 분리
+                --Spawners.Where(x => x.stageId == a).Select(x => x.SpawnObjectInfo).FirstOrDefault().CurNumberOfSpawn;
         };
+
+
         characterObject.gameObject.SetActive(true);
 
         if (character is IAbility) GetController<AbilityController>().AddStat(character, character.Id);
 
         character.skillId = skillId;
 
-        character.Init(characterObject.transform, characterObject.GetComponent<Collider>());
+        character.Init(characterObject.transform, characterObject.GetComponent<Collider>(), characterObject.GetComponent<Rigidbody>());
         characterObject.Init(character);
 
         if (character is Monster)
@@ -87,6 +90,26 @@ public class CharacterController : GameController, ISpawner
                 }
             };
         }
+
+        character.actorHit += (actor, damage) =>
+        {
+            characterObject.OnActorHit();
+        };
+
+        character.actorDeath += (actor) =>
+        {
+            characterObject.OnActorDeath();
+        };
+
+        character.actorIdle += (actor) =>
+        {
+            characterObject.OnIdle();
+        };
+
+        character.actorMove += (actor) =>
+        {
+            characterObject.OnActorMove();
+        };
 
         runtimeDataModel.AddData($"{tableId}Object", character.InstanceId, characterObject);
 

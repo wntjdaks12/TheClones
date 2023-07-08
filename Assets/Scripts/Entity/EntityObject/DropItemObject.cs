@@ -5,8 +5,9 @@ using UniRx;
 using UniRx.Triggers;
 using System.Linq;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
-public class DropItemObject : EntityObject
+public class DropItemObject : ActorObject
 {
     [SerializeField] [Range(0f, 10f)] private float speed = 1f;
     [SerializeField] [Range(0f, 10f)] private float length = 1f;
@@ -60,8 +61,8 @@ public class DropItemObject : EntityObject
                             {
                                 var dropItem = Entity as DropItem;
                                 dropItem.Pickup();
-                                Debug.Log(app);
-                                app?.GameController.GetController<ParticleController>().Spawn(nameof(Particle), 60003, transform.position);
+
+                                app.GameController.GetController<ParticleController>().Spawn(nameof(Particle), 60003, transform.position);
 
                                 GameManager.Instance.HTTPController.GetController<HTTPDropItem>().GetRequestAsync();
                             }
@@ -69,6 +70,8 @@ public class DropItemObject : EntityObject
                     }
                 }
             });
+
+        transform.DOMove(new Vector3(transform.position.x + Random.Range(-1, 1), transform.position.y, transform.position.z + Random.Range(-1, 1)), 0.3f);
     }
 
     public void Init(Data data, object app)
@@ -84,5 +87,7 @@ public class DropItemObject : EntityObject
         var texture = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Texture>(data.Id.ToString());
 
         Entity.originalMaterials[meshRenderer][0].SetTexture("_MainTex", texture);
+
+        this.app.GameController.GetController<NameBarController>().Spawn("NameBar", 251, Entity.Transform.position, GameObject.Find("WorldCanvas").transform, Entity);
     }
 }

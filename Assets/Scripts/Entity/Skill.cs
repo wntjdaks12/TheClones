@@ -50,9 +50,11 @@ public class Skill : Entity, IAbility
 
             var damageOverTimeCount = 0;
 
-            while (damageOverTimeCount <= DamageOverTimeCount)
+            var pos = Subject.Transform.position;
+
+            while (damageOverTimeCount < DamageOverTimeCount)
             {
-                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, Subject.Transform.position, GameObject.Find("DamagePopupCanvas").transform, this);
+                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, pos, GameObject.Find("DamagePopupCanvas").transform, this);
 
                 if (actor.CurrentHp > 0)
                 {
@@ -62,6 +64,8 @@ public class Skill : Entity, IAbility
                 {
                     yield return null;
                 }
+
+                pos.y += 1;
 
                 damageOverTimeCount++;
 

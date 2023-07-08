@@ -7,13 +7,54 @@ public class ActorObject : EntityObject
     public Animator Animator { get => animator; }
     [SerializeField] private Animator animator;
 
-    public void OnActorHit(Actor actor, float damage)
+    public Transform NameBarTransform { get => nameBarTransform; }
+    [SerializeField] private Transform nameBarTransform;
+
+    private IActorState state;
+
+    public override void Init(Entity entity)
     {
-        Animator.SetTrigger("OnHit");
+        var actor = entity as Actor;
+
+        base.Init(entity);
+
+        Debug.Log(entity); Debug.Log(NameBarTransform);
+        actor.NameBarTransform = NameBarTransform;
+
+        setState(ActorIdleState.Instance);
     }
-    public void OnActorDeath(Actor actor)
+
+    public void OnIdle()
     {
-        Animator.SetBool("IsDead", true);
-        OnRemoveEntity();
+        state.OnIdle(this);
     }
-}
+
+    public void OnActorHit()
+    {
+        state.OnHit(this);
+    }
+
+    public void OnActorDeath()
+    {
+        state.OnDeath(this);
+
+        StartCoroutine(OnActorDeathAsync());
+    }
+
+    public void OnActorMove()
+    {
+        state.OnMove(this);
+    }
+
+    public void setState(IActorState state)
+    {
+        this.state = state;
+    }
+
+    public IEnumerator OnActorDeathAsync()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        Entity.OnRemoveData();
+    }
+}   

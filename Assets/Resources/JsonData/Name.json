@@ -36,11 +36,27 @@
         "languageKR":"이동 속도 감소율"
     },
     {
+        "id":200,
+        "languageKR":"골드 코인"
+    },
+    {
+        "id":20001,
+        "languageKR":"초록 롱코"
+    },
+    {
         "id":90001,
         "languageKR":"나투라"
     },
     {
         "id":90002,
         "languageKR":"제우스"
+    },
+    {
+        "id":120101,
+        "languageKR":"임시 아이템 A"
+    },
+    {
+        "id":120102,
+        "languageKR":"임시 아이템 B"
     }
 ]

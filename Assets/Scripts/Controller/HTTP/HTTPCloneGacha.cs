@@ -36,7 +36,7 @@ public class HTTPCloneGacha : MonoBehaviour
                     playerManager.PlayerInfo.cloneInfosRP.Add(clonInfo);
 
                     var statInfo = new StatInfo();
-                    statInfo.holdingPoint.Value = 10;
+                    statInfo.holdingPoint.Value = 100;
                     statInfo.statDatas.Id = clonInfo.clonId;
                     statInfo.statDatas.Stats = new List<Stat>();
 

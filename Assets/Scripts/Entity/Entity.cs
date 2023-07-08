@@ -33,7 +33,7 @@ public class Entity : Data, ISpell
 
             for (int i = 0; i < MeshRenderer.Count; i++)
             {
-                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].sharedMaterials);
+                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].materials);
             }
         }
     }
@@ -50,7 +50,7 @@ public class Entity : Data, ISpell
 
             for (int i = 0; i < MeshRenderer.Count; i++)
             {
-                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].sharedMaterials);
+                originalMaterials.Add(MeshRenderer[i], MeshRenderer[i].materials);
             }
         }
         Rigidbody = rigidbody;

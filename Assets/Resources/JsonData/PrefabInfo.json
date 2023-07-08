@@ -5,6 +5,11 @@
         "path":"Prefabs/Goods"
     },
     {
+        "id":"251",
+        "prefabId":"251",
+        "path":"Prefabs/NameBars"
+    },
+    {
         "id":"111101",
         "prefabId":"111101",
         "path":"Prefabs/Heroes"
