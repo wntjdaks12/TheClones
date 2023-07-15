@@ -18,7 +18,6 @@ public class ActorObject : EntityObject
 
         base.Init(entity);
 
-        Debug.Log(entity); Debug.Log(NameBarTransform);
         actor.NameBarTransform = NameBarTransform;
 
         setState(ActorIdleState.Instance);

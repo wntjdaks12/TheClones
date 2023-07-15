@@ -19,12 +19,18 @@ public class GoodsSlot : GameView
 
         IconImage.sprite = assetBundleManager.AssetBundleInfo.texture.LoadAsset<Sprite>(App.GameModel.PresetDataModel.ReturnData<ImageInfo>(nameof(ImageInfo), (uint)type).Icon);
 
-        var goodsInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.GetGoods((uint)type);
         var tooltip = App.GameModel.PresetDataModel.ReturnData<Tooltip>(nameof(Tooltip), (uint)type);
-
-        NumberTMP.text = goodsInfo ==  null ? "0" : goodsInfo.count.ToString();
 
         iconButton.onClick.RemoveAllListeners();
         iconButton.onClick.AddListener(() => UISystem.TooltipBox(tooltip.description, transform.root));
+
+        DataInit();
+    }
+
+    public void DataInit()
+    {
+        var goodsInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.GetGoods((uint)type);
+
+        NumberTMP.text = goodsInfo == null ? "0" : goodsInfo.count.ToString();
     }
 }

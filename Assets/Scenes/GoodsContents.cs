@@ -6,8 +6,13 @@ public class GoodsContents : MonoBehaviour
 {
     [SerializeField] private List<GoodsSlot> goodsSlots;
 
-    public void Start()
+    private void Start()
     {
         goodsSlots.ForEach(x => x.Init());
+    }
+
+    private void Update()
+    {
+        goodsSlots.ForEach(x => x.DataInit());
     }
 }
