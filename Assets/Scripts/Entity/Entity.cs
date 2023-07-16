@@ -19,7 +19,7 @@ public class Entity : Data, ISpell
     public Dictionary<MeshRenderer, Material[]> originalMaterials;
 
     public Entity Caster { get; set; }
-    public Entity Subject { get; set; }
+    public Entity[] Subjects { get; set; }
 
     public virtual void Init(Transform transform, Collider collider)
     {

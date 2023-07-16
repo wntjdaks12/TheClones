@@ -48,7 +48,7 @@ public class Actor : Entity, IAbility
     {
         base.Init(transform, collider, rigidbody);
 
-        Subject = this;
+        Subjects = new Entity[1] { this };
 
         CurrentHp = MaxHp;
     }

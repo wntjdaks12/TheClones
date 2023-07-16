@@ -50,7 +50,7 @@ public class Skill : Entity, IAbility
 
             var damageOverTimeCount = 0;
 
-            var pos = Subject.Transform.position;
+            var pos = Subjects[0].Transform.position;
 
             while (damageOverTimeCount < DamageOverTimeCount)
             {

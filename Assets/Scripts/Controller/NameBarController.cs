@@ -38,7 +38,7 @@ public class NameBarController : GameController
         nameBar.NameBarTransform = actor.NameBarTransform;
 
         nameBar.Caster = actor;
-        nameBar.Subject = actor;
+        nameBar.Subjects = new Entity[1] { actor };
 
         nameBar.Init(nameBarObject.transform, transform.GetComponent<Collider>());
         nameBarObject.Init(nameBar);

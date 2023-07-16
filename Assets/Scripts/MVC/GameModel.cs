@@ -42,7 +42,7 @@ public class GameModel : Element
         PresetDataModel.LoadData<Monster>(nameof(Monster), "JsonData/Monster");
         PresetDataModel.LoadData<Clon>(nameof(Clon), "JsonData/Clon");
 
-        PresetDataModel.LoadData<Skill>(nameof(Skill), "JsonData/Skill");
+        PresetDataModel.LoadData<DevSkill>(nameof(DevSkill), "JsonData/Skill");
 
         PresetDataModel.LoadData<ImageInfo>(nameof(ImageInfo), "JsonData/ImageInfo");
 

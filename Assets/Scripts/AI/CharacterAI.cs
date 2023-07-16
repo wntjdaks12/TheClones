@@ -209,10 +209,10 @@ public class CharacterAI : ActorAI
                     {
                         var spell = entity as ISpell;
                         spell.Caster = Entity;
-                        spell.Subject = entity;
+                        spell.Subjects[0] = entity;
 
                         var character = Entity as Character;
-                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId[0], spell.Subject.Transform.position, spell);
+                        App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], spell.Subjects[0].Transform.position, spell);
                     }
                 }
             }

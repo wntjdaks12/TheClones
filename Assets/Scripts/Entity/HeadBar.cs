@@ -8,7 +8,6 @@ public class HeadBar : Entity
 
     public void OnRemove(IData data)
     {
-        Debug.Log("!!!!!!!!!!!!");
         OnRemoveData();
     }
 }

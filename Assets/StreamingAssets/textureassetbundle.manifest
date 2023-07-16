@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1879844982
+CRC: 3781561013
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1cf7d890e512b24acb6aa6f4ccf349db
+    Hash: 7e7d14e5da569bb5136aa8f220f289bb
   TypeTreeHash:
     serializedVersion: 2
     Hash: c21d61fe394c58399df3c6fb5c7c99b3
@@ -27,6 +27,7 @@ Assets:
 - Assets/AssetBundles/Textures/VFX/Ring2.png
 - Assets/AssetBundles/Textures/Maps/MyLocation/MyLocation.png
 - Assets/AssetBundles/Textures/UI/SkillCont/SkillCont.png
+- Assets/AssetBundles/Textures/Icons/Characters/CharacterIcon.png
 - Assets/AssetBundles/Textures/Icons/Items/120102.png
 - Assets/AssetBundles/Textures/Icons/Stats/106.jpg
 - Assets/AssetBundles/Textures/Attribute/2.png

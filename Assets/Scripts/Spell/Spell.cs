@@ -11,7 +11,7 @@ public interface ICaster
 // ´ë»óÀÚ
 public interface ISubject
 {
-    public Entity Subject { get; set; }
+    public Entity[] Subjects { get; set; }
 }
 
 /*
