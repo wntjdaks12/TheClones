@@ -113,5 +113,35 @@
         "id":"120102",
         "prefabId":"120100",
         "path":"Prefabs/Items"
+    },
+    {
+        "id":"120103",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120104",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120105",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120106",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120107",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
+    },
+    {
+        "id":"120108",
+        "prefabId":"120100",
+        "path":"Prefabs/Items"
     }
 ]

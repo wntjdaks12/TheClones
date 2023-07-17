@@ -35,6 +35,66 @@
                         "value":10
                     }
                 ]
+            },
+            {
+                "itemId":120103,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120104,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120105,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120106,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120107,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120108,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
             }
         ]
     },
