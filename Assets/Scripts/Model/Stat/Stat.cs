@@ -26,7 +26,9 @@ public class Stat
     {
         Damage = 0,
         DamageOverTime = 1,
-        DamageOverTimeCount = 2
+        DamageOverTimeCount = 2,
+        AttackCount = 3,
+        HealCount = 4
     }
 
     public static uint GetId(StatType statType)

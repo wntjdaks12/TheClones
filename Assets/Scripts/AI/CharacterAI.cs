@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.AI;
+using System;
 
 public class CharacterAI : ActorAI
 {
@@ -11,6 +12,17 @@ public class CharacterAI : ActorAI
     private NavMeshHit navHit;
 
     private bool isTestBool;
+    private bool isTest;
+
+    // 추적 관련
+    private bool isTrace;
+    private bool isCreate;
+
+    private IEnumerator traceAsync;
+
+    public event Action traceStartEvent, traceStopEvent;
+    // ------------------------------------------------------
+
     private new void Awake()
     {
         base.Awake();
@@ -20,6 +32,51 @@ public class CharacterAI : ActorAI
 
     private void Start()
     {
+        StartCoroutine(RandomAsync());
+    }
+
+    public virtual void Update()
+    {
+        if (!navAgent.enabled) return;
+
+        if (Entity is Character)
+        {
+            var character = Entity as Character;
+
+            if (character.StateType != Actor.StateTypes.Hit)
+            {
+                if (isTestBool)
+                {
+                    if (isTest)
+                    {
+                        Move(character.MoveSpeed);
+                        character.OnActorMove();
+                    }
+                    else
+                    {
+                        character.OnActorIdle();
+                        navAgent.velocity = Vector3.zero;
+                    }
+                }
+
+                if (!isTestBool) StartCoroutine(TestRangeAsync());
+            }
+
+            if (character.StateType == Actor.StateTypes.Hit)
+            {
+                if (traceAsync != null) StopCoroutine(traceAsync);
+
+                traceAsync = TraceAsync();
+
+                StartCoroutine(traceAsync);
+            }
+        }
+    }
+
+    public override void Init(Actor actor)
+    {
+        base.Init(actor);
+
         navAgent.Warp(transform.position);
 
         // 해당 포인트를 초기화 시킵니다.
@@ -29,14 +86,46 @@ public class CharacterAI : ActorAI
         this.UpdateAsObservable()
             .Where(_ => Vector3.SqrMagnitude(new Vector3(navHit.position.x, transform.position.y, navHit.position.z) - transform.position) <= 0.1f)
             .Subscribe(_ => ResetNavHitPos(5f));
+
+        // 추적 관련 초기화 시킵니다.
+        isTrace = false;
+        isCreate = false;
+
+        traceStartEvent = null;
+        traceStopEvent = null;
+        // ----------------------------------
     }
 
-    public virtual void Update()
+    public void Init2(Actor actor)
     {
-        if (Entity is Character)
+        base.Init(actor);
+
+        Pause();
+
+        ChoicePatternSystem.OnCreate(actor);
+
+        // 추적 관련 초기화 시킵니다.
+        isTrace = false;
+        isCreate = false;
+
+        traceStartEvent = null;
+        traceStopEvent = null;
+        // ----------------------------------
+    }
+
+    public IEnumerator RandomAsync()
+    {
+        while (true)
         {
-            var character = Entity as Character;
-            if (!isTestBool) Move(character.MoveSpeed);
+            var rand = UnityEngine.Random.Range(0, 2);
+
+            switch (rand)
+            {
+                case 0: isTest = true; break;
+                case 1: isTest = false; break;
+            }
+
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1.0f, 5.0f));
         }
     }
 
@@ -46,12 +135,19 @@ public class CharacterAI : ActorAI
     /// <returns></returns>
     private Vector3 ResetNavHitPos(float Range)
     {
-        var navHitPos = Random.insideUnitSphere * Range + transform.position;
+        var randPos = UnityEngine.Random.insideUnitSphere * Range;
+
+        while ((randPos - transform.position).sqrMagnitude < 1f)
+        {
+            randPos = UnityEngine.Random.insideUnitSphere * Range;
+        }
+
+        var navHitPos = randPos + transform.position; navHitPos.y = transform.position.y;
 
         NavMesh.SamplePosition(navHitPos, out navHit, 10f, 1);
 
         return navHit.position;
-    }
+    }  
 
     /// <summary>
     /// 이동을 시킵니다.
@@ -73,9 +169,8 @@ public class CharacterAI : ActorAI
         {
             var visibleObject = visibleObjects[0];
             destPos = visibleObject.transform.position;
-
-            if(!isTestBool) StartCoroutine(TestRangeAsync());
         }
+         
         navAgent.speed = character.MoveSpeed;
         navAgent.SetDestination(destPos);
     }
@@ -87,20 +182,20 @@ public class CharacterAI : ActorAI
     private IEnumerator TestRangeAsync()
     {
         isTestBool = true;
-
+        /*
         if (Entity is ICaster)
         {
             App.GameController.GetComponent<RangeController>().Spawn("Range", 100001, transform.position, Entity);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f);*/
+        yield return new WaitForSeconds(0f);
 
+        if (Entity is ISight)
+        {
+            var sight = Entity as ISight;
 
-            if (Entity is ISight)
-            {
-                var sight = Entity as ISight;
-
-                var targetObjs = sight.ReturnVisibleObjects(transform);
+            var targetObjs = sight.ReturnVisibleObjects(transform);
 
             for (int i = 0; i < targetObjs.Length; i++)
             {
@@ -109,23 +204,59 @@ public class CharacterAI : ActorAI
                     var entityObj = targetObjs[i].GetComponent<EntityObject>();
 
                     var entity = entityObj.Entity;
-                    
+
                     if (entity is ISpell)
                     {
                         var spell = entity as ISpell;
-
-                        spell.Subject = entity;
+                        spell.Caster = Entity;
+                        spell.Subjects[0] = entity;
 
                         var character = Entity as Character;
-                        App.GameController.GetComponent<SkillController>().Spawn("Skill", character.skillId[0], spell.Subject.Transform.position, spell);
+                        App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], spell.Subjects[0].Transform.position, spell);
                     }
                 }
             }
-            
         }
 
         yield return new WaitForSeconds(3);
 
         isTestBool = false;
+    }
+
+    /// <summary>
+    /// 추적합니다
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator TraceAsync()
+    {
+        isTrace = true;
+
+        if (!isCreate)
+        {
+            App.GameController.GetController<HeadBarController>().Spawn("HeadBar", 110001, Entity.Transform.position, GameObject.Find("WorldCanvas").transform, Entity);
+            App.GameController.GetController<NameBarController>().Spawn("NameBar", 251, Entity.Transform.position, GameObject.Find("WorldCanvas").transform, Entity);
+
+            isCreate = true;
+        }
+
+        yield return new WaitForSeconds(0.7f);
+
+        isCreate = false;
+        isTrace = false;
+
+        traceStopEvent?.Invoke();
+        traceStopEvent = null;
+    }
+
+    public void Resume()
+    {
+        Entity.Rigidbody.useGravity = true;
+        navAgent.enabled = true;
+    }
+
+    public void Pause()
+    {
+        Entity.Rigidbody.useGravity = false;
+        navAgent.enabled = false;
     }
 }

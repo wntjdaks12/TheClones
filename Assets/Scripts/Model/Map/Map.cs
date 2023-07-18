@@ -7,4 +7,6 @@ public class Map : Data
     public string Name { get; set; }
 
     public uint SceneId { get; set; }
+
+    public List<uint> StageIds { get; set; }
 }

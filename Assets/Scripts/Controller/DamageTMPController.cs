@@ -29,8 +29,9 @@ public class DamageTMPController : GameController
         damageTMP.Init(damageTMPObject.transform, transform.GetComponent<Collider>());
         damageTMPObject.Init(damageTMP);
 
-        damageTMPObject.transform.position = position;
         damageTMPObject.transform.parent = parent;
+        damageTMPObject.transform.rotation = new Quaternion(0, 0, 0, 0); 
+        damageTMPObject.transform.position = position;
 
         runtimeDataModel.AddData($"{tableId}Object", damageTMP.InstanceId, damageTMPObject);
     }

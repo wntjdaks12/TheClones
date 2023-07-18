@@ -7,13 +7,17 @@ public class CloneSettingPopup : Popup
 {
     [Header("¹öÆ°"), SerializeField] private Button ExitBtn;
     [SerializeField] private Button RuneBtn;
+    [SerializeField] private Button BattleBtn;
 
     [Header("ÄÁÅÙÃ÷"), SerializeField] private CloneSettingDetailContents detailContents;
     [SerializeField] private StatContents statContents;
     [SerializeField] private PoolingScrollview poolingScrollview;
     [SerializeField] private GameObject Content1, Content2;
+    [SerializeField] private List<GoodsSlot> goodsSlots;
 
     private ClonInfo cloneInfo;
+
+    private Raycaster raycaster = new Raycaster();
 
     public override void Init()
     {
@@ -24,6 +28,17 @@ public class CloneSettingPopup : Popup
 
         RuneBtn.onClick.RemoveAllListeners();
         RuneBtn.onClick.AddListener(() => ReturnPopup<RunePopup>().Init(cloneInfo));
+
+        BattleBtn.onClick.RemoveAllListeners();
+        BattleBtn.onClick.AddListener(() =>
+        {
+            var tempEntityCont = App.GameController.GetComponent<ParticleController>();
+            var entityCont = App.GameController.GetComponent<CharacterController>();
+            tempEntityCont.Spawn("Particle", 60002, Camera.main.transform.position + Camera.main.transform.forward * 10);
+            entityCont.Spawn("Clon", cloneInfo.clonId, Camera.main.transform.position + Camera.main.transform.forward * 10, cloneInfo.skillId);
+
+            OnHide();
+        });
 
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 
@@ -53,6 +68,8 @@ public class CloneSettingPopup : Popup
             Content1.SetActive(false);
             Content2.SetActive(true);
         }
+
+        goodsSlots.ForEach(x => x.Init());
     }
 
     /// <summary>

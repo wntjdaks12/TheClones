@@ -1,7 +1,19 @@
 [
     {
         "id":20001,
-        "gold":5,
+        "dropGoodsInfos":
+        [
+            {
+                "itemId":200,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":100
+                    }
+                ]
+            }
+        ],
         "dropItemInfos":
         [
             {
@@ -10,7 +22,7 @@
                 [
                     {
                         "dropItemInfoType":0,
-                        "value":100
+                        "value":30
                     }
                 ]
             },
@@ -20,7 +32,67 @@
                 [
                     {
                         "dropItemInfoType":0,
-                        "value":100
+                        "value":10
+                    }
+                ]
+            },
+            {
+                "itemId":120103,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120104,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120105,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120106,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120107,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "itemId":120108,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":1
                     }
                 ]
             }
@@ -28,21 +100,10 @@
     },
     {
         "id":20002,
-        "gold":5,
-        "dropItemInfos":
+        "dropGoodsInfos":
         [
             {
-                "itemId":120101,
-                "dropItemTypes":
-                [
-                    {
-                        "dropItemInfoType":0,
-                        "value":100
-                    }
-                ]
-            },
-            {
-                "itemId":120102,
+                "itemId":200,
                 "dropItemTypes":
                 [
                     {
@@ -51,11 +112,7 @@
                     }
                 ]
             }
-        ]
-    },
-    {
-        "id":20003,
-        "gold":5,
+        ],
         "dropItemInfos":
         [
             {
@@ -64,7 +121,7 @@
                 [
                     {
                         "dropItemInfoType":0,
-                        "value":100
+                        "value":40
                     }
                 ]
             },
@@ -74,7 +131,46 @@
                 [
                     {
                         "dropItemInfoType":0,
+                        "value":20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":20003,
+        "dropGoodsInfos":
+        [
+            {
+                "itemId":200,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
                         "value":100
+                    }
+                ]
+            }
+        ],
+        "dropItemInfos":
+        [
+            {
+                "itemId":120101,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":10
+                    }
+                ]
+            },
+            {
+                "itemId":120102,
+                "dropItemTypes":
+                [
+                    {
+                        "dropItemInfoType":0,
+                        "value":10
                     }
                 ]
             }

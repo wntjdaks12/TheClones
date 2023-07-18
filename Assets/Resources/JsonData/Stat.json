@@ -83,6 +83,14 @@
             {
                 "skillStatType":0,
                 "value":10000
+            },
+            {
+                "skillStatType":1,
+                "value":0
+            },
+            {
+                "skillStatType":3,
+                "value":1
             }
         ]
     },
@@ -96,11 +104,11 @@
             },
             {
                 "skillStatType":1,
-                "value": 0.2
+                "value": 0.05
             },
             {
-                "skillStatType":2,
-                "value": 3
+                "skillStatType":3,
+                "value": 8
             }
         ]
     },

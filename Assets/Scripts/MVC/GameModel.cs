@@ -42,7 +42,7 @@ public class GameModel : Element
         PresetDataModel.LoadData<Monster>(nameof(Monster), "JsonData/Monster");
         PresetDataModel.LoadData<Clon>(nameof(Clon), "JsonData/Clon");
 
-        PresetDataModel.LoadData<Skill>(nameof(Skill), "JsonData/Skill");
+        PresetDataModel.LoadData<DevSkill>(nameof(DevSkill), "JsonData/Skill");
 
         PresetDataModel.LoadData<ImageInfo>(nameof(ImageInfo), "JsonData/ImageInfo");
 
@@ -73,5 +73,15 @@ public class GameModel : Element
         PresetDataModel.LoadData<DropItem>(nameof(DropItem), "JsonData/DropItem");
 
         PresetDataModel.LoadData<Name>(nameof(Name), "JsonData/Name");
+
+        PresetDataModel.LoadData<Goods>(nameof(Goods), "JsonData/Goods");
+
+        PresetDataModel.LoadData<Stage>(nameof(Stage), "JsonData/Stage");
+
+        PresetDataModel.LoadData<Ground>(nameof(Ground), "JsonData/Ground");
+
+        PresetDataModel.LoadData<SpawnInfo>(nameof(SpawnInfo), "JsonData/SpawnInfo");
+
+        PresetDataModel.LoadData<NameBar>(nameof(NameBar), "JsonData/NameBar");
     }
 }

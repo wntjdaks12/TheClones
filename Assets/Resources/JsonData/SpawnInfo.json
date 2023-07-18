@@ -1,0 +1,22 @@
+﻿[
+	{
+		"id":130001,
+		"spawnObjectInfos":
+		[
+			{
+				"id": 20001,
+				"maxNumberOfSpawn": 4
+			}
+		]
+	},
+	{
+		"id":130002,
+		"spawnObjectInfos":
+		[
+			{
+				"id": 20001,
+				"maxNumberOfSpawn": 0
+			}
+		]
+	}
+]

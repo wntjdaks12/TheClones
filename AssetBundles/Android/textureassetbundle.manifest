@@ -1,0 +1,78 @@
+ManifestFileVersion: 0
+CRC: 674446319
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1da487c5697759cc84291b905d1cfd95
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/Textures/HeadBars/BasicHpBar.png
+- Assets/AssetBundles/Textures/Icons/Items/120107.png
+- Assets/AssetBundles/Textures/Slots/Mask2.png
+- Assets/AssetBundles/Textures/Etc/HuntingPoint.png
+- Assets/AssetBundles/Textures/Icons/Items/120105.png
+- Assets/AssetBundles/Textures/Icons/Stats/104.jpg
+- Assets/AssetBundles/Textures/Icons/Maps/Map.png
+- Assets/AssetBundles/Textures/UI/SkillCont/SkillContBtn.png
+- Assets/AssetBundles/Textures/Slots/Slot1.png
+- Assets/AssetBundles/Textures/Model/Monster/20001/sprout_03 - Default_AlbedoTransparency.png
+- Assets/AssetBundles/Textures/VFX/Star.jpg
+- Assets/AssetBundles/Textures/VFX/Ring2.png
+- Assets/AssetBundles/Textures/Maps/MyLocation/MyLocation.png
+- Assets/AssetBundles/Textures/UI/SkillCont/SkillCont.png
+- Assets/AssetBundles/Textures/Icons/Characters/CharacterIcon.png
+- Assets/AssetBundles/Textures/Icons/Items/120102.png
+- Assets/AssetBundles/Textures/Icons/Items/120108.png
+- Assets/AssetBundles/Textures/Attribute/2.png
+- Assets/AssetBundles/Textures/Icons/Clons/90001.png
+- "Assets/AssetBundles/Textures/SkyBox/\uC81C\uBAA9 \uC5C6\uC74C-1 1.jpg"
+- Assets/AssetBundles/Textures/Icons/Stats/106.jpg
+- Assets/AssetBundles/Textures/UI/RoundedRect.png
+- Assets/AssetBundles/Textures/UI/Buttons/ExitBtn2.png
+- Assets/AssetBundles/Textures/VFX/Gradation.jpg
+- Assets/AssetBundles/Textures/Icons/Stats/109.jpg
+- Assets/AssetBundles/Textures/Icons/Items/120103.png
+- Assets/AssetBundles/Textures/Icons/Goods/Goods.png
+- Assets/AssetBundles/Textures/Model/Monster/20001/sprout_02 - Default_AlbedoTransparency.png
+- Assets/AssetBundles/Textures/VFX/Glow.jpg
+- Assets/AssetBundles/Textures/Icons/Stats/102.jpg
+- Assets/AssetBundles/Textures/Attribute/1.png
+- Assets/AssetBundles/Textures/Icons/Stats/101.jpg
+- Assets/AssetBundles/Textures/Icons/Skills/30004.jpg
+- Assets/AssetBundles/Textures/VFX/Circle.jpg
+- Assets/AssetBundles/Textures/VFX/Glow2.jpg
+- Assets/AssetBundles/Textures/UI/ChoicePattern/ChoicePatternBg.png
+- "Assets/AssetBundles/Textures/SkyBox/\uC81C\uBAA9 \uC5C6\uC74C-1 3.jpg"
+- Assets/AssetBundles/Textures/VFX/Star2.png
+- Assets/AssetBundles/Textures/Icons/Skills/30001.jpg
+- Assets/AssetBundles/Textures/Maps/70001.jpg
+- Assets/AssetBundles/Textures/Icons/Clons/90002.jpg
+- Assets/AssetBundles/Textures/Icons/Goods/200.png
+- "Assets/AssetBundles/Textures/SkyBox/\uC81C\uBAA9 \uC5C6\uC74C-1.jpg"
+- Assets/AssetBundles/Textures/Icons/Items/120101.png
+- Assets/AssetBundles/Textures/Icons/Items/120104.png
+- Assets/AssetBundles/Textures/Icons/Stats/108.jpg
+- Assets/AssetBundles/Textures/VFX/Rect.png
+- Assets/AssetBundles/Textures/Icons/Stats/103.jpg
+- Assets/AssetBundles/Textures/Slots/Mask1.png
+- Assets/AssetBundles/Textures/Rect.png
+- Assets/AssetBundles/Textures/Particles/RaindowBlood_Blood.png
+- Assets/AssetBundles/Textures/UI/Buttons/CheckBtn1.png
+- Assets/AssetBundles/Textures/UI/Buttons/ExitBtn1.png
+- Assets/AssetBundles/Textures/VFX/Heal.jpg
+- "Assets/AssetBundles/Textures/SkyBox/\uC81C\uBAA9 \uC5C6\uC74C-1 2.jpg"
+- Assets/AssetBundles/Textures/UI/Inventory/InventorySlot_Simple_Common.png
+- Assets/AssetBundles/Textures/Icons/Items/120106.png
+- Assets/AssetBundles/Textures/Icons/Stats/105.jpg
+- Assets/AssetBundles/Textures/Icons/Stats/107.jpg
+- Assets/AssetBundles/Textures/VFX/Ring.jpg
+Dependencies: []

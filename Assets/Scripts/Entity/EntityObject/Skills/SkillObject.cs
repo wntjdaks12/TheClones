@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SkillObject : EntityObject
 {
-    public virtual void Init(object obj, Skill skill)
+    public virtual void Init(object obj, DevSkill skill)
     {
         base.Init(skill);
 
-        if (skill.Subject is Actor)
+        if (skill.Subjects[0] is Actor)
         {
-            var actor = skill.Subject as Actor;
+            var actor = skill.Subjects[0] as Actor;
 
-            StartCoroutine(skill.StartDamage(actor, obj));
+           // StartCoroutine(skill.StartDamage(actor, obj));
         }
 
         var ai = GetComponent<EntityAI>();

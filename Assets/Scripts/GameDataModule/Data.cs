@@ -7,6 +7,7 @@ public class Data:IData
     public event Action<IData> OnDataRemove;
     public uint Id { get;  set; }
     public uint InstanceId { get; set; }
+    public uint netId { get; set; }
     public IDataTable TableModel { get; set; }
 
     public object Clone()

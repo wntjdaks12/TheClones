@@ -36,11 +36,51 @@
         "languageKR":"이동 속도 감소율"
     },
     {
+        "id":200,
+        "languageKR":"골드 코인"
+    },
+    {
+        "id":20001,
+        "languageKR":"초록 롱코"
+    },
+    {
         "id":90001,
         "languageKR":"나투라"
     },
     {
         "id":90002,
         "languageKR":"제우스"
+    },
+    {
+        "id":120101,
+        "languageKR":"물컹한 액체"
+    },
+    {
+        "id":120102,
+        "languageKR":"롱코의 풀잎"
+    },
+    {
+        "id":120103,
+        "languageKR":"다이아몬드의 원석"
+    },
+    {
+        "id":120104,
+        "languageKR":"핑크 다이아몬드의 원석"
+    },
+    {
+        "id":120105,
+        "languageKR":"에메랄드의 원석"
+    },
+    {
+        "id":120106,
+        "languageKR":"사파이어의 원석"
+    },
+    {
+        "id":120107,
+        "languageKR":"자수정의 원석"
+    },
+    {
+        "id":120108,
+        "languageKR":"루비의 원석"
     }
 ]

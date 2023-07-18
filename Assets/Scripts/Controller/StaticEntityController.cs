@@ -15,11 +15,11 @@ public class StaticEntityController : GameController
 
     public void Spawn(string tableId, uint id, EntityObject entityObject)
     {
-        var staticEntity = dataController.AddData(tableId, id) as StaticEntity;
+        var ground = dataController.AddData(tableId, id) as Ground;
 
-        staticEntity.Init(entityObject.transform, entityObject.GetComponent<Collider>(), entityObject.GetComponent<MeshRenderer>());
-        entityObject.Init(staticEntity);
+        ground.Init(entityObject.transform, entityObject.GetComponent<Collider>());
+        entityObject.Init(ground);
 
-        runtimeDataModel.AddData($"{tableId}Object", staticEntity.InstanceId, entityObject);
+        runtimeDataModel.AddData($"{tableId}Object", ground.InstanceId, entityObject);
     }
 }

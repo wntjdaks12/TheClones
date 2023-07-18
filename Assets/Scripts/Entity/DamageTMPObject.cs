@@ -23,10 +23,10 @@ public class DamageTMPObject : EntityObject
     public void ShowData()
     {
         var damageTMP = Entity as DamageTMP;
-       // Debug.Log(damageTMP.);
-        if (damageTMP.Caster is Skill)
+
+        if (damageTMP.Caster is DevSkill)
         {
-            var skill = damageTMP.Caster as Skill;
+            var skill = damageTMP.Caster as DevSkill;
 
             this.damageTMP.text = skill.Damage.ToString();
         }

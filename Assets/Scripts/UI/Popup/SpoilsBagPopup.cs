@@ -12,6 +12,8 @@ public class SpoilsBagPopup : Popup
 
     [SerializeField] private PoolingScrollview poolingScrollview;
 
+    [SerializeField] private List<GoodsSlot> goodsSlots;
+
     public override void Init()
     {
         OnShow();
@@ -23,5 +25,7 @@ public class SpoilsBagPopup : Popup
 
         // 풀링 스크롤 뷰 초기화
         poolingScrollview.Init(itemInfos.Count);
+
+        goodsSlots.ForEach(x => x.Init());
     }
 }

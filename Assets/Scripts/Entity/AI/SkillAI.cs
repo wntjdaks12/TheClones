@@ -6,8 +6,8 @@ public class SkillAI : EntityAI
 {
     public void Update()
     {
-        var skill = Entity as Skill;
+        var skill = Entity as DevSkill;
 
-        transform.position = skill.Subject.Transform.position;
+        transform.position = skill.Subjects[0].Transform.position;
     }
 }

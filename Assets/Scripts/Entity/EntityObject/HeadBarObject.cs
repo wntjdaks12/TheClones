@@ -28,9 +28,9 @@ public class HeadBarObject : EntityObject
         {
             var headBar = Entity as HeadBar;
 
-            if (headBar.Subject is Actor)
+            if (headBar.Subjects[0] is Actor)
             {
-                var actor = headBar.Subject as Actor;
+                var actor = headBar.Subjects[0] as Actor;
 
                 hp.fillAmount = actor.CurrentHp / actor.MaxHp;
                 lerpHp.fillAmount = Mathf.Lerp(lerpHp.fillAmount, hp.fillAmount, Time.deltaTime * lerpSpeed);

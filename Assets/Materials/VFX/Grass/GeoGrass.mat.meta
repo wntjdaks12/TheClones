@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/VFX/Grass/GeoGrass.mat.meta
+guid: 06f47a8fc4fb4c8408631ef3dcb2b13e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+========
+guid: f361b3e3a2d6fbe4485c8faf7e0cecab
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> a04d9194f0b281dec946cadedfa460eda1a4358a:Assets/Materials/Ground.mat.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

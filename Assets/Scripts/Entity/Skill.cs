@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Skill : Entity, IAbility, ISpell
+public class Skill : Entity, IAbility
 {
     public event Action<Skill> destroy;
 
@@ -15,7 +15,12 @@ public class Skill : Entity, IAbility, ISpell
     {
         get
         {
-            return Ability.OnReturnValue(this, Stat.SkillStatType.Damage);
+            var attackPower = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.GetStatInfo(Caster.Id).statDatas.GetStat(Stat.StatType.AttackPower);
+            var damage = Ability.OnReturnValue(this, Stat.SkillStatType.Damage);
+            // ·éµµ Ãß°¡
+            var totalDamage = attackPower + damage;
+
+            return totalDamage;
         }
     }
 
@@ -45,9 +50,11 @@ public class Skill : Entity, IAbility, ISpell
 
             var damageOverTimeCount = 0;
 
-            while (damageOverTimeCount <= DamageOverTimeCount)
+            var pos = Subjects[0].Transform.position;
+
+            while (damageOverTimeCount < DamageOverTimeCount)
             {
-                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, Subject.Transform.position, GameObject.Find("DamagePopupCanvas").transform, this);
+                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, pos, GameObject.Find("DamagePopupCanvas").transform, this);
 
                 if (actor.CurrentHp > 0)
                 {
@@ -57,6 +64,8 @@ public class Skill : Entity, IAbility, ISpell
                 {
                     yield return null;
                 }
+
+                pos.y += 1;
 
                 damageOverTimeCount++;
 

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2810160574
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: materialassetbundle
+      Dependencies:
+        Dependency_0: textureassetbundle
+    Info_1:
+      Name: textureassetbundle
+      Dependencies: {}
+    Info_2:
+      Name: prefabassetbundle
+      Dependencies:
+        Dependency_0: materialassetbundle
+        Dependency_1: textureassetbundle
+        Dependency_2: fontassetbundle
+    Info_3:
+      Name: fontassetbundle
+      Dependencies: {}

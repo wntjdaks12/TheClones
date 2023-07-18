@@ -3,50 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private HuntingPointSystem huntingPointSystem;
+    [SerializeField] private new Camera camera;
 
     // 줌 거리 값
     private float distance;
 
     private void Start()
     {
-     //   Drag();
-
         Zoom();
 
-        MoveHuntingPoint();
+        Drag();
     }
-
-   /* // 카메라를 드래그 합니다.
-    private void Drag()
-    {
-        // 카메라를 해당 위치로 드래그하여 이동합니다.
-        this.UpdateAsObservable()
-            .SkipUntil(this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0)))
-            .Select(_ => new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y) - new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")))
-            .TakeUntil(this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0)))
-            .RepeatUntilDestroy(this)
-            .Subscribe(pos => {
-                Camera.main.transform.position = new Vector3(pos.x, pos.y, Camera.main.transform.position.z);
-                huntingPointSystem.StopMove();
-            });
-    }*/
 
     // 카메라 줌 인 아웃을 결정합니다. 
     private void Zoom()
     {
         // 거리 값을 체크합니다.
         this.UpdateAsObservable()
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(pos => distance = Input.GetAxis("Mouse ScrollWheel") * -1 * 10);
 
         // 거리 값이 변할 경우 줌 인 아웃을 합니다.
         this.ObserveEveryValueChanged(_ => distance)
-            .Subscribe(_ => Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + distance, 7, 14));
+            .Subscribe(_ => Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + distance, 20, 80));
     }
 
+    /*
     // 카메라를 사냥 포인트로 이동시킵니다.
     private void MoveHuntingPoint()
     {
@@ -59,5 +45,23 @@ public class CameraController : MonoBehaviour
             .TakeUntil(this.UpdateAsObservable().Where(_ => huntingPointSystem.IsStopped))
             .RepeatUntilDestroy(this)
             .Subscribe(_ => huntingPointSystem.Move());
+    }
+    */
+
+    // 카메라를 드래그합니다.
+    private void Drag()
+    {
+        var downStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject());
+        var upStream = camera.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
+        var dragStream = camera.UpdateAsObservable()
+            .SkipUntil(downStream)
+            .TakeUntil(upStream)
+            .Select(_ => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")))
+            .RepeatUntilDestroy(camera);
+
+        dragStream.Subscribe(hitInfo =>
+        {
+            camera.transform.position -= new Vector3(hitInfo.x, 0, hitInfo.y);
+        });
     }
 }

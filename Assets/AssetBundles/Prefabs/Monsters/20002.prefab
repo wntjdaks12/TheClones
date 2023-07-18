@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe1b7681e260574392eece20b0e60fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialSystem: {fileID: 0}
   animator: {fileID: 0}
   headBarTransform: {fileID: 5767259511539796999}
 --- !u!65 &3874972728442389667
