@@ -16,5 +16,14 @@
         [
             "Enemy"
         ]
+    },
+    {
+        "id":"90003",
+        "attributeId":3,
+        "visibleDistance":5,
+        "visibleLayerName":
+        [
+            "Enemy"
+        ]
     }
 ]

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 674446319
+CRC: 856956502
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1da487c5697759cc84291b905d1cfd95
+    Hash: 76f5308f7f3a552974ac396c3dde3af4
   TypeTreeHash:
     serializedVersion: 2
     Hash: c21d61fe394c58399df3c6fb5c7c99b3
@@ -41,6 +41,7 @@ Assets:
 - Assets/AssetBundles/Textures/VFX/Gradation.jpg
 - Assets/AssetBundles/Textures/Icons/Stats/109.jpg
 - Assets/AssetBundles/Textures/Icons/Items/120103.png
+- Assets/AssetBundles/Textures/Icons/Clons/90003.png
 - Assets/AssetBundles/Textures/Icons/Goods/Goods.png
 - Assets/AssetBundles/Textures/Model/Monster/20001/sprout_02 - Default_AlbedoTransparency.png
 - Assets/AssetBundles/Textures/VFX/Glow.jpg

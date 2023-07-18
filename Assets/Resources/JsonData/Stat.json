@@ -139,5 +139,19 @@
                 "value": 2 
             }
         ]
+    },
+    {
+        "id":90003,
+        "stats":
+        [
+            {
+                "statType":0,
+                "value": 10
+            },
+            {
+                "statType":4,
+                "value": 2 
+            }
+        ]
     }
 ]

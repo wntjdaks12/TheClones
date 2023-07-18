@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1349915583
+CRC: 3090165358
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b932a5b5696cac3d4d06ac6718f0fe86
+    Hash: 242bdfdc8fe86d476b8af874b7f416bf
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5b03b14fb70717d647233ba980f997e9
@@ -201,6 +201,7 @@ Assets:
 - Assets/AssetBundles/Prefabs/Ranges/100001.prefab
 - Assets/AssetBundles/Prefabs/UI/SkillSlot.prefab
 - Assets/AssetBundles/Prefabs/UI/ChoicePattern/ChoicePattern.prefab
+- Assets/AssetBundles/Prefabs/Clons/90003.prefab
 - Assets/AssetBundles/Prefabs/UI/Popup/MapPopup.prefab
 - Assets/AssetBundles/Prefabs/Clons/90002.prefab
 - Assets/AssetBundles/Prefabs/StaticObjects/80001.prefab
