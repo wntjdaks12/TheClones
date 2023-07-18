@@ -8,6 +8,10 @@
         "Description":"라이트닝<br><br> 하늘에서 번개가 떨어져 <color=red>?0</color>피해를 입힙니다."
     },
     {
+        "id":30003,
+        "Description":"화아악!<br><br> 전방에 불을 내뿜어 <color=red>?2</color>피해를 입힙니다."
+    },
+    {
         "id":30004,
         "Description":"회복<br><br> <color=red>?2</color>번을 걸쳐 총 <color=red>?0</color>회복합니다."
     },
