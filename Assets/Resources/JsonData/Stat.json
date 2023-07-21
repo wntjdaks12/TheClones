@@ -95,6 +95,24 @@
         ]
     },
     {
+        "id":30003,
+        "skillStats":
+        [
+            {
+                "skillStatType":0,
+                "value":1
+            },
+            {
+                "skillStatType":1,
+                "value":0
+            },
+            {
+                "skillStatType":3,
+                "value":1
+            }
+        ]
+    },
+    {
         "id":30004,
         "skillStats":
         [
@@ -128,6 +146,20 @@
     },
     {
         "id":90002,
+        "stats":
+        [
+            {
+                "statType":0,
+                "value": 10
+            },
+            {
+                "statType":4,
+                "value": 2 
+            }
+        ]
+    },
+    {
+        "id":90003,
         "stats":
         [
             {

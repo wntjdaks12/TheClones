@@ -95,6 +95,11 @@
         "path":"Prefabs/Clons"
     },
     {
+        "id":"90003",
+        "prefabId":"90003",
+        "path":"Prefabs/Clons"
+    },
+    {
         "id":"100001",
         "prefabId":"100001",
         "path":"Prefabs/Ranges"
