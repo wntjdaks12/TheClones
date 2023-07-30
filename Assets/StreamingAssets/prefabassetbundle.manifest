@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3090165358
+CRC: 359354452
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 242bdfdc8fe86d476b8af874b7f416bf
+    Hash: b0e3b6e8ea017e60d506968a258236f4
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5b03b14fb70717d647233ba980f997e9
+    Hash: f874a4d51b1fcb6dcc27d7808c0193b8
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -110,6 +110,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: d812804a5d3a3f643bee7b187beb99a1, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 2534bfec2bf77fa4bb995127b2016f9c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 96324a992c679254a83f75e34d01b93f, type: 3}
@@ -139,6 +141,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 26c6ca1570554784ebcf1ffd997096c0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d002125ecda0f644284d42c49d49465b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1ad6b602d1f2efa4c81525bd361dcea6, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 135
@@ -208,10 +212,11 @@ Assets:
 - Assets/AssetBundles/Prefabs/UI/Popup/ClonStorePopup.prefab
 - Assets/AssetBundles/Prefabs/UI/Goods/GoodsSlot.prefab
 - Assets/AssetBundles/Prefabs/DamageTMPs/40001.prefab
+- Assets/AssetBundles/Prefabs/Skills/30003.prefab
 - Assets/AssetBundles/Prefabs/HeadBars/110001.prefab
-- Assets/AssetBundles/Prefabs/Skills/30002.prefab
 - Assets/AssetBundles/Prefabs/StaticObjects/80002.prefab
 - Assets/AssetBundles/Prefabs/Heroes/111101.prefab
+- Assets/AssetBundles/Prefabs/Particles/60004.prefab
 - Assets/AssetBundles/Prefabs/UI/Currency/050001.prefab
 - Assets/AssetBundles/Prefabs/Skills/30004.prefab
 - Assets/AssetBundles/Prefabs/UI/StatCont/StatSlot.prefab

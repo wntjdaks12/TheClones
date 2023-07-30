@@ -39,38 +39,4 @@ public class Skill : Entity, IAbility
             return Ability.OnReturnValue(this, Stat.SkillStatType.DamageOverTimeCount);
         }
     }
-
-    public IEnumerator StartDamage(Actor actor, object obj)
-    {
-        if (obj is GameApplication)
-        {
-            var app = obj as GameApplication;
-
-            var wait = new WaitForSeconds(DamageOverTime);
-
-            var damageOverTimeCount = 0;
-
-            var pos = Subjects[0].Transform.position;
-
-            while (damageOverTimeCount < DamageOverTimeCount)
-            {
-                app.GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, pos, GameObject.Find("DamagePopupCanvas").transform, this);
-
-                if (actor.CurrentHp > 0)
-                {
-                    actor.OnActorHit(Damage);
-                }
-                else
-                {
-                    yield return null;
-                }
-
-                pos.y += 1;
-
-                damageOverTimeCount++;
-
-                yield return wait;
-            }
-        }
-    }
 }

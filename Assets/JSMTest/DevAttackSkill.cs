@@ -22,11 +22,20 @@ public class DevAttackSkill : DevISkillStrategy
 
                 for (int i = 0; i < skill.AttackCount; i++)
                 {
-                    GameObject.Find("App").GetComponent<GameApplication>().GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, damagePos, GameObject.Find("DamagePopupCanvas").transform, skill);
+                    GameObject.Find("App").GetComponent<GameApplication>().GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, damagePos, GameObject.Find("DamagePopupCanvas").transform, skill.Damage);
 
                     damagePos.y++;
 
                     yield return new WaitForSeconds(skill.DamageOverTime);
+                }
+
+                for (int i = 0; i < skill.SubDamageOverTimeCount; i++)
+                {
+                    otherActor.OnActorHit(skill.SubDamge);
+
+                    GameObject.Find("App").GetComponent<GameApplication>().GameController.GetComponent<DamageTMPController>().Spawn("DamageTMP", 40001, other.Transform.position, GameObject.Find("DamagePopupCanvas").transform, skill.SubDamge);
+
+                    yield return new WaitForSeconds(skill.SubDamageOverTime);
                 }
             }
         }

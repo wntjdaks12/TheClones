@@ -5,15 +5,15 @@
     },
     {
         "id":30001,
-        "Description":"라이트닝<br><br> 하늘에서 번개가 떨어져 <color=red>?0</color>피해를 입힙니다."
+        "Description":"라이트닝<br><br> 하늘에서 번개가 떨어져 <color=red>?0</color> 피해를 입힙니다."
     },
     {
         "id":30003,
-        "Description":"화아악!<br><br> 전방에 불을 내뿜어 <color=red>?2</color>피해를 입힙니다."
+        "Description":"화아악!<br><br> 전방에 불을 내뿜어 주변에 <color=red>?0</color> 피해를 입힙니다. <br> 또한 피해를 입힌 대상에게는 불이 붙어 <color=red>?3</color> 초당 <color=red>?4</color> 추가 피해를 <color=red>?5</color> 번 입힙니다."
     },
     {
         "id":30004,
-        "Description":"회복<br><br> <color=red>?2</color>번을 걸쳐 총 <color=red>?0</color>회복합니다."
+        "Description":"자신을 포함한 주변 대상에게 <color=red>?1</color> 초당 <color=red>?2</color> 번을 걸쳐 <color=red>?0</color> 회복을 합니다."
     },
     {
         "id":120101,

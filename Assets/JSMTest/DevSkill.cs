@@ -11,6 +11,8 @@ public class DevSkill : Entity, IAbility
     public uint AbilityOwnerInstanceId { get => InstanceId; }
 
     public StrategyTypes StrategyType { get; set; }
+    public TargetTypes TargetType { get; set; }
+    public SpawnTypes SpawnType { get; set; }
 
     public enum StrategyTypes
     {
@@ -18,6 +20,18 @@ public class DevSkill : Entity, IAbility
         Heal = 1,
         Buff = 2,
         Debuff = 3
+    }
+
+    public enum TargetTypes
+    {
+        Single = 0,
+        Many = 1
+    }
+
+    public enum SpawnTypes
+    {
+        Caster = 0,
+        Subject = 1
     }
 
     public float Damage
@@ -48,6 +62,30 @@ public class DevSkill : Entity, IAbility
         get
         {
             return Ability.OnReturnValue(this, Stat.SkillStatType.DamageOverTime);
+        }
+    }
+
+    public float SubDamge
+    {
+        get 
+        {
+            return Ability.OnReturnValue(this, Stat.SkillStatType.SubDamage);
+        }
+    }
+
+    public float SubDamageOverTime
+    {
+        get
+        {
+            return Ability.OnReturnValue(this, Stat.SkillStatType.SubDamageOverTime);
+        }
+    }
+
+    public float SubDamageOverTimeCount
+    {
+        get
+        {
+            return Ability.OnReturnValue(this, Stat.SkillStatType.SubDamageOverTimeCount);
         }
     }
 

@@ -16,7 +16,7 @@ public class ParticleController : GameController
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
 
-    public void Spawn(string tableId, uint id, Vector3 position)
+    public void Spawn(string tableId, uint id, Vector3 position, Entity parent = null)
     {
         var particle = dataController.AddData(tableId, id) as Particle;
 
@@ -33,8 +33,19 @@ public class ParticleController : GameController
 
         runtimeDataModel.AddData($"{tableId}Object", particle.InstanceId, particleObject);
 
-        particleObject.transform.position = position;
+        if (parent != null)
+        {
+            particleObject.transform.parent = parent.Transform;
+            parent.OnDataRemove += (data) =>
+            {
+                particleObject.transform.parent = null;
+
+                particleObject.OnRemoveEntity();
+            };
+        }
+        particleObject.transform.localPosition = position;
     }
+
     public void RemoveEntity(IData data)
     {
         var gameRuntimeDataModel = App.GameModel.RuntimeDataModel;
