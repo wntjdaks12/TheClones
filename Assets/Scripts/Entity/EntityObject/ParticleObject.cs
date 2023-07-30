@@ -12,6 +12,6 @@ public class ParticleObject : EntityObject
 
         if (ai != null) ai.Entity = particle;
 
-        if (particle.Lifetime != 0) StartCoroutine(particle.StartLifeTime());
+//        if (particle.Lifetime != 0) StartCoroutine(particle.StartLifeTime());
     }
 }

@@ -31,16 +31,15 @@
         "path":"Prefabs/Monsters"
     },
     {
+        "id":"150001",
+        "prefabId":"150001",
+        "path":"Prefabs/Currency"
+    },
+    {
         "id":"30001",
         "prefabId":"30001",
         "path":"Prefabs/Skills"
     },
-    {
-        "id":"150001",
-        "prefabId":"150001",
-        "path":"Prefabs/Currency"
-    }
-    ,
     {
         "id":"30002",
         "prefabId":"30002",
@@ -72,6 +71,11 @@
     {
         "id":"60003",
         "prefabId":"60003",
+        "path":"Prefabs/Particles"
+    },
+    {
+        "id":"60004",
+        "prefabId":"60004",
         "path":"Prefabs/Particles"
     },
     {

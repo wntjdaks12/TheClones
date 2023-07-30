@@ -18,7 +18,10 @@ public class SkillSimpleSlot : GameView
 
         desc = desc.Replace("?0", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.Damage).ToString() + " )");
         desc = desc.Replace("?1", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.DamageOverTime).ToString() + " )");
-        desc = desc.Replace("?2", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.DamageOverTimeCount).ToString() + " )");
+        desc = desc.Replace("?2", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.AttackCount).ToString() + " )");
+        desc = desc.Replace("?3", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.SubDamageOverTime).ToString() + " )");
+        desc = desc.Replace("?4", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.SubDamage).ToString() + " )");
+        desc = desc.Replace("?5", "( " + statData.GetTotalSkillStatValue(Stat.SkillStatType.SubDamageOverTimeCount).ToString() + " )");
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => UISystem.TooltipBox(desc, transform.root));

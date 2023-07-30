@@ -5,13 +5,14 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine.AI;
 using System;
+using System.Linq;
 
 public class CharacterAI : ActorAI
 {
     private NavMeshAgent navAgent;
     private NavMeshHit navHit;
 
-    private bool isTestBool;
+    private bool isTestCool, isTestDel;
     private bool isTest;
 
     // 추적 관련
@@ -45,7 +46,7 @@ public class CharacterAI : ActorAI
 
             if (character.StateType != Actor.StateTypes.Hit)
             {
-                if (isTestBool)
+                if (!isTestDel)
                 {
                     if (isTest)
                     {
@@ -58,8 +59,22 @@ public class CharacterAI : ActorAI
                         navAgent.velocity = Vector3.zero;
                     }
                 }
+                else
+                {
+                    navAgent.ResetPath();
+                }
 
-                if (!isTestBool) StartCoroutine(TestRangeAsync());
+                if (!isTestCool)
+                {
+                    if (Entity is ISight)
+                    {
+                        var sight = Entity as ISight;
+
+                        var targetObjs = sight.ReturnVisibleObjects(transform);
+
+                        if (targetObjs.Length > 0) StartCoroutine(TestRangeAsync());
+                    }
+                }
             }
 
             if (character.StateType == Actor.StateTypes.Hit)
@@ -181,7 +196,8 @@ public class CharacterAI : ActorAI
 
     private IEnumerator TestRangeAsync()
     {
-        isTestBool = true;
+        isTestCool = true;
+        isTestDel = true;
         /*
         if (Entity is ICaster)
         {
@@ -197,30 +213,22 @@ public class CharacterAI : ActorAI
 
             var targetObjs = sight.ReturnVisibleObjects(transform);
 
-            for (int i = 0; i < targetObjs.Length; i++)
-            {
-                if (Entity is ISubject)
-                {
-                    var entityObj = targetObjs[i].GetComponent<EntityObject>();
+            var spell = Entity as ISpell;
 
-                    var entity = entityObj.Entity;
+            spell.Caster = Entity;
+            spell.Subjects = targetObjs.Select(x => x.GetComponent<EntityObject>().Entity).ToArray();
 
-                    if (entity is ISpell)
-                    {
-                        var spell = entity as ISpell;
-                        spell.Caster = Entity;
-                        spell.Subjects[0] = entity;
-
-                        var character = Entity as Character;
-                        App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], spell.Subjects[0].Transform.position, spell);
-                    }
-                }
-            }
+            var character = Entity as Character;
+            App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], spell);
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
 
-        isTestBool = false;
+        isTestDel = false;
+
+        yield return new WaitForSeconds(2);
+
+        isTestCool = false;
     }
 
     /// <summary>

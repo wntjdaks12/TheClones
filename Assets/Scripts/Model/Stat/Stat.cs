@@ -28,7 +28,10 @@ public class Stat
         DamageOverTime = 1,
         DamageOverTimeCount = 2,
         AttackCount = 3,
-        HealCount = 4
+        HealCount = 4,
+        SubDamage = 5,
+        SubDamageOverTime = 6,
+        SubDamageOverTimeCount = 7
     }
 
     public static uint GetId(StatType statType)

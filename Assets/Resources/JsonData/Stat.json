@@ -100,7 +100,7 @@
         [
             {
                 "skillStatType":0,
-                "value":1
+                "value":4
             },
             {
                 "skillStatType":1,
@@ -109,6 +109,18 @@
             {
                 "skillStatType":3,
                 "value":1
+            },
+            {
+                "skillStatType":5,
+                "value":10
+            },
+            {
+                "skillStatType":6,
+                "value":0.2
+            },
+            {
+                "skillStatType":7,
+                "value":10
             }
         ]
     },

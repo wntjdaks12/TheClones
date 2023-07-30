@@ -37,7 +37,7 @@ public class ActorObject : EntityObject
     {
         state.OnDeath(this);
 
-        StartCoroutine(OnActorDeathAsync());
+        if(gameObject.activeInHierarchy) StartCoroutine(OnActorDeathAsync());
     }
 
     public void OnActorMove()

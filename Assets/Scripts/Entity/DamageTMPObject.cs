@@ -7,7 +7,7 @@ public class DamageTMPObject : EntityObject
 {
     [SerializeField] private TextMeshProUGUI damageTMP;
 
-    public void Init(DamageTMP damageTMP)
+    public void Init(DamageTMP damageTMP, float value)
     {
         base.Init(damageTMP);
 
@@ -17,18 +17,11 @@ public class DamageTMPObject : EntityObject
 
         if (damageTMP.Lifetime != 0) StartCoroutine(damageTMP.StartLifeTime());
 
-        ShowData();
+        ShowData(value);
     }
 
-    public void ShowData()
+    public void ShowData(float value)
     {
-        var damageTMP = Entity as DamageTMP;
-
-        if (damageTMP.Caster is DevSkill)
-        {
-            var skill = damageTMP.Caster as DevSkill;
-
-            this.damageTMP.text = skill.Damage.ToString();
-        }
+        this.damageTMP.text = value.ToString();
     }
 }

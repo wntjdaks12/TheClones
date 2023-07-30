@@ -12,7 +12,7 @@ public class DamageTMPController : GameController
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
 
-    public void Spawn(string tableId, uint id, Vector3 position, Transform parent, ICaster caster)
+    public void Spawn(string tableId, uint id, Vector3 position, Transform parent, float value)
     {
         var damageTMP = dataController.AddData(tableId, id) as DamageTMP;
 
@@ -24,10 +24,8 @@ public class DamageTMPController : GameController
         damageTMP.OnDataRemove += RemoveEntity;
         damageTMPObject.gameObject.SetActive(true);
 
-        damageTMP.Caster = caster;
-
         damageTMP.Init(damageTMPObject.transform, transform.GetComponent<Collider>());
-        damageTMPObject.Init(damageTMP);
+        damageTMPObject.Init(damageTMP, value);
 
         damageTMPObject.transform.parent = parent;
         damageTMPObject.transform.rotation = new Quaternion(0, 0, 0, 0); 
