@@ -44,6 +44,8 @@ public class CharacterAI : ActorAI
         {
             var character = Entity as Character;
 
+            if (character.StateType == Actor.StateTypes.Death) return;
+
             if (character.StateType != Actor.StateTypes.Hit)
             {
                 if (!isTestDel)
