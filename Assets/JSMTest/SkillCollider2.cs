@@ -21,13 +21,11 @@ public class SkillCollider2 : MonoBehaviour
         {
             var skill = skillObject.Entity as DevSkill;
 
-            var character = skill.Caster as Character;
-
-            for (int i = 0; i < character.VisibleLayerName.Length; i++)
+            for (int i = 0; i < skill.LayerName.Length; i++)
             {
-                if (character.VisibleLayerName[i] == LayerMask.LayerToName(other.gameObject.layer))
+                if (skill.LayerName[i] == LayerMask.LayerToName(other.gameObject.layer))
                 {
-                    if (hitedOtherCharacterObjs.Count > 1) return;
+                    if (skill.SpawnCount > 0 && hitedOtherCharacterObjs.Count > skill.SpawnCount) return;
 
                     hitedOtherCharacterObjs.Add(otherCharacterObj);
 

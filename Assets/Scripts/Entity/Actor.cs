@@ -63,6 +63,11 @@ public class Actor : Entity, IAbility
         CurrentHp -= damage;
     }
 
+    public void OnActorHeal(float heal)
+    {
+        CurrentHp = Mathf.Clamp(CurrentHp + heal, 0, MaxHp);
+    }
+
     public void OnActorDeath()
     {
         actorDeath?.Invoke(this);

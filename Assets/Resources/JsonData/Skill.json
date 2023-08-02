@@ -3,8 +3,13 @@
         "id":30001,
         "Lifetime":1,
         "StrategyType":0,
-        "TargetType": 0,
-        "SpawnType":1,
+        "SpawnCount": 1,
+        "SpawnType": 1,
+        "Range":5,
+        "LayerName":
+        [
+            "Enemy"
+        ]
     },
     {
         "id":30002
@@ -13,14 +18,24 @@
         "id":30003,
         "Lifetime":2,
         "StrategyType":0,
-        "TargetType":0,
-        "SpawnType":0,
+        "SpawnCount":1,
+        "SpawnType": 0,
+        "Range":5,
+        "LayerName":
+        [
+            "Enemy"
+        ]
     },
     {
         "id":30004,
         "Lifetime":1,
-        "StrategyType":0,
-        "TargetType":1,
-        "SpawnType":1,
+        "StrategyType":1,
+        "SpawnCount":-1,
+        "SpawnType": 1,
+        "Range":5,
+        "LayerName":
+        [
+            "Player"
+        ]
     }
 ]

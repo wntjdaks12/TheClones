@@ -207,6 +207,7 @@ public class CharacterAI : ActorAI
         }
 
         yield return new WaitForSeconds(1.5f);*/
+
         yield return new WaitForSeconds(0f);
 
         if (Entity is ISight)
@@ -215,13 +216,41 @@ public class CharacterAI : ActorAI
 
             var targetObjs = sight.ReturnVisibleObjects(transform);
 
-            var spell = Entity as ISpell;
-
-            spell.Caster = Entity;
-            spell.Subjects = targetObjs.Select(x => x.GetComponent<EntityObject>().Entity).ToArray();
-
             var character = Entity as Character;
-            App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], spell);
+
+            var skill = App.GameModel.PresetDataModel.ReturnData<DevSkill>(nameof(DevSkill), character.skillId[0]);
+
+            var otherEntities = Physics.OverlapSphere(transform.position, skill.Range, LayerMask.GetMask(skill.LayerName)).Select(x => x.GetComponent<EntityObject>().Entity).ToArray();
+
+            var spawnCount = 0;
+
+            for (int i = 0; i < otherEntities.Length; i++)
+            {
+                if (skill.SpawnCount == -1 || spawnCount < skill.SpawnCount)
+                {
+                    var pos = Vector3.zero;
+                    var rot = Quaternion.identity;
+                    Entity parent = null;
+
+                    switch (skill.SpawnType)
+                    {
+                        case DevSkill.SpawnTypes.CasterCenter: 
+                            pos = Entity.Transform.position;
+                            rot = Entity.Transform.rotation;
+                            parent = Entity;
+                            break;
+                        case DevSkill.SpawnTypes.SubjectCenter:
+                            pos = otherEntities[i].Transform.position;
+                            rot = otherEntities[i].Transform.rotation;
+                            parent = otherEntities[i];
+                            break;
+                    }
+
+                    App.GameController.GetComponent<SkillController>().Spawn("DevSkill", character.skillId[0], Entity, pos, rot, parent);
+
+                    ++spawnCount;
+                }
+            }
         }
 
         yield return new WaitForSeconds(1);
