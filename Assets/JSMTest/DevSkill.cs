@@ -11,7 +11,10 @@ public class DevSkill : Entity, IAbility
     public uint AbilityOwnerInstanceId { get => InstanceId; }
 
     public StrategyTypes StrategyType { get; set; }
-    public TargetTypes TargetType { get; set; }
+
+    public string[] LayerName { get; set; }
+    public float Range { get; set; }
+    public int SpawnCount { get; set; }
     public SpawnTypes SpawnType { get; set; }
 
     public enum StrategyTypes
@@ -22,16 +25,10 @@ public class DevSkill : Entity, IAbility
         Debuff = 3
     }
 
-    public enum TargetTypes
-    {
-        Single = 0,
-        Many = 1
-    }
-
     public enum SpawnTypes
-    {
-        Caster = 0,
-        Subject = 1
+    { 
+        CasterCenter = 0,
+        SubjectCenter = 1
     }
 
     public float Damage
