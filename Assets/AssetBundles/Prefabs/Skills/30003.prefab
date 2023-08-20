@@ -5076,7 +5076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512372746441921099}
   - component: {fileID: 5740668552185743151}
-  - component: {fileID: 8274572166881080417}
+  - component: {fileID: 8601010807624488120}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -5112,7 +5112,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8274572166881080417
+--- !u!114 &8601010807624488120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5121,7 +5121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9123514895243385659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d812804a5d3a3f643bee7b187beb99a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad6b602d1f2efa4c81525bd361dcea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillObject: {fileID: -1664779164030465189}
