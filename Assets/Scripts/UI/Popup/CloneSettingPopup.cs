@@ -35,7 +35,7 @@ public class CloneSettingPopup : Popup
             var tempEntityCont = App.GameController.GetComponent<ParticleController>();
             var entityCont = App.GameController.GetComponent<CharacterController>();
             tempEntityCont.Spawn("Particle", 60002, Camera.main.transform.position + Camera.main.transform.forward * 10);
-            entityCont.Spawn("Clon", cloneInfo.clonId, Camera.main.transform.position + Camera.main.transform.forward * 10, cloneInfo.skillId);
+            entityCont.Spawn("Clon", cloneInfo.clonId, Camera.main.transform.position + Camera.main.transform.forward * 10, null, cloneInfo.skillId);
 
             OnHide();
         });

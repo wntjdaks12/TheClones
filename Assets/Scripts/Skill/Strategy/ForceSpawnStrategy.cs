@@ -18,7 +18,7 @@ public class ForceSpawnStrategy : SkillStrategy
 
         entityController.GetController<DataController>().OnDataSpawn += setMonster;
 
-        entityController.Spawn("Monster", a[rand], Vector3.zero);
+     //   entityController.Spawn("Monster", a[rand], Vector3.zero);
 
         AddMaterial();
     }

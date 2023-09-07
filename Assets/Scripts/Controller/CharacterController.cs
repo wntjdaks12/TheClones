@@ -5,13 +5,11 @@ using System;
 using System.Linq;
 
 
-public class CharacterController : GameController, ISpawner
+public class CharacterController : GameController
 {
     GameDataContainerModel presetDataModel;
     GameDataContainerModel runtimeDataModel;
     DataController dataController;
-
-    public List<Spawner> Spawners { get; set; } = new List<Spawner>();
 
     protected override void Awake()
     {
@@ -20,7 +18,7 @@ public class CharacterController : GameController, ISpawner
         runtimeDataModel = App.GameModel.RuntimeDataModel;
     }
 
-    public void Spawn(string tableId, uint id, Vector3 position, uint[] skillId = null)
+    public void Spawn(string tableId, uint id, Vector3 position, Spawner spawner, uint[] skillId = null)
     {
         var character = dataController.AddData(tableId, id) as Character;
 
@@ -29,16 +27,18 @@ public class CharacterController : GameController, ISpawner
         //var characterObject = PoolObjectContainer.CreatePoolableObject<CharacterObject>($"{prefabInfo.Path}/{prefabInfo.PrefabId}");
         var characterObject = PoolObjectContainer.CreatePoolableObject<CharacterObject>(prefabInfo.PrefabId.ToString());
 
-        var a = Spawners[Spawners.Count - 1].stageId;
-
         character.OnDataRemove += (data) =>
         {
             RemoveEntity(data);
 
+            if (spawner == null) return;
+
             if (character is Monster) // 나중에 분리
-                --Spawners.Where(x => x.stageId == a).Select(x => x.SpawnObjectInfo).FirstOrDefault().CurNumberOfSpawn;
+                --spawner.SpawnObjectInfo.CurNumberOfSpawn;
+//                --Spawners.Where(x => x.stageId == a).Select(x => x.SpawnObjectInfo).FirstOrDefault().CurNumberOfSpawn;
         };
 
+        characterObject.transform.position = position;
 
         characterObject.gameObject.SetActive(true);
 
@@ -112,8 +112,6 @@ public class CharacterController : GameController, ISpawner
         };
 
         runtimeDataModel.AddData($"{tableId}Object", character.InstanceId, characterObject);
-
-        characterObject.transform.position = position;
     }
     public void RemoveEntity(IData data)
     {

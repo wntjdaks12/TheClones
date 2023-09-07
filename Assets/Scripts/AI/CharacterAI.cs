@@ -28,7 +28,7 @@ public class CharacterAI : ActorAI
     {
         base.Awake();
 
-        navAgent = GetComponent<NavMeshAgent>();
+        navAgent = GetComponent<NavMeshAgent>();    
     }
 
     private void Start()
@@ -93,7 +93,6 @@ public class CharacterAI : ActorAI
     public override void Init(Actor actor)
     {
         base.Init(actor);
-
         navAgent.Warp(transform.position);
 
         // 해당 포인트를 초기화 시킵니다.
@@ -154,11 +153,6 @@ public class CharacterAI : ActorAI
     {
         var randPos = UnityEngine.Random.insideUnitSphere * Range;
 
-        while ((randPos - transform.position).sqrMagnitude < 1f)
-        {
-            randPos = UnityEngine.Random.insideUnitSphere * Range;
-        }
-
         var navHitPos = randPos + transform.position; navHitPos.y = transform.position.y;
 
         NavMesh.SamplePosition(navHitPos, out navHit, 10f, 1);
@@ -187,7 +181,7 @@ public class CharacterAI : ActorAI
             var visibleObject = visibleObjects[0];
             destPos = visibleObject.transform.position;
         }
-         
+
         navAgent.speed = character.MoveSpeed;
         navAgent.SetDestination(destPos);
     }
