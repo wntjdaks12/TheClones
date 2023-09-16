@@ -23,6 +23,8 @@ public class DropItemController : GameController
 
         var dropItemObject = PoolObjectContainer.CreatePoolableObject<DropItemObject>(prefabInfo.PrefabId.ToString());
 
+        dropItemObject.transform.position = position;
+
         dropItem.OnDataRemove += RemoveEntity;
         dropItemObject.gameObject.SetActive(true);
 
@@ -32,8 +34,6 @@ public class DropItemController : GameController
         dropItemObject.Init(dropItem, App);
 
         runtimeDataModel.AddData($"{tableId}Object", dropItem.InstanceId, dropItemObject);
-
-        dropItemObject.transform.position = position;
     }
     public void RemoveEntity(IData data)
     {

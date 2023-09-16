@@ -14,6 +14,6 @@ public class PlayerManager : GameManager
         // 아이템 
         playerInfo.itemInfos.Add(new ItemInfo { itemId = 120201, count = 3});
         //스테이지
-        playerInfo.mapInfo = new MapInfo { mapId = 70001, stageId = 130001 };
+        playerInfo.mapInfo = new MapInfo { mapId = 70001, stageInfo = new StageInfo {id = 130001, currentNumberOfMonsterHunts = new ReactiveProperty<int>(0), maxNumberOfMonsterHunts = new ReactiveProperty<int>(5) } };
     }
 }

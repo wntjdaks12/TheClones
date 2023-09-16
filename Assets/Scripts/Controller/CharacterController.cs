@@ -88,6 +88,8 @@ public class CharacterController : GameController
 
                     App.GameController.GetController<DropItemController>().Spawn(nameof(DropItem), dropItemIds[i], pos, actor);
                 }
+
+                ++GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.mapInfo.stageInfo.currentNumberOfMonsterHunts.Value;
             };
         }
 

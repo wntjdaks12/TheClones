@@ -31,7 +31,7 @@ public class MapPopup : Popup
         mapPointSlots.ForEach(x => x.Init());
 
         var mapPointSlot = mapPointSlots
-            .Where(x => x.StageId == mapInfo.stageId).FirstOrDefault();
+            .Where(x => x.StageId == mapInfo.stageInfo.id).FirstOrDefault();
 
         myLocationRectTransform.anchoredPosition = mapPointSlot.rectTransform.anchoredPosition;
     }

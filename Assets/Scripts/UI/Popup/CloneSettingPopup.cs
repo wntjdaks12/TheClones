@@ -11,7 +11,7 @@ public class CloneSettingPopup : Popup
 
     [Header("컨텐츠"), SerializeField] private CloneSettingDetailContents detailContents;
     [SerializeField] private StatContents statContents;
-    [SerializeField] private PoolingScrollview poolingScrollview;
+   // [SerializeField] private PoolingScrollview poolingScrollview;
     [SerializeField] private GameObject Content1, Content2;
     [SerializeField] private List<GoodsSlot> goodsSlots;
 
@@ -43,14 +43,14 @@ public class CloneSettingPopup : Popup
         var cloneInfos = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.cloneInofs;
 
         // 풀링 스크롤 뷰 초기화 및 아이템 클릭 콜백 메소드 추가
-        poolingScrollview.Init(cloneInfos.Count, (index) =>
+      /*  poolingScrollview.Init(cloneInfos.Count, (index) =>
         {
             cloneInfo = cloneInfos[index];
 
             DetailContentsInit(cloneInfos, index);
 
             statContents.Init(cloneInfo.clonId);
-        });
+        });*/
 
         if (cloneInfos.Count > 0)
         {

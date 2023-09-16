@@ -13,7 +13,8 @@ public class HTTPCloneGacha : MonoBehaviour
 
     private IEnumerator GetRequest(Action callback)
     {
-        var url = "http://qqqq8692.dothome.co.kr/CloneGacha.php";
+        //var url = "http://qqqq8692.dothome.co.kr/CloneGacha.php";
+        var url = "http://qqqq86921.dothome.co.kr/CloneGacha.php";
 
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {

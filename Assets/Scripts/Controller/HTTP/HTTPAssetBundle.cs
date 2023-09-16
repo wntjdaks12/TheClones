@@ -72,7 +72,8 @@ public class HTTPAssetBundle : MonoBehaviour
 
     private IEnumerator GetRequestTextures()
     {
-        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/textureassetbundle";
+        //var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/textureassetbundle";
+        var url = "http://qqqq86921.dothome.co.kr/AssetBundles/Android/textureassetbundle";
 
         nameRP.Value = "텍스처 에셋 번들 로드";
 
@@ -97,7 +98,8 @@ public class HTTPAssetBundle : MonoBehaviour
 
     private IEnumerator GetRequestPrefabs()
     {
-        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/prefabassetbundle";
+        //var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/prefabassetbundle";
+        var url = "http://qqqq86921.dothome.co.kr/AssetBundles/Android/prefabassetbundle";
 
         nameRP.Value = "프리팹 에셋 번들 로드";
 
@@ -124,7 +126,8 @@ public class HTTPAssetBundle : MonoBehaviour
 
     private IEnumerator GetRequestMaterials()
     {
-        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/materialassetbundle";
+        //var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/materialassetbundle";
+        var url = "http://qqqq86921.dothome.co.kr/AssetBundles/Android/materialassetbundle";
 
         nameRP.Value = "머티리얼 에셋 번들 로드";
 
@@ -151,7 +154,8 @@ public class HTTPAssetBundle : MonoBehaviour
 
     private IEnumerator GetRequestFonts()
     {
-        var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/fontassetbundle";
+        //var url = "http://qqqq8692.dothome.co.kr/AssetBundles/Android/fontassetbundle";
+        var url = "http://qqqq86921.dothome.co.kr/AssetBundles/Android/fontassetbundle";
 
         nameRP.Value = "폰트 에셋 번들 로드";
 

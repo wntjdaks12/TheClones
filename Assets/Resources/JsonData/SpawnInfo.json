@@ -5,7 +5,8 @@
 		[
 			{
 				"id": 20001,
-				"maxNumberOfSpawn": 4
+				"maxNumberOfSpawn": 4,
+				"spawnMethodType":0
 			}
 		]
 	},
@@ -15,7 +16,13 @@
 		[
 			{
 				"id": 20001,
-				"maxNumberOfSpawn": 4
+				"maxNumberOfSpawn": 4,
+				"spawnMethodType":0
+			},
+			{
+				"id": 20003,
+				"maxNumberOfSpawn": 1,
+				"spawnMethodType":1
 			}
 		]
 	}

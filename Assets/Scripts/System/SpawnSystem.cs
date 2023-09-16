@@ -29,20 +29,23 @@ public class SpawnSystem : GameView, ISpawner
 
             for (int j = 0; j < spawnInfo.SpawnObjectInfos.Count; j++) // 스폰 오브젝트들을 스폰합니다   .
             {
-                var spawner = new Spawner();
-                spawner.SpawnObjectInfo = spawnInfo.SpawnObjectInfos[j];
-
-                Spawners.Add(spawner);
-
-                for (int k = 0; k < spawner.SpawnObjectInfo.MaxNumberOfSpawn; k++) // 최대 개수만큼 스폰 합니다.
+                if (spawnInfo.SpawnObjectInfos[j].SpawnMethodType == 0)
                 {
-                    spawner.stageId = spawnInfo.Id;
-                    ++spawner.SpawnObjectInfo.CurNumberOfSpawn;
+                    var spawner = new Spawner();
+                    spawner.SpawnObjectInfo = spawnInfo.SpawnObjectInfos[j];
 
-                    var ground = App.GameModel.RuntimeDataModel.ReturnDatas<Ground>(nameof(Ground)).Where(x => x.stageId == spawner.stageId).FirstOrDefault();
-                    var pos = ground.Transform.position; pos.y = -2;
+                    Spawners.Add(spawner);
 
-                    characterController.Spawn("Monster", spawner.SpawnObjectInfo.Id, pos, spawner);
+                    for (int k = 0; k < spawner.SpawnObjectInfo.MaxNumberOfSpawn; k++) // 최대 개수만큼 스폰 합니다.
+                    {
+                        spawner.stageId = spawnInfo.Id;
+                        ++spawner.SpawnObjectInfo.CurNumberOfSpawn;
+
+                        var ground = App.GameModel.RuntimeDataModel.ReturnDatas<Ground>(nameof(Ground)).Where(x => x.stageId == spawner.stageId).FirstOrDefault();
+                        var pos = ground.Transform.position; pos.y = -2;
+
+                        characterController.Spawn("Monster", spawner.SpawnObjectInfo.Id, pos, spawner);
+                    }
                 }
             }
         }

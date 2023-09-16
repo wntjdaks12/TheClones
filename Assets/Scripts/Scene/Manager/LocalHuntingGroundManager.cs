@@ -26,7 +26,7 @@ public class LocalHuntingGroundManager : GameView
             .Where(x => mapInfo.mapId == x.SceneId).FirstOrDefault();
 
         var stage = App.GameModel.PresetDataModel.ReturnDatas<Stage>()
-            .Where(x => x.Id == mapInfo.stageId).FirstOrDefault();
+            .Where(x => x.Id == mapInfo.stageInfo.id).FirstOrDefault();
 
         this.stage = stage;
 
@@ -49,7 +49,7 @@ public class LocalHuntingGroundManager : GameView
                 this.stage = stage;
 
                 var mapInfo = GameManager.Instance.GetManager<PlayerManager>().PlayerInfo.mapInfo;
-                mapInfo.stageId = stage.Id;
+                mapInfo.stageInfo.id = stage.Id;
 
                 setFont();
             }

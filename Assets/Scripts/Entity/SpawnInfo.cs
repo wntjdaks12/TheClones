@@ -12,4 +12,5 @@ public class SpawnObjectInfo
     public uint Id { get; set; }
     public int MaxNumberOfSpawn { get; set; }
     public int CurNumberOfSpawn { get; set; }
+    public int SpawnMethodType { get; set; }
 }

@@ -131,5 +131,13 @@ public class AssetBundleInfo
 public class MapInfo
 {
     public uint mapId;
-    public uint stageId;
+    public StageInfo stageInfo;
+}
+
+[Serializable]
+public class StageInfo
+{
+    public uint id;
+    public ReactiveProperty<int> currentNumberOfMonsterHunts;
+    public ReactiveProperty<int> maxNumberOfMonsterHunts;
 }
